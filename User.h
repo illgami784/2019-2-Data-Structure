@@ -70,10 +70,11 @@ public:
 	int getNowLocation() const;
 
 private:
+	int id; //고유 번호, numOfEnterPeople로 정함
 	int ticketRank; //age와 함께 탈 수 있는 Ride 결정 ( 길이에서 변경 )
 	int age; //ticketRank와 함께 탈 수 있는 Ride 결정
-	int id; //고유 번호, numOfEnterPeople로 정함
-	int nowLocation; //현재 위치한 놀이기구 id, 초기 값은 -1
+	int nowLocation; //현재 위치한 놀이기구 id, 초기 값은 -1, 놀이공원 바깥은 -2
+
 	UnsortedList wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
 	Stack hadRide; //이미 탑승한 놀이기구가 담긴 스택
 

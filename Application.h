@@ -63,7 +63,7 @@ public:
 	*	@post
 	*	@return	성공시 true 실패시 false
 	*/
-	bool AddRide();
+	bool addRide();
 
 	/**
 	*	@brief	rideList의 Ride를 삭제한다.
@@ -71,7 +71,7 @@ public:
 	*	@post
 	*	@return	성공시 true 실패시 false
 	*/
-	bool DeleteRide();
+	bool deleteRide();
 
 	/**
 	*	@brief	rideList의 Ride의 정보를 변경한다.

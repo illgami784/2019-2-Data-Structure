@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClInclude Include="Admin.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Stack.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="Ride.h" />
   </ItemGroup>

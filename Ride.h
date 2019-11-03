@@ -69,7 +69,8 @@ public:
 	/**
 	*	@brief	Ride를 탑승 완료한 User을 다른 곳으로 보내는 함수.
 	*	@pre	ridingUser에 User가 존재해야함
-	*	@post	ridingUser의 User를 비우며 Admin의 nextRide(User) 호출시킴.
+	*	@post	ridingUser의 User를 비우며 rideListPointer를 
+	이용해 위치 이동시켜준다.
 	*	@return 잘 작동시 true 아니면 false
 	*/
 	bool outUser();
@@ -84,6 +85,7 @@ private:
 	int totalUser; //개장하고 탑승한 총 User 수
 	bool isOpen; //개장 여부를 나타냄, rideUser 무한 루프를 깨기 위해 사용
 
+	LinkedList* rideListPointer; //자신이 담긴 rideList의 시작 주소를 가진다.
 	Stack ridingUser; //현재 탑승 중인 User을 담는 Stack
 	LinkedQueue watingUser; //기다리는 User들을 담는 Queue - 추후 heap으로
 

@@ -6,7 +6,7 @@ public:
 
 	/**
 	*	@brief	기본 생성자 입니다.
-	*	@post	name, requireTime, minAge, minTicketRank를 입력받아 설정
+	*	@post	id, requireTime, minAge, minTicketRank를 입력받아 설정
 	id는 Admin의 RideList의 길이에 따라 정해짐, watingTime 0으로 초기화
 	*/
 	Ride();
@@ -21,9 +21,9 @@ public:
 	bool calWatingTime();
 
 	/**
-	*	@brief	name, requireTime, minAge, minticketRank을 
+	*	@brief	id, requireTime, minAge, minticketRank을 
 	키보드로부터 입력 받아 설정.
-	*	@post	name, requireTime, minAge, minticketRank의 값이
+	*	@post	id, requireTime, minAge, minticketRank의 값이
 	키보드로 입력한 값으로 설정됨.
 	*/
 	void setAllFromKB();

@@ -13,6 +13,14 @@ public:
 	/**
 	*	default constructor.
 	*/
+
+	UnsortedList()
+	{
+		m_Length = 0;
+		max = 0;
+		ResetList();
+	}
+
 	UnsortedList(int _max)
 	{
 		m_Length = 0;
@@ -29,6 +37,14 @@ public:
 		delete[] m_Array;
 	}
 
+	/*
+	*	기본 생성자 사용시를 위한 함수.
+	*/
+	int setMax(int _max)
+	{
+		max = _max;
+		m_Array = new T[max];
+	}
 
 	/**
 	*	@brief	Make list empty.
@@ -98,15 +114,6 @@ public:
 
 
 	/** [작성]
-	*	@brief 입력받은 데이터의 시간 사이의 아이템 전부 삭제
-	*	@pre 아이템이 하나라도 존재해야함.
-	*	@post 아이템이 삭제됩니다.
-	*	@param start end 시간만을 가지면됨
-	*	@return none
-	*/
-	void  DeleteTime(T start, T end);
-
-	/** [작성]
 	*	@brief 입력받은 데이터의 Id가 기존의 존재하는 거랑 같을시 그 아이템을 입력받아 갱신
 	*	@pre 아이템이 하나라도 존재해야함
 	*	@post 아이템 레코드를 대체합니다.
@@ -119,7 +126,7 @@ private:
 	T* m_Array;  ///< list array.
 	int m_Length;				///< number of elements in list.
 	int m_CurPointer;			///< iterator pointer.
-	int max
+	int max;
 };
 #endif
 
@@ -163,18 +170,19 @@ int UnsortedList<T>::Add(T inData)
 
 	moreToSearch = (location < m_Length);
 	while (moreToSearch) {
-		switch (inData.CompareByTime(m_Array[location]))
+		if (inData == m_Array[location])
 		{
-		case EQUAL:
 			cout << "\n\t동일한 ID가 존재합니다.";
 			return 0;
-		case GREATER:
+		}
+		else if(inData < m_Array[location])
+		{
 			location++;
 			moreToSearch = (location < m_Length);
-			break;
-		case LESS:
+		}
+		else
+		{
 			moreToSearch = false;
-			break;
 		}
 	}
 	cout << "\n\t추가에 성공했습니다.";
@@ -192,14 +200,17 @@ int  UnsortedList<T>::Get(T& data) {
 	ResetList();
 	GetNextItem(temp);
 	while (m_CurPointer < m_Length) {
-		switch (temp.CompareByTime(data))
+		if (inData == m_Array[location])
 		{
-		case EQUAL:
 			data = temp;
 			return 1;
-		case GREATER:
+		}
+		else if (inData < m_Array[location])
+		{
 			return 0;
-		case LESS:
+		}
+		else
+		{
 			GetNextItem(temp);
 			break;
 		}
@@ -211,9 +222,9 @@ template <typename T>
 void  UnsortedList<T>::Delete(T data) {
 	int location = 0;
 
-	while (data.CompareByTime(m_Array[location]) != EQUAL) {
+	while ( data != m_Array[location]) {
 		if (location >= m_Length) {
-			cout << "\n\t시간이 같은 값이 없습니다.";
+			cout << "\n\tID가 같은 값이 없습니다.";
 			return;
 		}
 
@@ -226,26 +237,6 @@ void  UnsortedList<T>::Delete(T data) {
 	m_Length--;
 }
 
-template <typename T>
-void  UnsortedList<T>::DeleteTime(T start, T end) {
-	T temp;
-	string start_time = start.getTime(), end_time = end.getTime();
-
-	for (int i = max - 1; i > -1; i--) {
-		string temp_time = m_Array[i].getTime();
-		if (temp_time >= start_time && temp_time <= end_time) {
-			cout << "\n\t삭제";
-			if (i == max - 1) m_Length--;
-			else {
-				m_Array[i] = m_Array[i + 1];
-				m_Length--;
-			}
-		}
-	}
-
-
-}
-
 
 template <typename T>
 void  UnsortedList<T>::Replace(T data) {
@@ -256,7 +247,7 @@ void  UnsortedList<T>::Replace(T data) {
 	}
 	else
 	{
-		cout << "\n\t" << "시간이 같은 값이 없어 대체에 실패했습니다.";
+		cout << "\n\t" << "같은 값이 없어 대체에 실패했습니다.";
 		return;
 	}
 }

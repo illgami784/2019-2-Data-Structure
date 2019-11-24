@@ -1,32 +1,26 @@
 #pragma once
 #include "Stack.h"
+#include "User.h"
+#include "UnsortedList.h"
 #include <iostream>
+#include "Ride.h"
 using namespace std;
 
 class User {
 public:
 
 	/**
-	*
+	*	기본 생성자 입니다.
 	*/
-	User()
-	{
-		id = -1;
-		ticketRank = -1;
-		age = -1;
-		nowLocation = -1;
-	}
+	User();
 
 	/**
 	*	@brief	생성자입니다.
-	*	@post	ticketRank(0~10), age(0~100)의 값 랜덤 생성,
+	*	@post	ticketRank(0~9), age(0~99)의 값 랜덤 생성,
 	id에 Admin의 numOfEnterPeople을 넣음, wantToRide를 조건에 따라 생성함.
 	나머지 변수 초기화도 진행
 	*/
-	User(int _id, UnsortedList* RideList)
-	{
-
-	};
+	User(int numOfEnterPeople, UnsortedList<Ride>* RideList);
 
 	/**
 	*	@brief	무슨 함수인지 모르겠어요~ wantToRide가
@@ -92,7 +86,6 @@ private:
 	int age; //ticketRank와 함께 탈 수 있는 Ride 결정
 	int nowLocation; //현재 위치한 놀이기구 id, 초기 값은 -1, 놀이공원 바깥은 -2
 
-	UnsortedList wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
-	Stack hadRide; //이미 탑승한 놀이기구가 담긴 스택
-
+	UnsortedList<int> wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
+	Stack<int> hadRide; //이미 탑승한 놀이기구가 담긴 스택
 };

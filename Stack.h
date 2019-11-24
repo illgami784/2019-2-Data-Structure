@@ -1,16 +1,24 @@
 #pragma once
 template <class T>
-#define MaxStack 16
 class Stack
 {
 public:
 	Stack()
 	{
 		stack_length = 0;
+		max = 0;
 	}
 	~Stack()
 	{
+		delete[] m_stack;
 	}
+
+	void setMax(int _max)
+	{
+		max = _max;
+		m_stack = new T[max];
+	}
+
 	void Empty()
 	{
 		stack_length = 0;
@@ -34,7 +42,7 @@ public:
 	*	@post	length -=1
 	*	@return	item pointer
 	*/
-	T* Pop()
+	T Pop()
 	{
 		if (IsEmpty())
 		{
@@ -53,7 +61,7 @@ public:
 	*	@param  data pointer
 	*	@return	if function works well, return 1 ,otherwise return 0;
 	*/
-	int Push(T* data)
+	int Push(T data)
 	{
 		if (!IsFull())
 		{
@@ -75,7 +83,7 @@ public:
 	*/
 	int IsFull()
 	{
-		if (stack_length == MaxStack)
+		if (stack_length == max)
 		{
 			cout << "\tStack is full" << endl;
 			return 1;
@@ -110,7 +118,8 @@ public:
 		}
 	}
 private:
-	T * m_stack[MaxStack];
+	T* m_stack;
 	int stack_length;
+	int max;
 };
 

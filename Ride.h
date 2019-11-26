@@ -21,6 +21,12 @@ public:
 	*	@return	성공시 true, 실패시 false
 	*/
 	bool calWatingTime();
+	
+	/**
+	*	@brief	id에 값을 할당
+	*	@param	설정할 id 값
+	*/
+	void setId(int _id);
 
 	/**
 	*	@brief	id, requireTime, minAge, minticketRank을 
@@ -97,4 +103,9 @@ private:
 Ride::Ride()
 {
 	ridingUser.setMax(numPerRide);
+}
+
+void Ride::setId(int _id)
+{
+	this->id = _id;
 }

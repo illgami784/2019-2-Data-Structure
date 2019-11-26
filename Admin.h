@@ -2,6 +2,8 @@
 #include "User.h"
 #include "Ride.h"
 #include "DoublySortedLinkedList.h"
+#include "CircularQueue.h"
+#include "SortedList.h"
 
 class Admin {
 public:
@@ -17,7 +19,7 @@ public:
 	*	@brief	기본 소멸자입니다.
 	*	@post
 	*/
-	~Admin();
+	~Admin() = default;
 
 	/**
 	*	@brief	특정 시간마다 실행되며 새로운 User를 만드는 함수.
@@ -51,7 +53,7 @@ public:
 	*	@post	rideList의 끝에 ride 추가.
 	*	@return	성공시 true 실패시 false
 	*/
-	bool addRide(Ride ride);
+	bool addRide(Ride& ride);
 
 	/**
 	*	@brief	rideList에 ride를 제거한다.
@@ -65,7 +67,33 @@ private:
 	int numOfEnterUser; //개장 후 입장한 User의 수
 	int maxUser; //최대 수용 가능 User 수
 	int lenRideList; //rideList의 길이 = ride 갯수
-	LinkedQueue waitingEnterUser; //userList가 다 차 들어오지 못한 User
+	CircularQueue<User> waitingEnterUser; //userList가 다 차 들어오지 못한 User
 	DoublySortedLinkedList<Ride> rideList; //Ride가 담긴 list
-	SortedList userList; //User가 담긴 list
+	SortedList<User> userList; //User가 담긴 list
 };
+
+Admin::Admin()
+{
+	numOfEnterUser = 0;
+	maxUser = 100; //maxUser 미정
+	lenRideList = 0;
+}
+
+bool Admin::addRide(Ride& ride)
+{
+	if (rideList.Add(ride))
+		return 1;
+	return 0;
+}
+
+bool Admin::deleteRide(int _id)
+{
+	Ride temp;
+	temp.setId(_id);
+	if (rideList.Get(temp))
+	{
+		rideList.Delete(temp);
+		return 1;
+	}
+	return 0;
+}

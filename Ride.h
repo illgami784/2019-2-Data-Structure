@@ -1,5 +1,7 @@
 #pragma once
 #include "User.h"
+#include "DoublySortedLinkedList.h"
+#include "Stack.h"
 
 class Ride{
 public:
@@ -85,8 +87,14 @@ private:
 	int totalUser; //개장하고 탑승한 총 User 수
 	bool isOpen; //개장 여부를 나타냄, rideUser 무한 루프를 깨기 위해 사용
 
+
 	LinkedList* rideListPointer; //자신이 담긴 rideList의 시작 주소를 가진다.
-	Stack ridingUser; //현재 탑승 중인 User을 담는 Stack
+	Stack<User> ridingUser; //현재 탑승 중인 User을 담는 Stack
 	LinkedQueue watingUser; //기다리는 User들을 담는 Queue - 추후 heap으로
 
 };
+
+Ride::Ride()
+{
+	ridingUser.setMax(numPerRide);
+}

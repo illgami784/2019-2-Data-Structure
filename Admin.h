@@ -1,6 +1,7 @@
 #pragma once
 #include "User.h"
 #include "Ride.h"
+#include "DoublySortedLinkedList.h"
 
 class Admin {
 public:
@@ -65,6 +66,6 @@ private:
 	int maxUser; //최대 수용 가능 User 수
 	int lenRideList; //rideList의 길이 = ride 갯수
 	LinkedQueue waitingEnterUser; //userList가 다 차 들어오지 못한 User
-	LinkedList rideList; //Ride가 담긴 list
+	DoublySortedLinkedList<Ride> rideList; //Ride가 담긴 list
 	SortedList userList; //User가 담긴 list
 };

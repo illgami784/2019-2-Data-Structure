@@ -51,7 +51,7 @@ public:
 		else
 		{
 			stack_length -= 1;
-			return m_stack[stack_length-1];
+			return m_stack[stack_length];
 		}
 	}
 	/**

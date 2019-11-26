@@ -125,9 +125,15 @@
   <ItemGroup>
     <ClInclude Include="Admin.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="DoublyIterator.h" />
+    <ClInclude Include="DoublySortedLinkedList.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="Ride.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Ride.cpp" />
+    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

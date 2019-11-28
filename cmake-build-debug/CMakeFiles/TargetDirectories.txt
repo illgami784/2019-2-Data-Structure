@@ -1,0 +1,3 @@
+/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles/amuse1.dir

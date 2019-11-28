@@ -20,7 +20,7 @@ public:
 	id에 Admin의 numOfEnterPeople을 넣음, wantToRide를 조건에 따라 생성함.
 	나머지 변수 초기화도 진행
 	*/
-	User(int numOfEnterPeople, UnsortedList<Ride>* RideList);
+	User(int numOfEnterPeople)
 
 	/**
 	*	@brief	무슨 함수인지 모르겠어요~ wantToRide가
@@ -90,6 +90,6 @@ private:
 	int age; //ticketRank와 함께 탈 수 있는 Ride 결정
 	int nowLocation; //현재 위치한 놀이기구 id, 초기 값은 -1, 놀이공원 바깥은 -2
 
-//	UnsortedList<int> wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
+	UnsortedList<int> wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
 	Stack<int> hadRide; //이미 탑승한 놀이기구가 담긴 스택
 };

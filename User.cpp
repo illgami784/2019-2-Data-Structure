@@ -8,7 +8,7 @@ User::User()
 	nowLocation = -1;
 }
 
-User::User(int numOfEnterPeople, UnsortedList<Ride> *RideList)
+User::User(int numOfEnterPeople)
 {
 	id = numOfEnterPeople;
 	ticketRank = rand() % 10;
@@ -16,10 +16,10 @@ User::User(int numOfEnterPeople, UnsortedList<Ride> *RideList)
 	nowLocation = -1;
 };
 
-bool User::WantToRide()
-{
-	return false;
-}
+//bool User::WantToRide()
+//{
+//	return false;
+//}
 
 void User::printInfo() const
 {

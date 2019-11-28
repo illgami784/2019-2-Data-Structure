@@ -1,7 +1,12 @@
 #pragma once
+
+
 #include "User.h"
 #include "DoublySortedLinkedList.h"
 #include "Stack.h"
+#include "Admin.h"
+class Admin;
+class User;
 
 class Ride{
 public:
@@ -85,7 +90,7 @@ public:
 
 	int getMinAge() const;
 
-	bool moveToUser();
+	bool moveToUser(User* user);
 
 	void setMinAge(int minAge);
 
@@ -110,12 +115,28 @@ private:
 
 };
 bool Ride::rideUser() {//requireTime마다 실행
-	User *user;
+	User* user;
 	for (int i = 0; i < numPerRide; i++) {
 		ridingUser.Pop(user);
 		// movetoUser
-		waitingUser.Dequeue(user);
-		ridingUser.Push(user);
+		waitingUser.Dequeue(*user);
+		ridingUser.Push(*user);
+		user.wantToRide.GetNextItem(cur);
+		Ride test;
+		test.setId(cur);
+		rideList.Get(test);
+		if (min > test.getWaitingTime()) {
+			min = test.getWaitingTime();
+			user.setNowLocation(cur);
+		}
+		calWatingTime();
+	}
+}
+bool Ride::moveToUser(User* user) {
+
+	user->
+	user.wantToRide.ResetList();
+	for(int i = 0; i < user.wantToRide.GetLength(); i++){
 		user.wantToRide.GetNextItem(cur);
 		Ride test;
 		test.setId(cur);
@@ -123,21 +144,13 @@ bool Ride::rideUser() {//requireTime마다 실행
 		if(min>test.getWaitingTime()){
 			min = test.getWaitingTime();
 			user.setNowLocation(cur);
+		}
 	}
-	calWatingTime();
-}
-bool Ride::moveToUser(User* user){
-	rideListPointer
-
-
 }
 bool Ride::calWatingTime() {
-	watingTime = (waitingUser.getLength()/numPerRide)*requireTime;
+	watingTime = (waitingUser.getLength() / numPerRide) * requireTime;
 }
 
-
-
-}
 
 Ride::Ride()
 {

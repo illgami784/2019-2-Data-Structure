@@ -1,10 +1,11 @@
 #pragma once
+
 #include "User.h"
 #include "Ride.h"
 #include "DoublySortedLinkedList.h"
 #include "CircularQueue.h"
 #include "SortedList.h"
-
+class Ride;
 class User;
 class Admin {
 public:
@@ -63,34 +64,15 @@ public:
 	*	@return	성공시 true 실패시 false
 	*/
 	bool deleteRide(int _id);
+	/**
+    *   @brief   rideList pointer 반환
+    *   @return rideList pointer
+   */
+	DoublySortedLinkedList<Ride>* rideListPointer()
+	{
+		return &rideList;
+	}
 
-	void DecisionRide(){
-		User temp;
-		userList.ResetList();
-		for(int i = 0; i < userList.GetLength();i++){
-			userList.GetNextItem(temp);
-			if(temp.getNowLocation()==1){
-				calcRide(temp);
-			}
-		}
-	}
-	void calcRide(User& user){
-		int cur;
-		int min=0;
-		int num = 0;
-		user.wantToRide.ResetList();
-		for(int i = 0; i < user.wantToRide.GetLength(); i++){
-			user.wantToRide.GetNextItem(cur);
-			Ride test;
-			test.setId(cur);
-			rideList.Get(test);
-			if(min>test.getWaitingTime()){
-				min = test.getWaitingTime();
-				user.setNowLocation(cur);
-			}
-		}
-		user.wantToRide.Delete(user.getNowLocation());
-	}
 
 private:
 	int numOfEnterUser; //개장 후 입장한 User의 수

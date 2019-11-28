@@ -83,6 +83,9 @@
 		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/Admin.h">
 			<Option target="amuse1"/>
 		</Unit>
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/AppScreen.cpp">
+			<Option target="amuse1"/>
+		</Unit>
 		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/Application.h">
 			<Option target="amuse1"/>
 		</Unit>

@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/amuse1.dir/Ride.cpp.o"
   "CMakeFiles/amuse1.dir/User.cpp.o"
+  "CMakeFiles/amuse1.dir/AppScreen.cpp.o"
   "amuse1.pdb"
   "amuse1"
 )

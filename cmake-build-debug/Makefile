@@ -123,6 +123,33 @@ amuse1/fast:
 	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/build
 .PHONY : amuse1/fast
 
+AppScreen.o: AppScreen.cpp.o
+
+.PHONY : AppScreen.o
+
+# target to build an object file
+AppScreen.cpp.o:
+	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/AppScreen.cpp.o
+.PHONY : AppScreen.cpp.o
+
+AppScreen.i: AppScreen.cpp.i
+
+.PHONY : AppScreen.i
+
+# target to preprocess a source file
+AppScreen.cpp.i:
+	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/AppScreen.cpp.i
+.PHONY : AppScreen.cpp.i
+
+AppScreen.s: AppScreen.cpp.s
+
+.PHONY : AppScreen.s
+
+# target to generate assembly for a file
+AppScreen.cpp.s:
+	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/AppScreen.cpp.s
+.PHONY : AppScreen.cpp.s
+
 Ride.o: Ride.cpp.o
 
 .PHONY : Ride.o
@@ -186,6 +213,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... amuse1"
+	@echo "... AppScreen.o"
+	@echo "... AppScreen.i"
+	@echo "... AppScreen.s"
 	@echo "... Ride.o"
 	@echo "... Ride.i"
 	@echo "... Ride.s"

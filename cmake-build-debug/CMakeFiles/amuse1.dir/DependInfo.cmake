@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/mooninzoo/CLionProjects/DataStructure/amuse1/AppScreen.cpp" "/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles/amuse1.dir/AppScreen.cpp.o"
   "/Users/mooninzoo/CLionProjects/DataStructure/amuse1/Ride.cpp" "/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles/amuse1.dir/Ride.cpp.o"
   "/Users/mooninzoo/CLionProjects/DataStructure/amuse1/User.cpp" "/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles/amuse1.dir/User.cpp.o"
   )

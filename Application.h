@@ -101,6 +101,8 @@ public:
 	*/
 	void printTodayInfo();
 
+
+
 private:
 	int m_Command; //명령어 입력에 사용
 	int OpenTime; //개장한 시간 통계에 사용?

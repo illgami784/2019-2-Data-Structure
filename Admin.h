@@ -5,13 +5,14 @@
 #include "CircularQueue.h"
 #include "SortedList.h"
 
+class User;
 class Admin {
 public:
 
 	/**
 	*	@brief	기본 생성자입니다
 	*	@post	maxUser를 입력값으로 설정, UserList의 길이를 maxUser의
-	크기로 설정, numOfEnterUser = 0 
+	크기로 설정, numOfEnterUser = 0
 	*/
 	Admin();
 
@@ -29,7 +30,7 @@ public:
 	*	@return	성공시 true, 실패시 false
 	*/
 	bool newUser();
-	 
+
 	/**
 	*	@brief	user의 현재 위치에 따라 해당하는 Ride로 이동시킴
 	*	@pre	user의 nowLocation이 변경되야함
@@ -39,7 +40,7 @@ public:
 	bool moveUser(User &user);
 
 	/**
-	*	@brief	user의 wantToRide와 각 Ride들의 watingTime을 확인해서 
+	*	@brief	user의 wantToRide와 각 Ride들의 watingTime을 확인해서
 	user의 다음 목적지를 결정해준다.
 	*	@pre	user의 wantToRide가 비어있지 않아야함
 	*	@post	moveUser도 호출되며 user의 setNowLocation 호출해 값 변경
@@ -63,6 +64,34 @@ public:
 	*/
 	bool deleteRide(int _id);
 
+	void DecisionRide(){
+		User temp;
+		userList.ResetList();
+		for(int i = 0; i < userList.GetLength();i++){
+			userList.GetNextItem(temp);
+			if(temp.getNowLocation()==1){
+				calcRide(temp);
+			}
+		}
+	}
+	void calcRide(User& user){
+		int cur;
+		int min=0;
+		int num = 0;
+		user.wantToRide.ResetList();
+		for(int i = 0; i < user.wantToRide.GetLength(); i++){
+			user.wantToRide.GetNextItem(cur);
+			Ride test;
+			test.setId(cur);
+			rideList.Get(test);
+			if(min>test.getWaitingTime()){
+				min = test.getWaitingTime();
+				user.setNowLocation(cur);
+			}
+		}
+		user.wantToRide.Delete(user.getNowLocation());
+	}
+
 private:
 	int numOfEnterUser; //개장 후 입장한 User의 수
 	int maxUser; //최대 수용 가능 User 수
@@ -70,6 +99,7 @@ private:
 	CircularQueue<User> waitingEnterUser; //userList가 다 차 들어오지 못한 User
 	DoublySortedLinkedList<Ride> rideList; //Ride가 담긴 list
 	SortedList<User> userList; //User가 담긴 list
+	User* p_U;
 };
 
 Admin::Admin()
@@ -97,3 +127,4 @@ bool Admin::deleteRide(int _id)
 	}
 	return 0;
 }
+

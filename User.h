@@ -1,9 +1,9 @@
 #pragma once
 #include "Stack.h"
-#include "User.h"
 #include "UnsortedList.h"
 #include <iostream>
 #include "Ride.h"
+//#include "Admin.h"
 using namespace std;
 
 class User {
@@ -80,12 +80,16 @@ public:
 	*/
 	int getNowLocation() const;
 
+//	friend void Admin::calcRide(User user);
+	UnsortedList<int> wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
+
+
 private:
 	int id; //고유 번호, numOfEnterPeople로 정함
 	int ticketRank; //age와 함께 탈 수 있는 Ride 결정 ( 길이에서 변경 )
 	int age; //ticketRank와 함께 탈 수 있는 Ride 결정
 	int nowLocation; //현재 위치한 놀이기구 id, 초기 값은 -1, 놀이공원 바깥은 -2
 
-	UnsortedList<int> wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
+//	UnsortedList<int> wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
 	Stack<int> hadRide; //이미 탑승한 놀이기구가 담긴 스택
 };

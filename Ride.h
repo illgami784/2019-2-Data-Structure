@@ -83,6 +83,16 @@ public:
 	*/
 	bool outUser();
 
+	int getMinAge() const;
+
+	bool moveToUser();
+
+	void setMinAge(int minAge);
+
+	int getWaitingTime(){
+		return watingTime;
+	}
+
 private:
 	int id; //고유 번호 RideList의 길이에 따라 정해짐
 	int requireTime; //놀이기구를 한번에 작동하는데 걸리는 시간(초 단위)
@@ -94,11 +104,40 @@ private:
 	bool isOpen; //개장 여부를 나타냄, rideUser 무한 루프를 깨기 위해 사용
 
 
-	LinkedList* rideListPointer; //자신이 담긴 rideList의 시작 주소를 가진다.
-	Stack<User> ridingUser; //현재 탑승 중인 User을 담는 Stack
-	LinkedQueue watingUser; //기다리는 User들을 담는 Queue - 추후 heap으로
+	DoublySortedLinkedList<Ride>* rideListPointer; //자신이 담긴 rideList의 시작 주소를 가진다.
+	Stack<User*> ridingUser; //현재 탑승 중인 User을 담는 Stack
+	LinkedQueue<User*> waitingUser; //기다리는 User들을 담는 Queue - 추후 heap으로
 
 };
+bool Ride::rideUser() {//requireTime마다 실행
+	User *user;
+	for (int i = 0; i < numPerRide; i++) {
+		ridingUser.Pop(user);
+		// movetoUser
+		waitingUser.Dequeue(user);
+		ridingUser.Push(user);
+		user.wantToRide.GetNextItem(cur);
+		Ride test;
+		test.setId(cur);
+		rideList.Get(test);
+		if(min>test.getWaitingTime()){
+			min = test.getWaitingTime();
+			user.setNowLocation(cur);
+	}
+	calWatingTime();
+}
+bool Ride::moveToUser(User* user){
+	rideListPointer
+
+
+}
+bool Ride::calWatingTime() {
+	watingTime = (waitingUser.getLength()/numPerRide)*requireTime;
+}
+
+
+
+}
 
 Ride::Ride()
 {
@@ -108,4 +147,8 @@ Ride::Ride()
 void Ride::setId(int _id)
 {
 	this->id = _id;
+}
+
+void Ride::setMinAge(int minAge) {
+	Ride::minAge = minAge;
 }

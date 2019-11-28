@@ -1,5 +1,6 @@
 #pragma once
 #include "Admin.h"
+using namespace std;
 class Application {
 public:
 
@@ -16,18 +17,29 @@ public:
 	*/
 	void run();
 
+	void open();
+
+	void close();
+
 	/**
 	*	@brief	명령어를 입력받는 함수
 	*	@post	m_Command가 입력한 값이 된다.
 	*	@return	성공시 true 실패시 false
 	*/
-	bool getCommand();
+	bool getOpenCommand();
+
+	/**
+	*	@brief	명령어를 입력받는 함수
+	*	@post	m_Command가 입력한 값이 된다.
+	*	@return	성공시 true 실패시 false
+	*/
+	bool getCloseCommand();
 
 	/**
 	*	@brief	open 여부를 리턴한다.
 	*	@return	open 리턴
 	*/
-	bool isOpen() const;
+	bool isItOpen() const;
 
 	/**
 	*	@brief	해당하는 id의 Ride의 상세 정보를 출력한다.
@@ -93,6 +105,6 @@ private:
 	int m_Command; //명령어 입력에 사용
 	int OpenTime; //개장한 시간 통계에 사용?
 	int CloseTime; //폐장한 시간 통계에 사용?
-	bool open; //개장 여부
+	bool isOpen; //개장 여부
 	Admin admin; //놀이동산 Admin
 };

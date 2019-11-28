@@ -79,9 +79,8 @@ public:
 	*	@return	nowLocation을 리턴함.
 	*/
 	int getNowLocation() const;
-
-//	friend void Admin::calcRide(User user);
-	UnsortedList<int> wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
+	bool moveToUser();
+	friend class Ride;
 
 
 private:
@@ -93,3 +92,18 @@ private:
 	UnsortedList<int> wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
 	Stack<int> hadRide; //이미 탑승한 놀이기구가 담긴 스택
 };
+bool User::moveToUser() {
+	int min = 100000000000;
+	int cur;
+	wantToRide.ResetList();
+	for(int i = 0; i < wantToRide.GetLength(); i++){
+		wantToRide.GetNextItem(cur);
+		Ride test;
+		test.setId(cur);
+		Admin::rideList.Get(test);
+		if(min>test.getWaitingTime()){
+			min = test.getWaitingTime();
+			setNowLocation(cur);
+		}
+	}
+}

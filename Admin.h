@@ -7,6 +7,8 @@
 #include "SortedList.h"
 class Ride;
 class User;
+
+
 class Admin {
 public:
 
@@ -72,14 +74,15 @@ public:
 	{
 		return &rideList;
 	}
+	friend class Admin;
 
-
+	static DoublySortedLinkedList<Ride> rideList;
 private:
 	int numOfEnterUser; //개장 후 입장한 User의 수
 	int maxUser; //최대 수용 가능 User 수
 	int lenRideList; //rideList의 길이 = ride 갯수
 	CircularQueue<User> waitingEnterUser; //userList가 다 차 들어오지 못한 User
-	DoublySortedLinkedList<Ride> rideList; //Ride가 담긴 list
+	//Ride가 담긴 list
 	SortedList<User> userList; //User가 담긴 list
 	User* p_U;
 };

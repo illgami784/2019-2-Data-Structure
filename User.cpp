@@ -11,9 +11,9 @@ User::User()
 User::User(int numOfEnterPeople)
 {
 	id = numOfEnterPeople;
-	ticketRank = rand() % 10;
-	age = rand() % 100;
-	nowLocation = -1;
+	ticketRank = rand() % 5;
+	age = rand() % 40 +10;
+	nowLocation = 0;
 };
 
 //bool User::WantToRide()
@@ -42,6 +42,7 @@ bool User::setNowLocation(int _location)
 {
 	wantToRide.Delete(_location);
 	hadRide.Push(_location);
+	nowLocation = _location;
 }
 
 

@@ -5,6 +5,7 @@
 #include "DoublySortedLinkedList.h"
 #include "Stack.h"
 #include "Admin.h"
+#include "Queue.h"
 class Admin;
 class User;
 
@@ -25,7 +26,7 @@ public:
 	watingUser의 길이를 통해 watingTime 값 설정
 	*	@return	성공시 true, 실패시 false
 	*/
-	bool calWatingTime();
+	bool calcWaitingTime();
 	
 	/**
 	*	@brief	id에 값을 할당
@@ -111,43 +112,39 @@ private:
 
 	DoublySortedLinkedList<Ride>* rideListPointer; //자신이 담긴 rideList의 시작 주소를 가진다.
 	Stack<User*> ridingUser; //현재 탑승 중인 User을 담는 Stack
-	LinkedQueue<User*> waitingUser; //기다리는 User들을 담는 Queue - 추후 heap으로
+	CircularQueueType<User*> waitingUser; //기다리는 User들을 담는 Queue - 추후 heap으로
 
 };
 bool Ride::rideUser() {//requireTime마다 실행
 	User* user;
 	for (int i = 0; i < numPerRide; i++) {
 		ridingUser.Pop(user);
-		// movetoUser
-		waitingUser.Dequeue(*user);
-		ridingUser.Push(*user);
-		user.wantToRide.GetNextItem(cur);
-		Ride test;
-		test.setId(cur);
-		rideList.Get(test);
-		if (min > test.getWaitingTime()) {
-			min = test.getWaitingTime();
-			user.setNowLocation(cur);
-		}
-		calWatingTime();
-	}
-}
-bool Ride::moveToUser(User* user) {
+		user->moveToUser();
+		waitingUser.DeQueue(user);
+		ridingUser.Push(user);
+	}//일단 이렇게 하고 나중에 waitingUser가 numperRide 보다 작을때 (waitingUser가 Null일떄 예외처리)
+	calcWaitingTime();
 
-	user->
-	user.wantToRide.ResetList();
-	for(int i = 0; i < user.wantToRide.GetLength(); i++){
-		user.wantToRide.GetNextItem(cur);
-		Ride test;
-		test.setId(cur);
-		rideList.Get(test);
-		if(min>test.getWaitingTime()){
-			min = test.getWaitingTime();
-			user.setNowLocation(cur);
-		}
-	}
 }
-bool Ride::calWatingTime() {
+
+//bool Ride::moveToUser(User* user) {
+//	int min = 100000000000;
+//	int cur;
+//	user->wantToRide.ResetList();
+//	for(int i = 0; i < user->wantToRide.GetLength(); i++){
+//		user->wantToRide.GetNextItem(cur);
+//		Ride test;
+//		test.setId(cur);
+//		Admin::rideList.Get(test);
+//		if(min>test.getWaitingTime()){
+//			min = test.getWaitingTime();
+//			user->setNowLocation(cur);
+//		}
+//	}
+//	calcWaitingTime();
+//}
+
+bool Ride::calcWaitingTime() {
 	watingTime = (waitingUser.getLength() / numPerRide) * requireTime;
 }
 

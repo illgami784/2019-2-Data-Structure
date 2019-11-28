@@ -106,4 +106,5 @@ bool User::moveToUser() {
 			setNowLocation(cur);
 		}
 	}
+	cur;
 }

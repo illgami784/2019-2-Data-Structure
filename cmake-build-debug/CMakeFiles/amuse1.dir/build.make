@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/mooninzoo/CLionProjects/DataStructure/amuse1
+CMAKE_SOURCE_DIR = /Users/mooninzoo/CLionProjects/DataStructure/amusement
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/amuse1.dir/depend.make
@@ -59,42 +59,42 @@ include CMakeFiles/amuse1.dir/flags.make
 
 CMakeFiles/amuse1.dir/Ride.cpp.o: CMakeFiles/amuse1.dir/flags.make
 CMakeFiles/amuse1.dir/Ride.cpp.o: ../Ride.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/amuse1.dir/Ride.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/amuse1.dir/Ride.cpp.o -c /Users/mooninzoo/CLionProjects/DataStructure/amuse1/Ride.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/amuse1.dir/Ride.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/amuse1.dir/Ride.cpp.o -c /Users/mooninzoo/CLionProjects/DataStructure/amusement/Ride.cpp
 
 CMakeFiles/amuse1.dir/Ride.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/amuse1.dir/Ride.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mooninzoo/CLionProjects/DataStructure/amuse1/Ride.cpp > CMakeFiles/amuse1.dir/Ride.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mooninzoo/CLionProjects/DataStructure/amusement/Ride.cpp > CMakeFiles/amuse1.dir/Ride.cpp.i
 
 CMakeFiles/amuse1.dir/Ride.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/amuse1.dir/Ride.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mooninzoo/CLionProjects/DataStructure/amuse1/Ride.cpp -o CMakeFiles/amuse1.dir/Ride.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mooninzoo/CLionProjects/DataStructure/amusement/Ride.cpp -o CMakeFiles/amuse1.dir/Ride.cpp.s
 
 CMakeFiles/amuse1.dir/User.cpp.o: CMakeFiles/amuse1.dir/flags.make
 CMakeFiles/amuse1.dir/User.cpp.o: ../User.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/amuse1.dir/User.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/amuse1.dir/User.cpp.o -c /Users/mooninzoo/CLionProjects/DataStructure/amuse1/User.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/amuse1.dir/User.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/amuse1.dir/User.cpp.o -c /Users/mooninzoo/CLionProjects/DataStructure/amusement/User.cpp
 
 CMakeFiles/amuse1.dir/User.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/amuse1.dir/User.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mooninzoo/CLionProjects/DataStructure/amuse1/User.cpp > CMakeFiles/amuse1.dir/User.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mooninzoo/CLionProjects/DataStructure/amusement/User.cpp > CMakeFiles/amuse1.dir/User.cpp.i
 
 CMakeFiles/amuse1.dir/User.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/amuse1.dir/User.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mooninzoo/CLionProjects/DataStructure/amuse1/User.cpp -o CMakeFiles/amuse1.dir/User.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mooninzoo/CLionProjects/DataStructure/amusement/User.cpp -o CMakeFiles/amuse1.dir/User.cpp.s
 
 CMakeFiles/amuse1.dir/AppScreen.cpp.o: CMakeFiles/amuse1.dir/flags.make
 CMakeFiles/amuse1.dir/AppScreen.cpp.o: ../AppScreen.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/amuse1.dir/AppScreen.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/amuse1.dir/AppScreen.cpp.o -c /Users/mooninzoo/CLionProjects/DataStructure/amuse1/AppScreen.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/amuse1.dir/AppScreen.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/amuse1.dir/AppScreen.cpp.o -c /Users/mooninzoo/CLionProjects/DataStructure/amusement/AppScreen.cpp
 
 CMakeFiles/amuse1.dir/AppScreen.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/amuse1.dir/AppScreen.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mooninzoo/CLionProjects/DataStructure/amuse1/AppScreen.cpp > CMakeFiles/amuse1.dir/AppScreen.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mooninzoo/CLionProjects/DataStructure/amusement/AppScreen.cpp > CMakeFiles/amuse1.dir/AppScreen.cpp.i
 
 CMakeFiles/amuse1.dir/AppScreen.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/amuse1.dir/AppScreen.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mooninzoo/CLionProjects/DataStructure/amuse1/AppScreen.cpp -o CMakeFiles/amuse1.dir/AppScreen.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mooninzoo/CLionProjects/DataStructure/amusement/AppScreen.cpp -o CMakeFiles/amuse1.dir/AppScreen.cpp.s
 
 # Object files for target amuse1
 amuse1_OBJECTS = \
@@ -110,7 +110,7 @@ amuse1: CMakeFiles/amuse1.dir/User.cpp.o
 amuse1: CMakeFiles/amuse1.dir/AppScreen.cpp.o
 amuse1: CMakeFiles/amuse1.dir/build.make
 amuse1: CMakeFiles/amuse1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable amuse1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable amuse1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/amuse1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -123,6 +123,6 @@ CMakeFiles/amuse1.dir/clean:
 .PHONY : CMakeFiles/amuse1.dir/clean
 
 CMakeFiles/amuse1.dir/depend:
-	cd /Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/mooninzoo/CLionProjects/DataStructure/amuse1 /Users/mooninzoo/CLionProjects/DataStructure/amuse1 /Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug /Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug /Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles/amuse1.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/mooninzoo/CLionProjects/DataStructure/amusement /Users/mooninzoo/CLionProjects/DataStructure/amusement /Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug /Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug /Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/CMakeFiles/amuse1.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/amuse1.dir/depend
 

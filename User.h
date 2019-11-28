@@ -105,6 +105,7 @@ bool User::moveToUser() {
 			min = test.getWaitingTime();
 			setNowLocation(cur);
 		}
+		cur=0;
 	}
-	cur;
+	cur = 0;
 }

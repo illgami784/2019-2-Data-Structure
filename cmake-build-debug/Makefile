@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/mooninzoo/CLionProjects/DataStructure/amuse1
+CMAKE_SOURCE_DIR = /Users/mooninzoo/CLionProjects/DataStructure/amusement
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles /Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/CMakeFiles /Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named amuse1
+# Target rules for targets named amusement
 
 # Build rule for target.
-amuse1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 amuse1
-.PHONY : amuse1
+amusement: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 amusement
+.PHONY : amusement
 
 # fast build rule for target.
-amuse1/fast:
-	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/build
-.PHONY : amuse1/fast
+amusement/fast:
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/build
+.PHONY : amusement/fast
 
 AppScreen.o: AppScreen.cpp.o
 
@@ -129,7 +129,7 @@ AppScreen.o: AppScreen.cpp.o
 
 # target to build an object file
 AppScreen.cpp.o:
-	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/AppScreen.cpp.o
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/AppScreen.cpp.o
 .PHONY : AppScreen.cpp.o
 
 AppScreen.i: AppScreen.cpp.i
@@ -138,7 +138,7 @@ AppScreen.i: AppScreen.cpp.i
 
 # target to preprocess a source file
 AppScreen.cpp.i:
-	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/AppScreen.cpp.i
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/AppScreen.cpp.i
 .PHONY : AppScreen.cpp.i
 
 AppScreen.s: AppScreen.cpp.s
@@ -147,8 +147,35 @@ AppScreen.s: AppScreen.cpp.s
 
 # target to generate assembly for a file
 AppScreen.cpp.s:
-	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/AppScreen.cpp.s
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/AppScreen.cpp.s
 .PHONY : AppScreen.cpp.s
+
+Application.o: Application.cpp.o
+
+.PHONY : Application.o
+
+# target to build an object file
+Application.cpp.o:
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/Application.cpp.o
+.PHONY : Application.cpp.o
+
+Application.i: Application.cpp.i
+
+.PHONY : Application.i
+
+# target to preprocess a source file
+Application.cpp.i:
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/Application.cpp.i
+.PHONY : Application.cpp.i
+
+Application.s: Application.cpp.s
+
+.PHONY : Application.s
+
+# target to generate assembly for a file
+Application.cpp.s:
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/Application.cpp.s
+.PHONY : Application.cpp.s
 
 Ride.o: Ride.cpp.o
 
@@ -156,7 +183,7 @@ Ride.o: Ride.cpp.o
 
 # target to build an object file
 Ride.cpp.o:
-	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/Ride.cpp.o
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/Ride.cpp.o
 .PHONY : Ride.cpp.o
 
 Ride.i: Ride.cpp.i
@@ -165,7 +192,7 @@ Ride.i: Ride.cpp.i
 
 # target to preprocess a source file
 Ride.cpp.i:
-	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/Ride.cpp.i
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/Ride.cpp.i
 .PHONY : Ride.cpp.i
 
 Ride.s: Ride.cpp.s
@@ -174,8 +201,35 @@ Ride.s: Ride.cpp.s
 
 # target to generate assembly for a file
 Ride.cpp.s:
-	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/Ride.cpp.s
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/Ride.cpp.s
 .PHONY : Ride.cpp.s
+
+Screen.o: Screen.cpp.o
+
+.PHONY : Screen.o
+
+# target to build an object file
+Screen.cpp.o:
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/Screen.cpp.o
+.PHONY : Screen.cpp.o
+
+Screen.i: Screen.cpp.i
+
+.PHONY : Screen.i
+
+# target to preprocess a source file
+Screen.cpp.i:
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/Screen.cpp.i
+.PHONY : Screen.cpp.i
+
+Screen.s: Screen.cpp.s
+
+.PHONY : Screen.s
+
+# target to generate assembly for a file
+Screen.cpp.s:
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/Screen.cpp.s
+.PHONY : Screen.cpp.s
 
 User.o: User.cpp.o
 
@@ -183,7 +237,7 @@ User.o: User.cpp.o
 
 # target to build an object file
 User.cpp.o:
-	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/User.cpp.o
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/User.cpp.o
 .PHONY : User.cpp.o
 
 User.i: User.cpp.i
@@ -192,7 +246,7 @@ User.i: User.cpp.i
 
 # target to preprocess a source file
 User.cpp.i:
-	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/User.cpp.i
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/User.cpp.i
 .PHONY : User.cpp.i
 
 User.s: User.cpp.s
@@ -201,8 +255,35 @@ User.s: User.cpp.s
 
 # target to generate assembly for a file
 User.cpp.s:
-	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/User.cpp.s
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/User.cpp.s
 .PHONY : User.cpp.s
+
+main.o: main.cpp.o
+
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -212,16 +293,25 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... amuse1"
+	@echo "... amusement"
 	@echo "... AppScreen.o"
 	@echo "... AppScreen.i"
 	@echo "... AppScreen.s"
+	@echo "... Application.o"
+	@echo "... Application.i"
+	@echo "... Application.s"
 	@echo "... Ride.o"
 	@echo "... Ride.i"
 	@echo "... Ride.s"
+	@echo "... Screen.o"
+	@echo "... Screen.i"
+	@echo "... Screen.s"
 	@echo "... User.o"
 	@echo "... User.i"
 	@echo "... User.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

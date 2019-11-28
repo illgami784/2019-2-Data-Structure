@@ -59,45 +59,45 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/mooninzoo/CLionProjects/DataStructure/amuse1
+CMAKE_SOURCE_DIR = /Users/mooninzoo/CLionProjects/DataStructure/amusement
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug
 
 #=============================================================================
-# Target rules for target CMakeFiles/amuse1.dir
+# Target rules for target CMakeFiles/amusement.dir
 
 # All Build rule for target.
-CMakeFiles/amuse1.dir/all:
-	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/depend
-	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target amuse1"
-.PHONY : CMakeFiles/amuse1.dir/all
+CMakeFiles/amusement.dir/all:
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/depend
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target amusement"
+.PHONY : CMakeFiles/amusement.dir/all
 
 # Include target in all.
-all: CMakeFiles/amuse1.dir/all
+all: CMakeFiles/amusement.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/amuse1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/amuse1.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/amuse1.dir/rule
+CMakeFiles/amusement.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/CMakeFiles 7
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/amusement.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/amusement.dir/rule
 
 # Convenience name for target.
-amuse1: CMakeFiles/amuse1.dir/rule
+amusement: CMakeFiles/amusement.dir/rule
 
-.PHONY : amuse1
-
-# clean rule for target.
-CMakeFiles/amuse1.dir/clean:
-	$(MAKE) -f CMakeFiles/amuse1.dir/build.make CMakeFiles/amuse1.dir/clean
-.PHONY : CMakeFiles/amuse1.dir/clean
+.PHONY : amusement
 
 # clean rule for target.
-clean: CMakeFiles/amuse1.dir/clean
+CMakeFiles/amusement.dir/clean:
+	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/clean
+.PHONY : CMakeFiles/amusement.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/amusement.dir/clean
 
 .PHONY : clean
 

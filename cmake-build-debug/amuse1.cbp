@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug"/>
+				<Option working_dir="/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug"/>
+				<Option working_dir="/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug"/>
+				<Option working_dir="/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="amuse1">
-				<Option output="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/amuse1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir=""/>
+				<Option output="/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/amuse1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -52,15 +52,15 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 amuse1"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 amuse1"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="amuse1/fast">
-				<Option output="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/amuse1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir=""/>
+				<Option output="/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/amuse1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -73,56 +73,56 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 amuse1/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amuse1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 amuse1/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mooninzoo/CLionProjects/DataStructure/amusement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/Admin.h">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/Admin.h">
 			<Option target="amuse1"/>
 		</Unit>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/AppScreen.cpp">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/AppScreen.cpp">
 			<Option target="amuse1"/>
 		</Unit>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/Application.h">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/Application.h">
 			<Option target="amuse1"/>
 		</Unit>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/CircularQueue.h">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/CircularQueue.h">
 			<Option target="amuse1"/>
 		</Unit>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/DoublyIterator.h">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/DoublyIterator.h">
 			<Option target="amuse1"/>
 		</Unit>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/DoublySortedLinkedList.h">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/DoublySortedLinkedList.h">
 			<Option target="amuse1"/>
 		</Unit>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/Queue.h">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/Queue.h">
 			<Option target="amuse1"/>
 		</Unit>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/Ride.cpp">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/Ride.cpp">
 			<Option target="amuse1"/>
 		</Unit>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/Ride.h">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/Ride.h">
 			<Option target="amuse1"/>
 		</Unit>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/SortedList.h">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/SortedList.h">
 			<Option target="amuse1"/>
 		</Unit>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/Stack.h">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/Stack.h">
 			<Option target="amuse1"/>
 		</Unit>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/UnsortedList.h">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/UnsortedList.h">
 			<Option target="amuse1"/>
 		</Unit>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/User.cpp">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/User.cpp">
 			<Option target="amuse1"/>
 		</Unit>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/User.h">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/User.h">
 			<Option target="amuse1"/>
 		</Unit>
-		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amuse1/CMakeLists.txt">
+		<Unit filename="/Users/mooninzoo/CLionProjects/DataStructure/amusement/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

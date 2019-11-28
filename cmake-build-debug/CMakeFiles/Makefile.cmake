@@ -50,5 +50,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/amuse1.dir/DependInfo.cmake"
+  "CMakeFiles/amusement.dir/DependInfo.cmake"
   )

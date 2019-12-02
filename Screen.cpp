@@ -25,7 +25,7 @@ public:
 		FillConsoleOutputCharacter(*(current), ' ', 80 * 25, Coor, &dw);
 	}
 
-	void ScreenPrint(int x, int y, char* string)
+	void ScreenPrint(int x, int y, char* string)//해당 위치에 입력 추가
 	{
 		DWORD dw;
 		COORD CursorPosition = { x, y };

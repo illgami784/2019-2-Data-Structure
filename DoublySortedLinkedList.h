@@ -7,99 +7,99 @@ template<typename T>
 class DoublyIterator;
 
 /**
-*	¿¬°á¸®½ºÆ®¿¡¼­ ¾²ÀÌ´Â NodeTypeÀÇ ±¸Á¶Ã¼
+*	ì—°ê²°ë¦¬ìŠ¤íŠ¸ì—ì„œ ì“°ì´ëŠ” NodeTypeì˜ êµ¬ì¡°ì²´
 */
 template <typename T>
 struct DoublyNodeType
 {
-	T data; ///< °¢ ³ëµåÀÇ µ¥ÀÌÅÍ.
-	DoublyNodeType *prev=NULL; ///< ³ëµåÀÇ ¾ÕÀ» °¡¸®Å°´Â Æ÷ÀÎÅÍ.
-	DoublyNodeType *next=NULL; ///< ³ëµåÀÇ ´ÙÀ½¸¦ °¡¸®Å°´Â Æ÷ÀÎÅÍ.
+	T data; ///< ê° ë…¸ë“œì˜ ë°ì´í„°.
+	DoublyNodeType *prev=NULL; ///< ë…¸ë“œì˜ ì•ì„ ê°€ë¦¬í‚¤ëŠ” í¬ì¸í„°.
+	DoublyNodeType *next=NULL; ///< ë…¸ë“œì˜ ë‹¤ìŒë¥¼ ê°€ë¦¬í‚¤ëŠ” í¬ì¸í„°.
 };
 
 /**
-*	Á¤·ÄµÈ ´õºí¿¬°á¸®½ºÆ® Å¬·¡½º
+*	ì •ë ¬ëœ ë”ë¸”ì—°ê²°ë¦¬ìŠ¤íŠ¸ í´ë˜ìŠ¤
 */
 template <typename T>
 class DoublySortedLinkedList
 {
-	friend class DoublyIterator<T>; ///< DoublyIterator¿Í Ä£±¸ Å¬·¡½º.
+	friend class DoublyIterator<T>; ///< DoublyIteratorì™€ ì¹œêµ¬ í´ë˜ìŠ¤.
 public:
 	/**
-	*	µğÆúÆ® »ı¼ºÀÚ.
+	*	ë””í´íŠ¸ ìƒì„±ì.
 	*/
 	DoublySortedLinkedList();
 
 	/**
-	*	¼Ò¸êÀÚ.
+	*	ì†Œë©¸ì.
 	*/
 	~DoublySortedLinkedList();
 
 	/**
-	*	@brief	¸®½ºÆ®°¡ ºñ¾ú´ÂÁö ¾Æ´ÑÁö °Ë»çÇÑ´Ù.
-	*	@pre	m_nLength°¡ °ªÀ» °¡Áö°í ÀÖ¾î¾ß ÇÑ´Ù.
-	*	@post	ºñ¾ú´ÂÁö ¾Æ´ÑÁö¸¦ ¾Ë·ÁÁØ´Ù.
-	*	@return	ºñ¾îÀÖÀ¸¸é true, ¾Æ´Ï¸é false¸¦ ¹İÈ¯.
+	*	@brief	ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì—ˆëŠ”ì§€ ì•„ë‹Œì§€ ê²€ì‚¬í•œë‹¤.
+	*	@pre	m_nLengthê°€ ê°’ì„ ê°€ì§€ê³  ìˆì–´ì•¼ í•œë‹¤.
+	*	@post	ë¹„ì—ˆëŠ”ì§€ ì•„ë‹Œì§€ë¥¼ ì•Œë ¤ì¤€ë‹¤.
+	*	@return	ë¹„ì–´ìˆìœ¼ë©´ true, ì•„ë‹ˆë©´ falseë¥¼ ë°˜í™˜.
 	*/
 	bool IsEmpty();
 
 	/**
-	*	@brief	¸®½ºÆ®°¡ °¡µæ Ã¡´ÂÁö ¾Æ´ÑÁö °Ë»çÇÑ´Ù.
-	*	@pre	m_nLength°¡ °ªÀ» °¡Áö°í ÀÖ¾î¾ß ÇÑ´Ù.
-	*	@post	°¡µæ Ã¡´ÂÁö ¾Æ´ÑÁö¸¦ ¾Ë·ÁÁØ´Ù.
-	*	@return	°¡µæ Â÷ÀÖÀ¸¸é true, ¾Æ´Ï¸é false¸¦ ¹İÈ¯.
+	*	@brief	ë¦¬ìŠ¤íŠ¸ê°€ ê°€ë“ ì°¼ëŠ”ì§€ ì•„ë‹Œì§€ ê²€ì‚¬í•œë‹¤.
+	*	@pre	m_nLengthê°€ ê°’ì„ ê°€ì§€ê³  ìˆì–´ì•¼ í•œë‹¤.
+	*	@post	ê°€ë“ ì°¼ëŠ”ì§€ ì•„ë‹Œì§€ë¥¼ ì•Œë ¤ì¤€ë‹¤.
+	*	@return	ê°€ë“ ì°¨ìˆìœ¼ë©´ true, ì•„ë‹ˆë©´ falseë¥¼ ë°˜í™˜.
 	*/
 	bool IsFull();
 
 	/**
-	*	@brief	¸®½ºÆ®¸¦ ºñ¿î´Ù.
-	*	@pre	¾øÀ½.
-	*	@post	m_pFirst¿Í m_pLast¸¦ Á¦¿ÜÇÑ ¸ğµç µ¥ÀÌÅÍ¸¦ Áö¿î´Ù.
+	*	@brief	ë¦¬ìŠ¤íŠ¸ë¥¼ ë¹„ìš´ë‹¤.
+	*	@pre	ì—†ìŒ.
+	*	@post	m_pFirstì™€ m_pLastë¥¼ ì œì™¸í•œ ëª¨ë“  ë°ì´í„°ë¥¼ ì§€ìš´ë‹¤.
 	*/
 	void MakeEmpty();
 
 	/**
-	*	@brief	¸®½ºÆ®ÀÇ ±æÀÌ¸¦ ¹İÈ¯ÇÑ´Ù.
-	*	@pre	¾øÀ½.
-	*	@post	¸®½ºÆ®ÀÇ ±æÀÌ¸¦ ¹İÈ¯.
-	*	@return	m_nLength ¸®½ºÆ®ÀÇ ±æÀÌ ¹İÈ¯.
+	*	@brief	ë¦¬ìŠ¤íŠ¸ì˜ ê¸¸ì´ë¥¼ ë°˜í™˜í•œë‹¤.
+	*	@pre	ì—†ìŒ.
+	*	@post	ë¦¬ìŠ¤íŠ¸ì˜ ê¸¸ì´ë¥¼ ë°˜í™˜.
+	*	@return	m_nLength ë¦¬ìŠ¤íŠ¸ì˜ ê¸¸ì´ ë°˜í™˜.
 	*/
 	int GetLength() const;
 
 	/**
-	*	@brief	»õ·Î¿î ¾ÆÀÌÅÛÀ» ¸®½ºÆ®¿¡ Ãß°¡ÇÑ´Ù.
-	*	@pre	itemÀ» ÀÔ·Â¹Ş´Â´Ù.
-	*	@post	¾ÆÀÌÅÛÀ» ¸®½ºÆ®¿¡ Ãß°¡ÇÑ´Ù.
-	*	@return	°°Àº ¾ÆÀÌÅÛÀÌ ÀÖÀ¸¸é 0À» ¹İÈ¯ÇÏ°í, ÀÔ·Â¿¡ ¼º°øÇÏ¸é 1À» ¹İÈ¯.
+	*	@brief	ìƒˆë¡œìš´ ì•„ì´í…œì„ ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€í•œë‹¤.
+	*	@pre	itemì„ ì…ë ¥ë°›ëŠ”ë‹¤.
+	*	@post	ì•„ì´í…œì„ ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€í•œë‹¤.
+	*	@return	ê°™ì€ ì•„ì´í…œì´ ìˆìœ¼ë©´ 0ì„ ë°˜í™˜í•˜ê³ , ì…ë ¥ì— ì„±ê³µí•˜ë©´ 1ì„ ë°˜í™˜.
 	*/
 	int Add(T item);
 
 	/**
-	*	@brief	ÀÔ·Â¹ŞÀº ¾ÆÀÌÅÛÀ» ¸®½ºÆ®¿¡¼­ »èÁ¦ÇÑ´Ù.
-	*	@pre	itemÀ» ÀÔ·Â¹Ş´Â´Ù.
-	*	@post	ÀÔ·Â¹ŞÀº ¾ÆÀÌÅÛÀ» ¸®½ºÆ®¿¡¼­ Ã£¾Æ »èÁ¦ÇÑ´Ù.
+	*	@brief	ì…ë ¥ë°›ì€ ì•„ì´í…œì„ ë¦¬ìŠ¤íŠ¸ì—ì„œ ì‚­ì œí•œë‹¤.
+	*	@pre	itemì„ ì…ë ¥ë°›ëŠ”ë‹¤.
+	*	@post	ì…ë ¥ë°›ì€ ì•„ì´í…œì„ ë¦¬ìŠ¤íŠ¸ì—ì„œ ì°¾ì•„ ì‚­ì œí•œë‹¤.
 	*/
 	void Delete(T& item);
 
 	/**
-	*	@brief	ÀÔ·Â¹ŞÀº ¾ÆÀÌÅÛÀ¸·Î Á¤º¸¸¦ ¹Ù²Û´Ù.
-	*	@pre	itemÀ» ÀÔ·Â¹Ş´Â´Ù.
-	*	@post	»õ·Î¿î Á¤º¸·Î ±³Ã¼µÈ´Ù.
+	*	@brief	ì…ë ¥ë°›ì€ ì•„ì´í…œìœ¼ë¡œ ì •ë³´ë¥¼ ë°”ê¾¼ë‹¤.
+	*	@pre	itemì„ ì…ë ¥ë°›ëŠ”ë‹¤.
+	*	@post	ìƒˆë¡œìš´ ì •ë³´ë¡œ êµì²´ëœë‹¤.
 	*/
 	void Replace(T item);
 
 	/**
-	*	@brief	ÀÔ·Â¹ŞÀº ¾ÆÀÌÅÛÀÇ Á¤º¸¿Í ºñ±³ÇÏ¿© °°Àº ¸®½ºÆ®ÀÇ ¾ÆÀÌÅÛÀ» °¡Á®¿Â´Ù.
-	*	@pre	itemÀ» ÀÔ·Â¹Ş´Â´Ù.
-	*	@post	°Ë»öµÈ µ¥ÀÌÅÍ¸¦ ¾ÆÀÌÅÛ¿¡ ³Ö´Â´Ù.
-	*	@return	ÀÏÄ¡ÇÏ´Â µ¥ÀÌÅÍ¸¦ Ã£À¸¸é 1, ±×·¸Áö ¾ÊÀ¸¸é 0À» ¹İÈ¯.
+	*	@brief	ì…ë ¥ë°›ì€ ì•„ì´í…œì˜ ì •ë³´ì™€ ë¹„êµí•˜ì—¬ ê°™ì€ ë¦¬ìŠ¤íŠ¸ì˜ ì•„ì´í…œì„ ê°€ì ¸ì˜¨ë‹¤.
+	*	@pre	itemì„ ì…ë ¥ë°›ëŠ”ë‹¤.
+	*	@post	ê²€ìƒ‰ëœ ë°ì´í„°ë¥¼ ì•„ì´í…œì— ë„£ëŠ”ë‹¤.
+	*	@return	ì¼ì¹˜í•˜ëŠ” ë°ì´í„°ë¥¼ ì°¾ìœ¼ë©´ 1, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ 0ì„ ë°˜í™˜.
 	*/
 	int Get(T &item);
 
 private:
-	DoublyNodeType<T>* m_pFirst; ///< ÃÖ¼Ò°ªÀ» °¡Áö´Â ¸®½ºÆ®ÀÇ ¸Ç Ã³À½.
-	DoublyNodeType<T>* m_pLast; ///< ÃÖ´ñ°ªÀ» °¡Áö´Â ¸®½ºÆ®ÀÇ ¸Ç ³¡.
-	int m_nLength; ///< ¸®½ºÆ®ÀÇ ±æÀÌ.
+	DoublyNodeType<T>* m_pFirst; ///< ìµœì†Œê°’ì„ ê°€ì§€ëŠ” ë¦¬ìŠ¤íŠ¸ì˜ ë§¨ ì²˜ìŒ.
+	DoublyNodeType<T>* m_pLast; ///< ìµœëŒ“ê°’ì„ ê°€ì§€ëŠ” ë¦¬ìŠ¤íŠ¸ì˜ ë§¨ ë.
+	int m_nLength; ///< ë¦¬ìŠ¤íŠ¸ì˜ ê¸¸ì´.
 };
 
 template <typename T>
@@ -142,13 +142,13 @@ void DoublySortedLinkedList<T>::MakeEmpty()
 {
 	DoublyNodeType<T> *temp;
 	DoublyIterator<T> itor(*this);
-	itor.Next(); 
+	itor.Next();
 
 	while(itor.NextNotNull())
 	{
 		temp= itor.m_pCurPointer;
-		itor.Next(); 
-		delete temp; 
+		itor.Next();
+		delete temp;
 	}
 
 	m_pFirst->next = m_pLast;
@@ -164,7 +164,7 @@ int DoublySortedLinkedList<T>::GetLength() const
 	return m_nLength;
 }
 
-// ¾ÆÀÌÅÛÀ» ÀÔ·Â¹Ş¾Æ ¸®½ºÆ®ÀÇ ¸Â´Â ÀÚ¸®¸¦ Ã£¾Æ »ğÀÔÇÑ´Ù.
+// ì•„ì´í…œì„ ì…ë ¥ë°›ì•„ ë¦¬ìŠ¤íŠ¸ì˜ ë§ëŠ” ìë¦¬ë¥¼ ì°¾ì•„ ì‚½ì…í•œë‹¤.
 template <typename T>
 int DoublySortedLinkedList<T>::Add(T item)
 {
@@ -172,30 +172,30 @@ int DoublySortedLinkedList<T>::Add(T item)
 	temp->data = item;
 	T buf;
 	DoublyIterator<T> itor(*this);
-	itor.Next(); 
-	if(IsEmpty()) 	
+	itor.Next();
+	if(IsEmpty())
 	{
 		temp->prev = m_pFirst;
 		temp->next = m_pLast;
 		m_pFirst->next = temp;
-		m_pLast->prev = temp; 
+		m_pLast->prev = temp;
 		m_nLength++;
 		return 1;
 	}
-	else 
+	else
 	{
 		while(itor.NextNotNull())
 		{
-			if(item < itor.m_pCurPointer->data) 
+			if(item < itor.m_pCurPointer->data)
 			{
 				temp->prev = itor.m_pCurPointer->prev;
 				temp->next = itor.m_pCurPointer;
 				itor.m_pCurPointer->prev->next = temp;
-				itor.m_pCurPointer->prev = temp; 
+				itor.m_pCurPointer->prev = temp;
 				m_nLength++;
 				return 1;
 			}
-				itor.Next();		
+			itor.Next();
 		}
 		itor.m_pCurPointer->prev->next = temp;
 		temp->prev = itor.m_pCurPointer->prev->prev;
@@ -212,17 +212,17 @@ void DoublySortedLinkedList<T>::Delete(T& item)
 {
 	DoublyIterator<T> itor(*this);
 	T buf;
-	itor.Next(); 
+	itor.Next();
 
 	while(itor.NextNotNull())
 	{
-		if(itor.m_pCurPointer->data == item) 
+		if(itor.m_pCurPointer->data == item)
 		{
 			DoublyNodeType<T> *temp = new DoublyNodeType<T>;
 			temp = itor.m_pCurPointer;
 			itor.Next();
 			temp->prev->next = itor.m_pCurPointer;
-			itor.m_pCurPointer->prev = temp->prev; 
+			itor.m_pCurPointer->prev = temp->prev;
 			delete temp;
 			m_nLength--;
 			break;
@@ -235,13 +235,13 @@ template <typename T>
 void DoublySortedLinkedList<T>::Replace(T item)
 {
 	DoublyIterator<T> itor(*this);
-	itor.Next(); 
-	 
+	itor.Next();
+
 	while(itor.NextNotNull())
 	{
 		if(itor.m_pCurPointer->data == item)
 		{
-			itor.m_pCurPointer->data = item; 
+			itor.m_pCurPointer->data = item;
 			break;
 		}
 		itor.Next();
@@ -260,7 +260,7 @@ int DoublySortedLinkedList<T>::Get(T &item)
 		if(itor.m_pCurPointer->data == item)
 		{
 			item = itor.m_pCurPointer->data;
-			return 1; 
+			return 1;
 		}
 		itor.Next();
 	}

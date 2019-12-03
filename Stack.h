@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include "User.h"
 using namespace std;
 template <class T>
 class Stack

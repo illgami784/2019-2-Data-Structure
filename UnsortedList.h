@@ -6,7 +6,7 @@
 #include <string>
 using namespace std;
 
-template <typename T>
+ 
 class UnsortedList
 {
 public:
@@ -25,7 +25,7 @@ public:
     {
         m_Length = 0;
         max = _max;
-        m_Array = new T[max];
+        m_Array = new  int[max];
         ResetList();
     }
 
@@ -43,7 +43,7 @@ public:
     int setMax(int _max)
     {
         max = _max;
-        m_Array = new T[max];
+        m_Array = new  int[max];
     }
 
     /**
@@ -76,7 +76,7 @@ public:
     *	@param	data	new data.
     *	@return	return 1 if this function works well, otherwise 0.
     */
-    int Add(T data);
+    int Add( int data);
 
     /**
     *	@brief	Initialize list iterator.
@@ -92,7 +92,7 @@ public:
     *	@param	data	get current iterator's item. it does not need to be initialized.
     *	@return	index of current iterator's item if is not end of list, oterwise return -1.
     */
-    int GetNextItem(T& data);
+    int GetNextItem( int& data);
 
     /** [작성]
     *	@brief 입력받은 데이터의 Id가 기존의 존재하는 거랑 같을시 그 아이템의 포인터를 반환
@@ -101,7 +101,7 @@ public:
     *	@param data 서치할 아이템 Id만을 가지면 됨
     *	@return Id가 같은 아이템의 포인터
     */
-    int Get(T& data);
+    int Get( int& data);
 
     /** [작성]
     *	@brief 입력받은 데이터의 시간이 기존의 존재하는 거랑 같을시 그 아이템을 삭제
@@ -110,7 +110,7 @@ public:
     *	@param data 삭제할 아이템 시간만을 가지면 됨
     *	@return none
     */
-    void Delete(T data);
+    void Delete( int data);
 
 
     /** [작성]
@@ -120,10 +120,10 @@ public:
     *	@param data 삭제할 아이템 Id만을 가지면 됨
     *	@return none
     */
-    void Replace(T data);
+    void Replace( int data);
 
 private:
-    T* m_Array;  ///< list array.
+     int* m_Array;  ///< list array.
     int m_Length;				///< number of elements in list.
     int m_CurPointer;			///< iterator pointer.
     int max;
@@ -131,24 +131,24 @@ private:
 #endif
 
 // Make list empty.
-template <typename T>
-void UnsortedList<T>::MakeEmpty()
+
+void UnsortedList::MakeEmpty()
 {
     m_Length = 0;
 }
 
 
 // Get a number of records in current list.
-template <typename T>
-int UnsortedList<T>::GetLength()
+
+int UnsortedList::GetLength()
 {
     return m_Length;
 }
 
 
 // Check capacity of list is full.
-template <typename T>
-bool UnsortedList<T>::IsFull()
+
+bool UnsortedList::IsFull()
 {
     if (m_Length > max - 1)
         return true;
@@ -158,8 +158,7 @@ bool UnsortedList<T>::IsFull()
 
 
 // add a new data into list.
-template <typename T>
-int UnsortedList<T>::Add(T inData)
+int UnsortedList::Add( int inData)
 {
     if (IsFull()) {
         cout << "\n\t리스트가 가득 찼습니다.";
@@ -194,11 +193,10 @@ int UnsortedList<T>::Add(T inData)
     return 1;
 }
 
-template <typename T>
-int  UnsortedList<T>::Get(T& data) {
+int  UnsortedList::Get( int& data) {
 
     ResetList();
-    T temp;
+     int temp;
     GetNextItem(temp);
     for (int i = 0; i < m_Length; i++)
     {
@@ -212,8 +210,8 @@ int  UnsortedList<T>::Get(T& data) {
     return -1;
 }
 
-template <typename T>
-void  UnsortedList<T>::Delete(T data) {
+
+void  UnsortedList::Delete( int data) {
     int location = 0;
 
     while ( data != m_Array[location]) {
@@ -232,9 +230,9 @@ void  UnsortedList<T>::Delete(T data) {
 }
 
 
-template <typename T>
-void  UnsortedList<T>::Replace(T data) {
-    T temp = data;
+
+void  UnsortedList::Replace( int data) {
+     int temp = data;
     if (Get(data)) {
         cout << "\n\t" << "대체 성공했습니다.";
         m_Array[m_CurPointer] = data;
@@ -247,16 +245,16 @@ void  UnsortedList<T>::Replace(T data) {
 }
 
 // Initialize list iterator.
-template <typename T>
-void UnsortedList<T>::ResetList()
+ 
+void UnsortedList::ResetList()
 {
     m_CurPointer = -1;
 }
 
 
 // move list iterator to the next item in list and get that item.
-template <typename T>
-int UnsortedList<T>::GetNextItem(T& data)
+ 
+int UnsortedList::GetNextItem(int& data)
 {
     m_CurPointer++;	// list pointer 증가
     if (m_CurPointer == max)	// end of list이면 -1을 리턴

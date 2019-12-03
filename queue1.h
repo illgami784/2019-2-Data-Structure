@@ -50,10 +50,10 @@ public:
         }
     }
 
-    void dequeue(T input)
+    void dequeue(T& input)
     {
         temp = head;
-        input = temp;
+        input = temp->data;
         head = head->next;
         length--;
     }

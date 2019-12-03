@@ -1,10 +1,12 @@
 #pragma once
 
 #include "queue1.h"
-//#include "User.h"
 #include "DoublySortedLinkedList.h"
 #include "Stack.h"
 #include "Admin.h"
+#include "User.h"
+
+
 //#include "Queue.h"
 void my_sleep(unsigned msec) {
 	struct timespec req, rem;
@@ -109,6 +111,14 @@ public:
 
 	int getMinAge() const;
 
+	bool operator<(const Ride &rhs) const;
+
+	bool operator>(const Ride &rhs) const;
+
+	bool operator<=(const Ride &rhs) const;
+
+	bool operator>=(const Ride &rhs) const;
+
 //	bool moveToUser(User* user);
 
 	void setMinAge(int minAge);
@@ -116,6 +126,12 @@ public:
 	int getWaitingTime(){
 		return watingTime;
 	}
+
+	bool operator==(const Ride &rhs) const;
+
+	bool operator!=(const Ride &rhs) const;
+
+	friend class User;
 
 private:
 	int id; //고유 번호 RideList의 길이에 따라 정해짐
@@ -139,7 +155,29 @@ bool Ride::rideUser() {//requireTime마다 실행
 	User* user;
 	for (int i = 0; i < numPerRide; i++) {
 		user = ridingUser.Pop();
-		user->moveToUser();
+		user->getId();
+//		user->moveToUser();
+		int min = 100000000000;
+		int cur;
+		if(user->wantToRide.GetLength()==0){
+			user->setNowLocation(-1);
+			return false;
+		}
+		wantToRide.ResetList();
+		for(int i = 0; i < wantToRide.GetLength(); i++){
+			wantToRide.GetNextItem(cur);
+			Ride* test;
+			test->setId(cur);
+//		auto ride = Admin::rideListPointer();
+//		ride->Get(test);
+			if (min > test->getWaitingTime()) {
+				min = test->getWaitingTime();
+				setNowLocation(cur);
+			}
+		}
+
+
+
 		waitingUser.dequeue(user);
 		ridingUser.Push(user);
 	}//일단 이렇게 하고 나중에 waitingUser가 numperRide 보다 작을때 (waitingUser가 Null일 예외처리)

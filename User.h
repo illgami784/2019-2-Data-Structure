@@ -3,12 +3,11 @@
 #include "UnsortedList.h"
 #include <iostream>
 #include "Ride.h"
-//#include "Admin.h"
+#include "Admin.h"
 using namespace std;
-class Ride;
 class Admin;
 
-
+class Ride;
 class User {
 public:
 
@@ -69,6 +68,10 @@ public:
 	*/
 	int getId() const;
 
+	bool operator==(const User &rhs) const;
+
+	bool operator!=(const User &rhs) const;
+
 	/**
 	*	@brief	nowLocation을 반환합니다.
 	*	@pre	nowLocation이 존재해야함.
@@ -76,6 +79,14 @@ public:
 	*/
 	int getNowLocation() const;
 	bool moveToUser();
+
+	bool operator<(const User &rhs) const;
+
+	bool operator>(const User &rhs) const;
+
+	bool operator<=(const User &rhs) const;
+
+	bool operator>=(const User &rhs) const;
 //	friend class Ride;
 
 
@@ -86,7 +97,7 @@ private:
 	int nowLocation; //현재 위치한 놀이기구 id, 초기 값은 -1, 놀이공원 바깥은 -2
 	static int count;
 
-	UnsortedList<int> wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
+	UnsortedList wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
 	Stack<int> hadRide; //이미 탑승한 놀이기구가 담긴 스택
 };
 

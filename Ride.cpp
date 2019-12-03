@@ -24,3 +24,27 @@ int Ride::getMinAge() const {
 	return minAge;
 }
 
+bool Ride::operator<(const Ride &rhs) const {
+	return id < rhs.id;
+}
+
+bool Ride::operator==(const Ride &rhs) const {
+	return id == rhs.id;
+}
+
+bool Ride::operator!=(const Ride &rhs) const {
+	return !(rhs == *this);
+}
+
+bool Ride::operator>(const Ride &rhs) const {
+	return rhs < *this;
+}
+
+bool Ride::operator<=(const Ride &rhs) const {
+	return !(rhs < *this);
+}
+
+bool Ride::operator>=(const Ride &rhs) const {
+	return !(*this < rhs);
+}
+

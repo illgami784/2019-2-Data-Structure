@@ -52,7 +52,7 @@ public:
 	*	@post	watingUser에 user가 추가됨.
 	*	@return	성공하면 true, 실패하면 false
 	*/
-	bool addWaitingUser(User user);
+	bool addWaitingUser(User& user);
 
 	/**
 	*	@brief	놀이공원이 개장되면 Ride를 작동시키는 함수
@@ -119,9 +119,9 @@ private:
 bool Ride::rideUser() {//requireTime마다 실행
 	User* user;
 	// numPerRide is more than waitingUser
-	if (numWatingUser < numPerRide) {
-		or (int i = 0; i < numWaitingUser; i++) {
-			ridingUser.Pop(user);
+	if (numWaitingUser < numPerRide) {
+		for (int i = 0; i < numWaitingUser; i++) {
+			ridingUser.Pop();
 			user->moveToUser();
 			waitingUser.DeQueue(user);
 			ridingUser.Push(user);
@@ -131,7 +131,7 @@ bool Ride::rideUser() {//requireTime마다 실행
 	// numPerRide is less than waitingUser
 	else {
 		for (int i = 0; i < numPerRide; i++) {
-			ridingUser.Pop(user);
+			ridingUser.Pop();
 			user->moveToUser();
 			waitingUser.DeQueue(user);
 			ridingUser.Push(user);
@@ -189,9 +189,18 @@ void Ride::setMinAge(int minAge) {
 	Ride::minAge = minAge;
 }
 
-bool Ride::addWaitingUser(User user) {
-	numwWatingUser++;
-	waitingUser.EnQueue(user); //add User in the waitinglist
+bool Ride::addWaitingUser(User& user) {
+	numWaitingUser++;
+	waitingUser.EnQueue(&user); //add User in the waitinglist
 
 	return true;
 }
+
+/**
+	*	@brief	Ride를 탑승 완료한 User을 다른 곳으로 보내는 함수.
+	*	@pre	ridingUser에 User가 존재해야함
+	*	@post	ridingUser의 User를 비우며 rideListPointer를
+	이용해 위치 이동시켜준다.
+	*	@return 잘 작동시 true 아니면 false
+	*/
+bool outUser();

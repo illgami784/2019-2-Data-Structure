@@ -5,7 +5,25 @@
 #include "DoublySortedLinkedList.h"
 #include "Stack.h"
 #include "Admin.h"
-#include "Queue.h"
+//#include "Queue.h"
+void my_sleep(unsigned msec) {
+	struct timespec req, rem;
+	int err;
+	req.tv_sec = msec / 1000;
+	req.tv_nsec = (msec % 1000) * 1000000;
+	while ((req.tv_sec != 0) || (req.tv_nsec != 0)) {
+		if (nanosleep(&req, &rem) == 0)
+			break;
+		err = errno;
+		// Interrupted; continue
+		if (err == EINTR) {
+			req.tv_sec = rem.tv_sec;
+			req.tv_nsec = rem.tv_nsec;
+		}
+		// Unhandleable error (EFAULT (bad pointer), EINVAL (bad timeval in tv_nsec), or ENOSYS (function not supported))
+		break;
+	}
+}
 
 class Admin;
 
@@ -13,85 +31,85 @@ class Ride{
 public:
 
 	/**
-	*	@brief	±âº» »ı¼ºÀÚ ÀÔ´Ï´Ù.
-	*	@post	id, requireTime, minAge, minTicketRank¸¦ ÀÔ·Â¹Ş¾Æ ¼³Á¤
-	id´Â AdminÀÇ RideListÀÇ ±æÀÌ¿¡ µû¶ó Á¤ÇØÁü, watingTime 0À¸·Î ÃÊ±âÈ­
+	*	@brief	ê¸°ë³¸ ìƒì„±ì ì…ë‹ˆë‹¤.
+	*	@post	id, requireTime, minAge, minTicketRankë¥¼ ì…ë ¥ë°›ì•„ ì„¤ì •
+	idëŠ” Adminì˜ RideListì˜ ê¸¸ì´ì— ë”°ë¼ ì •í•´ì§, watingTime 0ìœ¼ë¡œ ì´ˆê¸°í™”
 	*/
 	Ride();
 
 	/**
-	*	@brief	watingTimeÀ» »êÃâÇÔ. rideUser ·çÇÁ°¡ µ¹¶§¸¶´Ù È£Ãâ
-	*	@pre	requireTime°ú numPerRideÀÇ °ªÀÌ Á¸ÀçÇØ¾ßÇÔ.
-	*	@post	requireTime°ú numPerRide, 
-	watingUserÀÇ ±æÀÌ¸¦ ÅëÇØ watingTime °ª ¼³Á¤
-	*	@return	¼º°ø½Ã true, ½ÇÆĞ½Ã false
+	*	@brief	watingTimeì„ ì‚°ì¶œí•¨. rideUser ë£¨í”„ê°€ ëŒë•Œë§ˆë‹¤ í˜¸ì¶œ
+	*	@pre	requireTimeê³¼ numPerRideì˜ ê°’ì´ ì¡´ì¬í•´ì•¼í•¨.
+	*	@post	requireTimeê³¼ numPerRide,
+	watingUserì˜ ê¸¸ì´ë¥¼ í†µí•´ watingTime ê°’ ì„¤ì •
+	*	@return	ì„±ê³µì‹œ true, ì‹¤íŒ¨ì‹œ false
 	*/
 	bool calcWaitingTime();
-	
+
 	/**
-	*	@brief	id¿¡ °ªÀ» ÇÒ´ç
-	*	@param	¼³Á¤ÇÒ id °ª
+	*	@brief	idì— ê°’ì„ í• ë‹¹
+	*	@param	ì„¤ì •í•  id ê°’
 	*/
 	void setId(int _id);
 
 	/**
-	*	@brief	id, requireTime, minAge, minticketRankÀ» 
-	Å°º¸µå·ÎºÎÅÍ ÀÔ·Â ¹Ş¾Æ ¼³Á¤.
-	*	@post	id, requireTime, minAge, minticketRankÀÇ °ªÀÌ
-	Å°º¸µå·Î ÀÔ·ÂÇÑ °ªÀ¸·Î ¼³Á¤µÊ.
+	*	@brief	id, requireTime, minAge, minticketRankì„
+	í‚¤ë³´ë“œë¡œë¶€í„° ì…ë ¥ ë°›ì•„ ì„¤ì •.
+	*	@post	id, requireTime, minAge, minticketRankì˜ ê°’ì´
+	í‚¤ë³´ë“œë¡œ ì…ë ¥í•œ ê°’ìœ¼ë¡œ ì„¤ì •ë¨.
 	*/
 	void setAllFromKB();
 
 	/**
-	*	@brief	ÀÌ RideÀÇ Á¤º¸¸¦ Ãâ·ÂÇÕ´Ï´Ù.
+	*	@brief	ì´ Rideì˜ ì •ë³´ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.
 	*/
 	void printInfo() const;
 
-	/**
-	*	@brief	ÀÔ·Â¹ŞÀº User¸¦ watingUser¿¡ Ãß°¡ÇÔ
-	*	@post	watingUser¿¡ user°¡ Ãß°¡µÊ.
-	*	@return	¼º°øÇÏ¸é true, ½ÇÆĞÇÏ¸é false
-	*/
-	bool addWaitingUser(User user);
+//	/**
+//	*	@brief	ì…ë ¥ë°›ì€ Userë¥¼ watingUserì— ì¶”ê°€í•¨
+//	*	@post	watingUserì— userê°€ ì¶”ê°€ë¨.
+//	*	@return	ì„±ê³µí•˜ë©´ true, ì‹¤íŒ¨í•˜ë©´ false
+//	*/
+//	bool addWaitingUser(User user);
 
 	/**
-	*	@brief	³îÀÌ°ø¿øÀÌ °³ÀåµÇ¸é Ride¸¦ ÀÛµ¿½ÃÅ°´Â ÇÔ¼ö
-	*	@pre	isOpenÀÌ false¿©¾ßÇÔ.
-	*	@post	isOpenÀ» true·Î ¹Ù²Ù°í ridePeopleÀ» µ¿ÀÛ½ÃÅ´(°è¼Ó µ¿ÀÛ~)
-	*	@return	ÀÌ¹Ì ÀÛµ¿ ÁßÀÎµ¥(isOpenÀÌ true) È£Ãâ½Ã false ¾Æ´Ï¸é true
+	*	@brief	ë†€ì´ê³µì›ì´ ê°œì¥ë˜ë©´ Rideë¥¼ ì‘ë™ì‹œí‚¤ëŠ” í•¨ìˆ˜
+	*	@pre	isOpenì´ falseì—¬ì•¼í•¨.
+	*	@post	isOpenì„ trueë¡œ ë°”ê¾¸ê³  ridePeopleì„ ë™ì‘ì‹œí‚´(ê³„ì† ë™ì‘~)
+	*	@return	ì´ë¯¸ ì‘ë™ ì¤‘ì¸ë°(isOpenì´ true) í˜¸ì¶œì‹œ false ì•„ë‹ˆë©´ true
 	*/
-	bool run();
+//	bool run();
 
 	/**
-	*	@brief	³îÀÌ°ø¿øÀÌ ÆóÀåµÇ¸é Ride¸¦ ¸ØÃß´Â ÇÔ¼ö
-	*	@pre	isOepnÀÌ true¿©¾ßÇÔ.
-	*	@post	isOpenÀ» false·Î ¹Ù²Ù°í watingPeople°ú ridingPeopleÀ» ºñ¿ò.
-	*	@return	ÀÌ¹Ì ¸ØÃè´Âµ¥(isOpenÀÌ false) È£Ãâ½Ã false ¾Æ´Ï¸é true
+	*	@brief	ë†€ì´ê³µì›ì´ íì¥ë˜ë©´ Rideë¥¼ ë©ˆì¶”ëŠ” í•¨ìˆ˜
+	*	@pre	isOepnì´ trueì—¬ì•¼í•¨.
+	*	@post	isOpenì„ falseë¡œ ë°”ê¾¸ê³  watingPeopleê³¼ ridingPeopleì„ ë¹„ì›€.
+	*	@return	ì´ë¯¸ ë©ˆì·„ëŠ”ë°(isOpenì´ false) í˜¸ì¶œì‹œ false ì•„ë‹ˆë©´ true
 	*/
-	bool stop();
+//	bool stop();
 
 	/**
-	*	@brief	Ride°¡ µ¿ÀÛÇÏ´Â ÇÔ¼ö. isOpenÀÌ true¸é 
-	requireTime¸¶´Ù °è¼Ó ¹İº¹µÊ.
-	*	@pre	isOpenÀÌ trueÀÌ¸ç watingUser°¡ Á¸ÀçÇØ¾ßÇÔ.
-	*	@post	±âÁ¸ Á¸ÀçÇÏ´Â ridingUserÀÇ UserµéÀ» outUser¸¦ È£ÃâÇØ ³ª°¡°ÔÇÔ. 
-	watingUser¿¡¼­ numPerRide¸¸Å­ User¸¦ »© ridingUser¿¡ Ãß°¡ÇÔ. 
-	*	@return	¸®ÅÏ?
+	*	@brief	Rideê°€ ë™ì‘í•˜ëŠ” í•¨ìˆ˜. isOpenì´ trueë©´
+	requireTimeë§ˆë‹¤ ê³„ì† ë°˜ë³µë¨.
+	*	@pre	isOpenì´ trueì´ë©° watingUserê°€ ì¡´ì¬í•´ì•¼í•¨.
+	*	@post	ê¸°ì¡´ ì¡´ì¬í•˜ëŠ” ridingUserì˜ Userë“¤ì„ outUserë¥¼ í˜¸ì¶œí•´ ë‚˜ê°€ê²Œí•¨.
+	watingUserì—ì„œ numPerRideë§Œí¼ Userë¥¼ ë¹¼ ridingUserì— ì¶”ê°€í•¨.
+	*	@return	ë¦¬í„´?
 	*/
 	bool rideUser();
 
-	/**
-	*	@brief	Ride¸¦ Å¾½Â ¿Ï·áÇÑ UserÀ» ´Ù¸¥ °÷À¸·Î º¸³»´Â ÇÔ¼ö.
-	*	@pre	ridingUser¿¡ User°¡ Á¸ÀçÇØ¾ßÇÔ
-	*	@post	ridingUserÀÇ User¸¦ ºñ¿ì¸ç rideListPointer¸¦ 
-	ÀÌ¿ëÇØ À§Ä¡ ÀÌµ¿½ÃÄÑÁØ´Ù.
-	*	@return Àß ÀÛµ¿½Ã true ¾Æ´Ï¸é false
-	*/
-	bool outUser();
+//	/**
+//	*	@brief	Rideë¥¼ íƒ‘ìŠ¹ ì™„ë£Œí•œ Userì„ ë‹¤ë¥¸ ê³³ìœ¼ë¡œ ë³´ë‚´ëŠ” í•¨ìˆ˜.
+//	*	@pre	ridingUserì— Userê°€ ì¡´ì¬í•´ì•¼í•¨
+//	*	@post	ridingUserì˜ Userë¥¼ ë¹„ìš°ë©° rideListPointerë¥¼
+//	ì´ìš©í•´ ìœ„ì¹˜ ì´ë™ì‹œì¼œì¤€ë‹¤.
+//	*	@return ì˜ ì‘ë™ì‹œ true ì•„ë‹ˆë©´ false
+//	*/
+//	bool outUser();
 
 	int getMinAge() const;
 
-	bool moveToUser(User* user);
+//	bool moveToUser(User* user);
 
 	void setMinAge(int minAge);
 
@@ -100,52 +118,37 @@ public:
 	}
 
 private:
-	int id; //°íÀ¯ ¹øÈ£ RideListÀÇ ±æÀÌ¿¡ µû¶ó Á¤ÇØÁü
-	int requireTime; //³îÀÌ±â±¸¸¦ ÇÑ¹ø¿¡ ÀÛµ¿ÇÏ´Âµ¥ °É¸®´Â ½Ã°£(ÃÊ ´ÜÀ§)
-	int numPerRide; //ÇÑ ¹ø¿¡ ³îÀÌ±â±¸¸¦  Å» ¼ö ÀÖ´Â User ¼ö
-	int watingTime; //¿¹»ó ´ë±â ½Ã°£(ÃÊ ´ÜÀ§)
-	int minAge; //ÀÌ Ride¸¦ Å¸±â À§ÇÑ ÃÖ¼Ò ³ªÀÌ (0~100)
-	int minTicketRank; //ÀÌ Ride¸¦ Å¸±â À§ÇÑ ÃÖ¼Ò Æ¼ÄÏ µî±Ş (0~10)
-	int totalUser; //°³ÀåÇÏ°í Å¾½ÂÇÑ ÃÑ User ¼ö
-	bool isOpen; //°³Àå ¿©ºÎ¸¦ ³ªÅ¸³¿, rideUser ¹«ÇÑ ·çÇÁ¸¦ ±ú±â À§ÇØ »ç¿ë
+	int id; //ê³ ìœ  ë²ˆí˜¸ RideListì˜ ê¸¸ì´ì— ë”°ë¼ ì •í•´ì§
+	int requireTime; //ë†€ì´ê¸°êµ¬ë¥¼ í•œë²ˆì— ì‘ë™í•˜ëŠ”ë° ê±¸ë¦¬ëŠ” ì‹œê°„(ì´ˆ ë‹¨ìœ„)
+	int numPerRide; //í•œ ë²ˆì— ë†€ì´ê¸°êµ¬ë¥¼  íƒˆ ìˆ˜ ìˆëŠ” User ìˆ˜
+	int watingTime; //ì˜ˆìƒ ëŒ€ê¸° ì‹œê°„(ì´ˆ ë‹¨ìœ„)
+	int minAge; //ì´ Rideë¥¼ íƒ€ê¸° ìœ„í•œ ìµœì†Œ ë‚˜ì´ (0~100)
+	int minTicketRank; //ì´ Rideë¥¼ íƒ€ê¸° ìœ„í•œ ìµœì†Œ í‹°ì¼“ ë“±ê¸‰ (0~10)
+	int totalUser; //ê°œì¥í•˜ê³  íƒ‘ìŠ¹í•œ ì´ User ìˆ˜
+	bool isOpen; //ê°œì¥ ì—¬ë¶€ë¥¼ ë‚˜íƒ€ëƒ„, rideUser ë¬´í•œ ë£¨í”„ë¥¼ ê¹¨ê¸° ìœ„í•´ ì‚¬ìš©
 
 
-	DoublySortedLinkedList<Ride>* rideListPointer; //ÀÚ½ÅÀÌ ´ã±ä rideListÀÇ ½ÃÀÛ ÁÖ¼Ò¸¦ °¡Áø´Ù.
-	Stack<User*> ridingUser; //ÇöÀç Å¾½Â ÁßÀÎ UserÀ» ´ã´Â Stack
-	Queue<User*> waitingUser; //±â´Ù¸®´Â UserµéÀ» ´ã´Â Queue - ÃßÈÄ heapÀ¸·Î
+	DoublySortedLinkedList<Ride>* rideListPointer; //ìì‹ ì´ ë‹´ê¸´ rideListì˜ ì‹œì‘ ì£¼ì†Œë¥¼ ê°€ì§„ë‹¤.
+	Stack<User*> ridingUser; //í˜„ì¬ íƒ‘ìŠ¹ ì¤‘ì¸ Userì„ ë‹´ëŠ” Stack
+	Queue<User*> waitingUser; //ê¸°ë‹¤ë¦¬ëŠ” Userë“¤ì„ ë‹´ëŠ” Queue - ì¶”í›„ heapìœ¼ë¡œ
 
 };
-bool Ride::rideUser() {//requireTime¸¶´Ù ½ÇÇà
+
+
+bool Ride::rideUser() {//requireTimeë§ˆë‹¤ ì‹¤í–‰
 	User* user;
 	for (int i = 0; i < numPerRide; i++) {
 		user = ridingUser.Pop();
 		user->moveToUser();
 		waitingUser.dequeue(user);
 		ridingUser.Push(user);
-	}//ÀÏ´Ü ÀÌ·¸°Ô ÇÏ°í ³ªÁß¿¡ waitingUser°¡ numperRide º¸´Ù ÀÛÀ»¶§ (waitingUser°¡ NullÀÏ‹š ¿¹¿ÜÃ³¸®)
+	}//ì¼ë‹¨ ì´ë ‡ê²Œ í•˜ê³  ë‚˜ì¤‘ì— waitingUserê°€ numperRide ë³´ë‹¤ ì‘ì„ë•Œ (waitingUserê°€ Nullì¼Â‹Âš ì˜ˆì™¸ì²˜ë¦¬)
 	calcWaitingTime();
-	Sleep(requireTime);
-	callback();
+	my_sleep(requireTime);
 
 
 }
 
-//bool Ride::moveToUser(User* user) {
-//	int min = 100000000000;
-//	int cur;
-//	user->wantToRide.ResetList();
-//	for(int i = 0; i < user->wantToRide.GetLength(); i++){
-//		user->wantToRide.GetNextItem(cur);
-//		Ride test;
-//		test.setId(cur);
-//		Admin::rideList.Get(test);
-//		if(min>test.getWaitingTime()){
-//			min = test.getWaitingTime();
-//			user->setNowLocation(cur);
-//		}
-//	}
-//	calcWaitingTime();
-//}
 
 bool Ride::calcWaitingTime() {
 	watingTime = (waitingUser.getLength() / numPerRide) * requireTime;

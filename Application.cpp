@@ -2,88 +2,88 @@
 
 Application::Application()
 {
-	m_Command = 0;
-	OpenTime = 0;
-	CloseTime = 0;
-	isOpen = false;
+    m_Command = 0;
+    OpenTime = 0;
+    CloseTime = 0;
+    isOpen = false;
 }
 
 void Application::run()
 {
-	while (true) {
-		if (isOpen)
-		{
-			open();
-		}
-		else
-		{
-			close();
-		}
-	}
+    while (true) {
+        if (isOpen)
+        {
+            open();
+        }
+        else
+        {
+            close();
+        }
+    }
 }
 
 void Application::open()
 {
-	while (true) {
-		cout << "\n\t Á¾·á¸¦ À§ÇØ¼­´Â ~¸¦ ÀÔ·ÂÇÏ¼¼¿ä";
+    while (true) {
+        cout << "\n\t ì¢…ë£Œë¥¼ ìœ„í•´ì„œëŠ” ~ë¥¼ ìž…ë ¥í•˜ì„¸ìš”";
 
-	}
-	isOpen = false;
-	return;
+    }
+    isOpen = false;
+    return;
 }
 
 void Application::close()
 {
-	while (true) {
-		getCloseCommand();
-		switch (m_Command)
-		{
-		case 1:
-			printTodayInfo();
-			break;
-		case 2:
-			printAllRideInfo();
-			break;
-		case 3:
-			searchRide();
-			break;
-		case 4:
-			addRide();
-			break;
-		case 5:
-			updateRide();
-			break;
-		case 6:
-			deleteRide();
-			break;
-		case 7:
-			isOpen = true;
-			return;
-		default:
-			cout << "\n\tÀÔ·Â ¿À·ùÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.";
-			break;
-		}
-	}
+    while (true) {
+        getCloseCommand();
+        switch (m_Command)
+        {
+            case 1:
+                printTodayInfo();
+                break;
+            case 2:
+                printAllRideInfo();
+                break;
+            case 3:
+                searchRide();
+                break;
+            case 4:
+                addRide();
+                break;
+            case 5:
+                updateRide();
+                break;
+            case 6:
+                deleteRide();
+                break;
+            case 7:
+                isOpen = true;
+                return;
+            default:
+                cout << "\n\tìž…ë ¥ ì˜¤ë¥˜ìž…ë‹ˆë‹¤. ë‹¤ì‹œ ìž…ë ¥í•´ì£¼ì„¸ìš”.";
+                break;
+        }
+    }
 }
 
 bool Application::getCloseCommand()
 {
-	cout << "\n\tÆóÀå »óÅÂ";
-	cout << "\n\t1. ³îÀÌ°ø¿ø Åë°è º¸±â";
-	cout << "\n\t2. ÀüÃ¼ ³îÀÌ±â±¸ Á¤º¸ º¸±â";
-	cout << "\n\t3. »ó¼¼ ³îÀÌ±â±¸ Á¤º¸ º¸±â";
-	cout << "\n\t4. ³îÀÌ±â±¸ Ãß°¡ ÇÏ±â";
-	cout << "\n\t5. ³îÀÌ±â±¸ ¼öÁ¤ ÇÏ±â";
-	cout << "\n\t6. ³îÀÌ±â±¸ »èÁ¦ ÇÏ±â";
-	cout << "\n\t7. °³ÀåÇÏ±â";
-	cout << "\n\t0. ÇÁ·Î±×·¥ Á¾·á";
-	cin >> m_Command;
-	return true;
+    cout << "\n\tíìž¥ ìƒíƒœ";
+    cout << "\n\t1. ë†€ì´ê³µì› í†µê³„ ë³´ê¸°";
+    cout << "\n\t2. ì „ì²´ ë†€ì´ê¸°êµ¬ ì •ë³´ ë³´ê¸°";
+    cout << "\n\t3. ìƒì„¸ ë†€ì´ê¸°êµ¬ ì •ë³´ ë³´ê¸°";
+    cout << "\n\t4. ë†€ì´ê¸°êµ¬ ì¶”ê°€ í•˜ê¸°";
+    cout << "\n\t5. ë†€ì´ê¸°êµ¬ ìˆ˜ì • í•˜ê¸°";
+    cout << "\n\t6. ë†€ì´ê¸°êµ¬ ì‚­ì œ í•˜ê¸°";
+    cout << "\n\t7. ê°œìž¥í•˜ê¸°";
+    cout << "\n\t0. í”„ë¡œê·¸ëž¨ ì¢…ë£Œ";
+    cin >> m_Command;
+    return true;
 }
 
 bool Application::getOpenCommand()
 {
-	cout << "\n\t¾È³ç";
+    cout << "\n\tì•ˆë…•";
 }
 
 

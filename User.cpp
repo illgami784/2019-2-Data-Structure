@@ -1,12 +1,6 @@
 #include "User.h"
 
-//User::User()
-//{
-//	id = -1;
-//	ticketRank = -1;
-//	age = -1;
-//	nowLocation = -1;
-//}
+
 
 User::User()
 {
@@ -15,12 +9,9 @@ User::User()
 	age = rand() % 40 +10;
 	nowLocation = 0;
 	count++;
-};
+}
 
-//bool User::WantToRide()
-//{
-//	return false;
-//}
+
 
 void User::printInfo() const
 {
@@ -61,4 +52,26 @@ int User::getId() const
 int User::getNowLocation() const
 {
 	return nowLocation;
+}
+
+bool User::moveToUser() {
+	int min = 100000000000;
+	int cur;
+	if(wantToRide.GetLength()==0){
+		setNowLocation(-1);
+		return false;
+	}
+	wantToRide.ResetList();
+	for(int i = 0; i < wantToRide.GetLength(); i++){
+		wantToRide.GetNextItem(cur);
+		Ride test;
+		test.setId(cur);
+		auto ride = Admin::rideListPointer();
+		ride->Get(test);
+		if (min > test.getWaitingTime()) {
+			min = test.getWaitingTime();
+			setNowLocation(cur);
+		}
+	}
+	return true;
 }

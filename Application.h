@@ -4,109 +4,109 @@ using namespace std;
 class Application {
 public:
 
-	/**
-	*	@brief	±âº» »ı¼ºÀÚÀÔ´Ï´Ù.
-	*	@post	open = false
-	*/
-	Application();
+    /**
+    *	@brief	ê¸°ë³¸ ìƒì„±ìì…ë‹ˆë‹¤.
+    *	@post	open = false
+    */
+    Application();
 
-	/**
-	*	@brief	°ü¸® ÇÁ·Î±×·¥ ½ÃÀÛ
-	*	@pre	openÀÇ °ªÀÌ ¼³Á¤µÇÀÖ¾î¾ß ÇÕ´Ï´Ù.
-	*	@post	open°ª¿¡ µû¶ó ´Ù¸¥ ¸Ş´º ½ÇÇà
-	*/
-	void run();
+    /**
+    *	@brief	ê´€ë¦¬ í”„ë¡œê·¸ë¨ ì‹œì‘
+    *	@pre	openì˜ ê°’ì´ ì„¤ì •ë˜ìˆì–´ì•¼ í•©ë‹ˆë‹¤.
+    *	@post	openê°’ì— ë”°ë¼ ë‹¤ë¥¸ ë©”ë‰´ ì‹¤í–‰
+    */
+    void run();
 
-	void open();
+    void open();
 
-	void close();
+    void close();
 
-	/**
-	*	@brief	¸í·É¾î¸¦ ÀÔ·Â¹Ş´Â ÇÔ¼ö
-	*	@post	m_Command°¡ ÀÔ·ÂÇÑ °ªÀÌ µÈ´Ù.
-	*	@return	¼º°ø½Ã true ½ÇÆĞ½Ã false
-	*/
-	bool getOpenCommand();
+    /**
+    *	@brief	ëª…ë ¹ì–´ë¥¼ ì…ë ¥ë°›ëŠ” í•¨ìˆ˜
+    *	@post	m_Commandê°€ ì…ë ¥í•œ ê°’ì´ ëœë‹¤.
+    *	@return	ì„±ê³µì‹œ true ì‹¤íŒ¨ì‹œ false
+    */
+    bool getOpenCommand();
 
-	/**
-	*	@brief	¸í·É¾î¸¦ ÀÔ·Â¹Ş´Â ÇÔ¼ö
-	*	@post	m_Command°¡ ÀÔ·ÂÇÑ °ªÀÌ µÈ´Ù.
-	*	@return	¼º°ø½Ã true ½ÇÆĞ½Ã false
-	*/
-	bool getCloseCommand();
+    /**
+    *	@brief	ëª…ë ¹ì–´ë¥¼ ì…ë ¥ë°›ëŠ” í•¨ìˆ˜
+    *	@post	m_Commandê°€ ì…ë ¥í•œ ê°’ì´ ëœë‹¤.
+    *	@return	ì„±ê³µì‹œ true ì‹¤íŒ¨ì‹œ false
+    */
+    bool getCloseCommand();
 
-	/**
-	*	@brief	open ¿©ºÎ¸¦ ¸®ÅÏÇÑ´Ù.
-	*	@return	open ¸®ÅÏ
-	*/
-	bool isItOpen() const;
+    /**
+    *	@brief	open ì—¬ë¶€ë¥¼ ë¦¬í„´í•œë‹¤.
+    *	@return	open ë¦¬í„´
+    */
+    bool isItOpen() const;
 
-	/**
-	*	@brief	ÇØ´çÇÏ´Â idÀÇ RideÀÇ »ó¼¼ Á¤º¸¸¦ Ãâ·ÂÇÑ´Ù.
-	*	@pre	rideList¿¡ ÇØ´çÇÏ´Â idÀÇ Ride°¡ Á¸ÀçÇØ¾ßÇÔ
-	*/
-	void printRideInfo(int _id) const;
+    /**
+    *	@brief	í•´ë‹¹í•˜ëŠ” idì˜ Rideì˜ ìƒì„¸ ì •ë³´ë¥¼ ì¶œë ¥í•œë‹¤.
+    *	@pre	rideListì— í•´ë‹¹í•˜ëŠ” idì˜ Rideê°€ ì¡´ì¬í•´ì•¼í•¨
+    */
+    void printRideInfo(int _id) const;
 
-	/**
-	*	@brief	¸ğ¸¥ RideÀÇ ´ë·«ÀûÀÎ Á¤º¸¸¦ Ãâ·ÂÇÑ´Ù. 
-	*	@pre	rideList¿¡ Ride°¡ ÇÏ³ª¶óµµ Á¸ÀçÇØ¾ßÇÔ
-	*/
-	void printAllRideInfo() const;
+    /**
+    *	@brief	ëª¨ë¥¸ Rideì˜ ëŒ€ëµì ì¸ ì •ë³´ë¥¼ ì¶œë ¥í•œë‹¤.
+    *	@pre	rideListì— Rideê°€ í•˜ë‚˜ë¼ë„ ì¡´ì¬í•´ì•¼í•¨
+    */
+    void printAllRideInfo() const;
 
-	/**
-	*	@brief	»ç¿ëÀÚÀÇ Á¤º¸ Á¶È¸?
-	*	@pre
-	*	@post
-	*	@return	¼º°ø½Ã true ½ÇÆĞ½Ã false
-	*/
-	bool searchAllUser();
+    /**
+    *	@brief	ì‚¬ìš©ìì˜ ì •ë³´ ì¡°íšŒ?
+    *	@pre
+    *	@post
+    *	@return	ì„±ê³µì‹œ true ì‹¤íŒ¨ì‹œ false
+    */
+    bool searchAllUser();
 
-	/**
-	*	@brief	rideList¿¡¼­ °Ë»öÇÑ´Ù.
-	*	@pre
-	*	@post
-	*	@return	¼º°ø½Ã true ½ÇÆĞ½Ã false
-	*/
-	bool searchRide();
+    /**
+    *	@brief	rideListì—ì„œ ê²€ìƒ‰í•œë‹¤.
+    *	@pre
+    *	@post
+    *	@return	ì„±ê³µì‹œ true ì‹¤íŒ¨ì‹œ false
+    */
+    bool searchRide();
 
-	/**
-	*	@brief	rideList¿¡ Ride¸¦ Ãß°¡ÇÑ´Ù.
-	*	@pre
-	*	@post
-	*	@return	¼º°ø½Ã true ½ÇÆĞ½Ã false
-	*/
-	bool addRide();
+    /**
+    *	@brief	rideListì— Rideë¥¼ ì¶”ê°€í•œë‹¤.
+    *	@pre
+    *	@post
+    *	@return	ì„±ê³µì‹œ true ì‹¤íŒ¨ì‹œ false
+    */
+    bool addRide();
 
-	/**
-	*	@brief	rideListÀÇ Ride¸¦ »èÁ¦ÇÑ´Ù.
-	*	@pre
-	*	@post
-	*	@return	¼º°ø½Ã true ½ÇÆĞ½Ã false
-	*/
-	bool deleteRide();
+    /**
+    *	@brief	rideListì˜ Rideë¥¼ ì‚­ì œí•œë‹¤.
+    *	@pre
+    *	@post
+    *	@return	ì„±ê³µì‹œ true ì‹¤íŒ¨ì‹œ false
+    */
+    bool deleteRide();
 
-	/**
-	*	@brief	rideListÀÇ RideÀÇ Á¤º¸¸¦ º¯°æÇÑ´Ù.
-	*	@pre
-	*	@post
-	*	@return	¼º°ø½Ã true ½ÇÆĞ½Ã false
-	*/
-	bool updateRide();
+    /**
+    *	@brief	rideListì˜ Rideì˜ ì •ë³´ë¥¼ ë³€ê²½í•œë‹¤.
+    *	@pre
+    *	@post
+    *	@return	ì„±ê³µì‹œ true ì‹¤íŒ¨ì‹œ false
+    */
+    bool updateRide();
 
-	/**
-	*	@brief	¿­·ÈÀ» ¶§ÀÇ Á¤º¸¸¦ Ãâ·ÂÇÑ´Ù.
-	*	@pre
-	*	@post
-	*	@return
-	*/
-	void printTodayInfo();
+    /**
+    *	@brief	ì—´ë ¸ì„ ë•Œì˜ ì •ë³´ë¥¼ ì¶œë ¥í•œë‹¤.
+    *	@pre
+    *	@post
+    *	@return
+    */
+    void printTodayInfo();
 
 
 
 private:
-	int m_Command; //¸í·É¾î ÀÔ·Â¿¡ »ç¿ë
-	int OpenTime; //°³ÀåÇÑ ½Ã°£ Åë°è¿¡ »ç¿ë?
-	int CloseTime; //ÆóÀåÇÑ ½Ã°£ Åë°è¿¡ »ç¿ë?
-	bool isOpen; //°³Àå ¿©ºÎ
-	Admin admin; //³îÀÌµ¿»ê Admin
+    int m_Command; //ëª…ë ¹ì–´ ì…ë ¥ì— ì‚¬ìš©
+    int OpenTime; //ê°œì¥í•œ ì‹œê°„ í†µê³„ì— ì‚¬ìš©?
+    int CloseTime; //íì¥í•œ ì‹œê°„ í†µê³„ì— ì‚¬ìš©?
+    bool isOpen; //ê°œì¥ ì—¬ë¶€
+    Admin admin; //ë†€ì´ë™ì‚° Admin
 };

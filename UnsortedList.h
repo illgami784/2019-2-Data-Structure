@@ -2,7 +2,7 @@
 #define _UNSORTEDLIST_H
 
 #include <iostream>
-#include <fstream>	
+#include <fstream>
 #include <string>
 using namespace std;
 
@@ -10,123 +10,123 @@ template <typename T>
 class UnsortedList
 {
 public:
-	/**
-	*	default constructor.
-	*/
+    /**
+    *	default constructor.
+    */
 
-	UnsortedList()
-	{
-		m_Length = 0;
-		max = 0;
-		ResetList();
-	}
+    UnsortedList()
+    {
+        m_Length = 0;
+        max = 0;
+        ResetList();
+    }
 
-	UnsortedList(int _max)
-	{
-		m_Length = 0;
-		max = _max;
-		m_Array = new T[max];
-		ResetList();
-	}
+    UnsortedList(int _max)
+    {
+        m_Length = 0;
+        max = _max;
+        m_Array = new T[max];
+        ResetList();
+    }
 
-	/**
-	*	destructor.
-	*/
-	~UnsortedList() 
-	{
-		delete[] m_Array;
-	}
+    /**
+    *	destructor.
+    */
+    ~UnsortedList()
+    {
+        delete[] m_Array;
+    }
 
-	/*
-	*	±âº» »ı¼ºÀÚ »ç¿ë½Ã¸¦ À§ÇÑ ÇÔ¼ö.
-	*/
-	int setMax(int _max)
-	{
-		max = _max;
-		m_Array = new T[max];
-	}
+    /*
+    *	ê¸°ë³¸ ìƒì„±ì ì‚¬ìš©ì‹œë¥¼ ìœ„í•œ í•¨ìˆ˜.
+    */
+    int setMax(int _max)
+    {
+        max = _max;
+        m_Array = new T[max];
+    }
 
-	/**
-	*	@brief	Make list empty.
-	*	@pre	none.
-	*	@post	clear list.
-	*/
-	void MakeEmpty();
+    /**
+    *	@brief	Make list empty.
+    *	@pre	none.
+    *	@post	clear list.
+    */
+    void MakeEmpty();
 
-	/**
-	*	@brief	Get a number of records in current list.
-	*	@pre	none.
-	*	@post	none.
-	*	@return	number of records in current list.
-	*/
-	int GetLength();
+    /**
+    *	@brief	Get a number of records in current list.
+    *	@pre	none.
+    *	@post	none.
+    *	@return	number of records in current list.
+    */
+    int GetLength();
 
-	/**
-	*	@brief	Check capacity of list is full.
-	*	@pre	none.
-	*	@post	none.
-	*	@return	return true if list capacity reached to the upper bound, otherwise return false.
-	*/
-	bool IsFull();
+    /**
+    *	@brief	Check capacity of list is full.
+    *	@pre	none.
+    *	@post	none.
+    *	@return	return true if list capacity reached to the upper bound, otherwise return false.
+    */
+    bool IsFull();
 
-	/**
-	*	@brief	add a new data into list.
-	*	@pre	list should be initialized.
-	*	@post	added the new record into the list.
-	*	@param	data	new data.
-	*	@return	return 1 if this function works well, otherwise 0.
-	*/
-	int Add(T data);
+    /**
+    *	@brief	add a new data into list.
+    *	@pre	list should be initialized.
+    *	@post	added the new record into the list.
+    *	@param	data	new data.
+    *	@return	return 1 if this function works well, otherwise 0.
+    */
+    int Add(T data);
 
-	/**
-	*	@brief	Initialize list iterator.
-	*	@pre	list should be initialized.
-	*	@post	iterator is reset.
-	*/
-	void ResetList();
+    /**
+    *	@brief	Initialize list iterator.
+    *	@pre	list should be initialized.
+    *	@post	iterator is reset.
+    */
+    void ResetList();
 
-	/**
-	*	@brief	move list iterator to the next item in list and get that item.
-	*	@pre	list and list iterator should not be initialized.
-	*	@post	iterator is moved to next item.
-	*	@param	data	get current iterator's item. it does not need to be initialized.
-	*	@return	index of current iterator's item if is not end of list, oterwise return -1.
-	*/
-	int GetNextItem(T& data);
+    /**
+    *	@brief	move list iterator to the next item in list and get that item.
+    *	@pre	list and list iterator should not be initialized.
+    *	@post	iterator is moved to next item.
+    *	@param	data	get current iterator's item. it does not need to be initialized.
+    *	@return	index of current iterator's item if is not end of list, oterwise return -1.
+    */
+    int GetNextItem(T& data);
 
-	/** [ÀÛ¼º]
-	*	@brief ÀÔ·Â¹ŞÀº µ¥ÀÌÅÍÀÇ Id°¡ ±âÁ¸ÀÇ Á¸ÀçÇÏ´Â °Å¶û °°À»½Ã ±× ¾ÆÀÌÅÛÀÇ Æ÷ÀÎÅÍ¸¦ ¹İÈ¯
-	*	@pre	¾ÆÀÌÅÛÀÌ 1°³¶óµµ Á¸ÀçÇØ¾ßÇÔ.
-	*	@post none
-	*	@param data ¼­Ä¡ÇÒ ¾ÆÀÌÅÛ Id¸¸À» °¡Áö¸é µÊ
-	*	@return Id°¡ °°Àº ¾ÆÀÌÅÛÀÇ Æ÷ÀÎÅÍ
-	*/
-	int Get(T& data);
+    /** [ì‘ì„±]
+    *	@brief ì…ë ¥ë°›ì€ ë°ì´í„°ì˜ Idê°€ ê¸°ì¡´ì˜ ì¡´ì¬í•˜ëŠ” ê±°ë‘ ê°™ì„ì‹œ ê·¸ ì•„ì´í…œì˜ í¬ì¸í„°ë¥¼ ë°˜í™˜
+    *	@pre	ì•„ì´í…œì´ 1ê°œë¼ë„ ì¡´ì¬í•´ì•¼í•¨.
+    *	@post none
+    *	@param data ì„œì¹˜í•  ì•„ì´í…œ Idë§Œì„ ê°€ì§€ë©´ ë¨
+    *	@return Idê°€ ê°™ì€ ì•„ì´í…œì˜ í¬ì¸í„°
+    */
+    int Get(T& data);
 
-	/** [ÀÛ¼º]
-	*	@brief ÀÔ·Â¹ŞÀº µ¥ÀÌÅÍÀÇ ½Ã°£ÀÌ ±âÁ¸ÀÇ Á¸ÀçÇÏ´Â °Å¶û °°À»½Ã ±× ¾ÆÀÌÅÛÀ» »èÁ¦
-	*	@pre ¾ÆÀÌÅÛÀÌ ÇÏ³ª¶óµµ Á¸ÀçÇØ¾ßÇÔ.
-	*	@post ¾ÆÀÌÅÛÀÌ ÇÏ³ª »èÁ¦µË´Ï´Ù.
-	*	@param data »èÁ¦ÇÒ ¾ÆÀÌÅÛ ½Ã°£¸¸À» °¡Áö¸é µÊ
-	*	@return none
-	*/
-	void Delete(T data);
+    /** [ì‘ì„±]
+    *	@brief ì…ë ¥ë°›ì€ ë°ì´í„°ì˜ ì‹œê°„ì´ ê¸°ì¡´ì˜ ì¡´ì¬í•˜ëŠ” ê±°ë‘ ê°™ì„ì‹œ ê·¸ ì•„ì´í…œì„ ì‚­ì œ
+    *	@pre ì•„ì´í…œì´ í•˜ë‚˜ë¼ë„ ì¡´ì¬í•´ì•¼í•¨.
+    *	@post ì•„ì´í…œì´ í•˜ë‚˜ ì‚­ì œë©ë‹ˆë‹¤.
+    *	@param data ì‚­ì œí•  ì•„ì´í…œ ì‹œê°„ë§Œì„ ê°€ì§€ë©´ ë¨
+    *	@return none
+    */
+    void Delete(T data);
 
 
-	/** [ÀÛ¼º]
-	*	@brief ÀÔ·Â¹ŞÀº µ¥ÀÌÅÍÀÇ Id°¡ ±âÁ¸ÀÇ Á¸ÀçÇÏ´Â °Å¶û °°À»½Ã ±× ¾ÆÀÌÅÛÀ» ÀÔ·Â¹Ş¾Æ °»½Å
-	*	@pre ¾ÆÀÌÅÛÀÌ ÇÏ³ª¶óµµ Á¸ÀçÇØ¾ßÇÔ
-	*	@post ¾ÆÀÌÅÛ ·¹ÄÚµå¸¦ ´ëÃ¼ÇÕ´Ï´Ù.
-	*	@param data »èÁ¦ÇÒ ¾ÆÀÌÅÛ Id¸¸À» °¡Áö¸é µÊ
-	*	@return none
-	*/
-	void Replace(T data);
+    /** [ì‘ì„±]
+    *	@brief ì…ë ¥ë°›ì€ ë°ì´í„°ì˜ Idê°€ ê¸°ì¡´ì˜ ì¡´ì¬í•˜ëŠ” ê±°ë‘ ê°™ì„ì‹œ ê·¸ ì•„ì´í…œì„ ì…ë ¥ë°›ì•„ ê°±ì‹ 
+    *	@pre ì•„ì´í…œì´ í•˜ë‚˜ë¼ë„ ì¡´ì¬í•´ì•¼í•¨
+    *	@post ì•„ì´í…œ ë ˆì½”ë“œë¥¼ ëŒ€ì²´í•©ë‹ˆë‹¤.
+    *	@param data ì‚­ì œí•  ì•„ì´í…œ Idë§Œì„ ê°€ì§€ë©´ ë¨
+    *	@return none
+    */
+    void Replace(T data);
 
 private:
-	T* m_Array;  ///< list array.
-	int m_Length;				///< number of elements in list.
-	int m_CurPointer;			///< iterator pointer.
-	int max;
+    T* m_Array;  ///< list array.
+    int m_Length;				///< number of elements in list.
+    int m_CurPointer;			///< iterator pointer.
+    int max;
 };
 #endif
 
@@ -134,7 +134,7 @@ private:
 template <typename T>
 void UnsortedList<T>::MakeEmpty()
 {
-	m_Length = 0;
+    m_Length = 0;
 }
 
 
@@ -142,7 +142,7 @@ void UnsortedList<T>::MakeEmpty()
 template <typename T>
 int UnsortedList<T>::GetLength()
 {
-	return m_Length;
+    return m_Length;
 }
 
 
@@ -150,10 +150,10 @@ int UnsortedList<T>::GetLength()
 template <typename T>
 bool UnsortedList<T>::IsFull()
 {
-	if (m_Length > max - 1)
-		return true;
-	else
-		return false;
+    if (m_Length > max - 1)
+        return true;
+    else
+        return false;
 }
 
 
@@ -161,102 +161,96 @@ bool UnsortedList<T>::IsFull()
 template <typename T>
 int UnsortedList<T>::Add(T inData)
 {
-	if (IsFull()) {
-		cout << "\n\t¸®½ºÆ®°¡ °¡µæ Ã¡½À´Ï´Ù.";
-		return 0;
-	}
-	int location = 0;
-	bool moreToSearch;
+    if (IsFull()) {
+        cout << "\n\të¦¬ìŠ¤íŠ¸ê°€ ê°€ë“ ì°¼ìŠµë‹ˆë‹¤.";
+        return 0;
+    }
+    int location = 0;
+    bool moreToSearch;
 
-	moreToSearch = (location < m_Length);
-	while (moreToSearch) {
-		if (inData == m_Array[location])
-		{
-			cout << "\n\tµ¿ÀÏÇÑ ID°¡ Á¸ÀçÇÕ´Ï´Ù.";
-			return 0;
-		}
-		else if(inData < m_Array[location])
-		{
-			location++;
-			moreToSearch = (location < m_Length);
-		}
-		else
-		{
-			moreToSearch = false;
-		}
-	}
-	cout << "\n\tÃß°¡¿¡ ¼º°øÇß½À´Ï´Ù.";
-	for (int i = m_Length; i > location; i--) {
-		m_Array[i] = m_Array[i - 1];
-	}
-	m_Array[location] = inData;
-	m_Length++;
-	return 1;
+    moreToSearch = (location < m_Length);
+    while (moreToSearch) {
+        if (inData == m_Array[location])
+        {
+            cout << "\n\të™ì¼í•œ IDê°€ ì¡´ì¬í•©ë‹ˆë‹¤.";
+            return 0;
+        }
+        else if(inData < m_Array[location])
+        {
+            location++;
+            moreToSearch = (location < m_Length);
+        }
+        else
+        {
+            moreToSearch = false;
+        }
+    }
+    cout << "\n\tì¶”ê°€ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.";
+    for (int i = m_Length; i > location; i--) {
+        m_Array[i] = m_Array[i - 1];
+    }
+    m_Array[location] = inData;
+    m_Length++;
+    return 1;
 }
 
 template <typename T>
 int  UnsortedList<T>::Get(T& data) {
-	T temp;
-	ResetList();
-	GetNextItem(temp);
-	while (m_CurPointer < m_Length) {
-		if (inData == m_Array[location])
-		{
-			data = temp;
-			return 1;
-		}
-		else if (inData < m_Array[location])
-		{
-			return 0;
-		}
-		else
-		{
-			GetNextItem(temp);
-			break;
-		}
-	}
-	return 0;
+
+    ResetList();
+    T temp;
+    GetNextItem(temp);
+    for (int i = 0; i < m_Length; i++)
+    {
+        if (data == temp)
+        {
+            data = temp;
+            return m_CurPointer;
+        }
+        GetNextItem(temp);
+    }
+    return -1;
 }
 
 template <typename T>
 void  UnsortedList<T>::Delete(T data) {
-	int location = 0;
+    int location = 0;
 
-	while ( data != m_Array[location]) {
-		if (location >= m_Length) {
-			cout << "\n\tID°¡ °°Àº °ªÀÌ ¾ø½À´Ï´Ù.";
-			return;
-		}
+    while ( data != m_Array[location]) {
+        if (location >= m_Length) {
+            cout << "\n\tIDê°€ ê°™ì€ ê°’ì´ ì—†ìŠµë‹ˆë‹¤.";
+            return;
+        }
 
-		location++;
-	}
-	for (int i = location + 1; i < max; i++) {
-		m_Array[i - 1] = m_Array[i];
-	}
-	cout << "\n\t»èÁ¦¿¡ ¼º°øÇß½À´Ï´Ù.";
-	m_Length--;
+        location++;
+    }
+    for (int i = location + 1; i < max; i++) {
+        m_Array[i - 1] = m_Array[i];
+    }
+    cout << "\n\tì‚­ì œì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.";
+    m_Length--;
 }
 
 
 template <typename T>
 void  UnsortedList<T>::Replace(T data) {
-	T temp = data;
-	if (Get(data)) {
-		cout << "\n\t" << "´ëÃ¼ ¼º°øÇß½À´Ï´Ù.";
-		m_Array[m_CurPointer] = data;
-	}
-	else
-	{
-		cout << "\n\t" << "°°Àº °ªÀÌ ¾ø¾î ´ëÃ¼¿¡ ½ÇÆĞÇß½À´Ï´Ù.";
-		return;
-	}
+    T temp = data;
+    if (Get(data)) {
+        cout << "\n\t" << "ëŒ€ì²´ ì„±ê³µí–ˆìŠµë‹ˆë‹¤.";
+        m_Array[m_CurPointer] = data;
+    }
+    else
+    {
+        cout << "\n\t" << "ê°™ì€ ê°’ì´ ì—†ì–´ ëŒ€ì²´ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.";
+        return;
+    }
 }
 
 // Initialize list iterator.
 template <typename T>
 void UnsortedList<T>::ResetList()
 {
-	m_CurPointer = -1;
+    m_CurPointer = -1;
 }
 
 
@@ -264,11 +258,11 @@ void UnsortedList<T>::ResetList()
 template <typename T>
 int UnsortedList<T>::GetNextItem(T& data)
 {
-	m_CurPointer++;	// list pointer Áõ°¡
-	if (m_CurPointer == max)	// end of listÀÌ¸é -1À» ¸®ÅÏ
-		return -1;
-	data = m_Array[m_CurPointer];	// ÇöÀç list pointerÀÇ ·¹ÄÚµå¸¦ º¹»ç
+    m_CurPointer++;	// list pointer ì¦ê°€
+    if (m_CurPointer == max)	// end of listì´ë©´ -1ì„ ë¦¬í„´
+        return -1;
+    data = m_Array[m_CurPointer];	// í˜„ì¬ list pointerì˜ ë ˆì½”ë“œë¥¼ ë³µì‚¬
 
-	return m_CurPointer;
+    return m_CurPointer;
 }
 

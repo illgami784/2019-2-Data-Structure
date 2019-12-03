@@ -14,13 +14,13 @@ add_executable(amusement
         DoublyIterator.h
         DoublySortedLinkedList.h
         main.cpp
-        Queue.h
+#        Queue.h
         Ride.cpp
         Ride.h
 #        Screen.cpp
         SortedList.h
         Stack.h
-        UnsortedList.h
+#        UnsortedList.h
         User.cpp
         User.h
         queue1.h)

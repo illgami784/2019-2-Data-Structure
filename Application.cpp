@@ -62,8 +62,8 @@ void Application::printLive()
 	// ID, 대기인원, 대기시간? 이거만 있음될듯
 	// 에러 나는게 정상임다~ Ride가 개발용에서 쓰던 구조체 이름이라
 	system("CLS");
-	Ride* ride = admin.getRide();
-	int size = admin.getSize();
+	fakeRide* ride = fAdmin.getRide();
+	int size = fAdmin.getSize();
 	cout << "\n" << setw(10) << "아이디" << setw(10) << "대기인원" << setw(10) << "대기시간";
 	for (int i = 0; i < size; i++) {
 		cout << "\n" << setw(10) << ride[i].id;

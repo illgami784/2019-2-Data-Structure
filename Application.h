@@ -1,6 +1,10 @@
 #pragma once
 #include "Admin.h"
 #include <iostream>
+#include <Windows.h>
+#include <iomanip>
+#include <string>
+#include <conio.h>
 using namespace std;
 class Application {
 public:
@@ -19,6 +23,10 @@ public:
 	void run();
 
 	void open();
+
+	int getKey();
+
+	void printLive();
 
 	void close();
 
@@ -49,7 +57,7 @@ public:
 	void printRideInfo(int _id) const;
 
 	/**
-	*	@brief	모른 Ride의 대략적인 정보를 출력한다. 
+	*	@brief	모른 Ride의 대략적인 정보를 출력한다.
 	*	@pre	rideList에 Ride가 하나라도 존재해야함
 	*/
 	void printAllRideInfo() const;
@@ -101,6 +109,8 @@ public:
 	*	@return
 	*/
 	void printTodayInfo();
+
+
 
 
 

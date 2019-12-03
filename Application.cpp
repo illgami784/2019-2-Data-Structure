@@ -1,5 +1,4 @@
 #include "Application.h"
-
 Application::Application()
 {
 	m_Command = 0;
@@ -23,41 +22,60 @@ void Application::run()
 }
 
 void Application::open()
-{	
-	//#include <conio.h>, <time.h>, <windows.h> needed
-	//visualizing random graph -> have to change into REAL Amuse graph
-	int input = 1;
-
-	cout << "\n\t Amusement Park Statistic";
-
-	cout << "\n\t Press 's' to close the park";
-
-	int randomgraph;//length of graph
-	int ridenum = 5;//5 rides 
-
-	while (true) { //repeat until press 's'
-
-		for (int i = 0; i <= ridenum; i++) {
-			cout << "\n\t" << i << "th Ride : ";
-			randomgraph = rand() % 60 + 1; // random graph
-			for(int i = 0; i <= randomgraph;i++)
-				cout << "+";
-			cout << endl;
-		}
-
-		if (_kbhit())
+{
+	int menu = 0;
+	while (true) {
+		if (menu == -1) break;
+		switch (menu)
 		{
-			input = _getch(); //get input
-		}
-		Sleep(70);
-
-		if (input == 's') { //if input == 's'
-			isOpen = 0;//close
+		case 0:
+			printLive();
 			break;
+		case 1:
+			int i;
+			cout << "\n\t검색할 기구 아이디 -->";
+			cin >> i;
+		}
+		menu = getKey();
+	}
+	isOpen = false;
+	return;
+}
+
+int Application::getKey()
+{
+	if (_kbhit()) {
+		int nKey = _getch();
+		switch (nKey)
+		{
+		case 'p':
+			return -1;
+		case 's':
+			return 1;
 		}
 	}
+	return 0;
+}
 
-	return;
+void Application::printLive()
+{
+	// ID, 대기인원, 대기시간? 이거만 있음될듯
+	// 에러 나는게 정상임다~ Ride가 개발용에서 쓰던 구조체 이름이라
+	system("CLS");
+	Ride* ride = admin.getRide();
+	int size = admin.getSize();
+	cout << "\n" << setw(10) << "아이디" << setw(10) << "대기인원" << setw(10) << "대기시간";
+	for (int i = 0; i < size; i++) {
+		cout << "\n" << setw(10) << ride[i].id;
+		cout << setw(10) << ride[i].numWatingUser;
+		cout << setw(10) << ride[i].watingTime;
+		cout << '\t';
+		for (int j = 0; j < ride[i].watingTime; j++) {
+			cout << "■";
+		}
+	}
+	cout << "\n\n\t" << "- 중단하기(p)" << "\n\t" << "- 놀이기구 상세 정보 검색(s)" << "\n\t-->";
+	Sleep(1000);
 }
 
 void Application::close()
@@ -87,6 +105,8 @@ void Application::close()
 		case 7:
 			isOpen = true;
 			return;
+		case 0:
+			exit(100);
 		default:
 			cout << "\n\t입력 오류입니다. 다시 입력해주세요.";
 			break;
@@ -105,6 +125,8 @@ bool Application::getCloseCommand()
 	cout << "\n\t6. 놀이기구 삭제 하기";
 	cout << "\n\t7. 개장하기";
 	cout << "\n\t0. 프로그램 종료";
+	cout << "\n\t->";
+	cin.clear();
 	cin >> m_Command;
 	return true;
 }
@@ -112,18 +134,20 @@ bool Application::getCloseCommand()
 bool Application::getOpenCommand()
 {
 	cout << "\n\t안녕";
-	
+	return true;
 }
 
 
 bool Application::isItOpen() const
 {
-	return isOpen;
+
+	return true;
 }
 
 bool Application::searchAllUser()
 {
 
+	return true;
 }
 
 void Application::printRideInfo(int _id) const
@@ -141,23 +165,27 @@ void Application::printAllRideInfo() const
 bool Application::searchRide()
 {
 
+	return true;
 }
 
 
 bool Application::addRide()
 {
 
+	return true;
 }
 
 
 bool Application::deleteRide()
 {
 
+	return true;
 }
 
 bool Application::updateRide()
 {
 
+	return true;
 }
 
 
@@ -165,3 +193,5 @@ void Application::printTodayInfo()
 {
 
 }
+
+

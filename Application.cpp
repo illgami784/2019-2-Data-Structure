@@ -1,5 +1,4 @@
 #include "Application.h"
-#include "AppScreen.cpp"
 
 Application::Application()
 {

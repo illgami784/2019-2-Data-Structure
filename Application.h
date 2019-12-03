@@ -1,5 +1,6 @@
 #pragma once
 #include "Admin.h"
+#include <iostream>
 using namespace std;
 class Application {
 public:

@@ -89,7 +89,7 @@ void Application::close()
 			isOpen = true;
 			return;
 		default:
-			cout << "\n\tÀÔ·Â ¿À·ùÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.";
+			cout << "\n\tìž…ë ¥ ì˜¤ë¥˜ìž…ë‹ˆë‹¤. ë‹¤ì‹œ ìž…ë ¥í•´ì£¼ì„¸ìš”.";
 			break;
 		}
 	}
@@ -97,29 +97,29 @@ void Application::close()
 
 bool Application::getCloseCommand()
 {
-	cout << "\n\tÆóÀå »óÅÂ";
-	cout << "\n\t1. ³îÀÌ°ø¿ø Åë°è º¸±â";
-	cout << "\n\t2. ÀüÃ¼ ³îÀÌ±â±¸ Á¤º¸ º¸±â";
-	cout << "\n\t3. »ó¼¼ ³îÀÌ±â±¸ Á¤º¸ º¸±â";
-	cout << "\n\t4. ³îÀÌ±â±¸ Ãß°¡ ÇÏ±â";
-	cout << "\n\t5. ³îÀÌ±â±¸ ¼öÁ¤ ÇÏ±â";
-	cout << "\n\t6. ³îÀÌ±â±¸ »èÁ¦ ÇÏ±â";
-	cout << "\n\t7. °³ÀåÇÏ±â";
-	cout << "\n\t0. ÇÁ·Î±×·¥ Á¾·á";
+	cout << "\n\tíìž¥ ìƒíƒœ";
+	cout << "\n\t1. ë†€ì´ê³µì› í†µê³„ ë³´ê¸°";
+	cout << "\n\t2. ì „ì²´ ë†€ì´ê¸°êµ¬ ì •ë³´ ë³´ê¸°";
+	cout << "\n\t3. ìƒì„¸ ë†€ì´ê¸°êµ¬ ì •ë³´ ë³´ê¸°";
+	cout << "\n\t4. ë†€ì´ê¸°êµ¬ ì¶”ê°€ í•˜ê¸°";
+	cout << "\n\t5. ë†€ì´ê¸°êµ¬ ìˆ˜ì • í•˜ê¸°";
+	cout << "\n\t6. ë†€ì´ê¸°êµ¬ ì‚­ì œ í•˜ê¸°";
+	cout << "\n\t7. ê°œìž¥í•˜ê¸°";
+	cout << "\n\t0. í”„ë¡œê·¸ëž¨ ì¢…ë£Œ";
 	cin >> m_Command;
 	return true;
 }
 
 bool Application::getOpenCommand()
 {
-	cout << "\n\t¾È³ç";
+	cout << "\n\tì•ˆë…•";
 	
 }
 
 
 bool Application::isItOpen() const
 {
-
+	return isOpen;
 }
 
 bool Application::searchAllUser()

@@ -105,7 +105,6 @@ private:
 	int numPerRide; //한 번에 놀이기구를  탈 수 있는 User 수
 	int watingTime; //예상 대기 시간(초 단위)
 	int minAge; //이 Ride를 타기 위한 최소 나이 (0~100)
-	int minTicketRank; //이 Ride를 타기 위한 최소 티켓 등급 (0~10)
 	int totalUser; //개장하고 탑승한 총 User 수
 	int numWaitingUser; //지금 기다리고 있는 사람의 수
 	bool isOpen; //개장 여부를 나타냄, rideUser 무한 루프를 깨기 위해 사용
@@ -125,6 +124,7 @@ bool Ride::rideUser() {//requireTime마다 실행
 			user->moveToUser();
 			waitingUser.DeQueue(user);
 			ridingUser.Push(user);
+			totalUser++;
 		}
 		numWaitingUser = 0;
 	}
@@ -135,6 +135,7 @@ bool Ride::rideUser() {//requireTime마다 실행
 			user->moveToUser();
 			waitingUser.DeQueue(user);
 			ridingUser.Push(user);
+			totalUser++;
 		}
 		numWaitingUser -= numPerRide;
 	}
@@ -160,11 +161,11 @@ bool Ride::rideUser() {//requireTime마다 실행
 //}
 
 Ride::Ride() {
+	id = -1;
 	requireTime = 0; //놀이기구를 한번에 작동하는데 걸리는 시간(초 단위)
 	numPerRide = 0; //한 번에 놀이기구를  탈 수 있는 User 수
 	watingTime = 0; //예상 대기 시간(초 단위)
 	minAge = 0; //이 Ride를 타기 위한 최소 나이 (0~100)
-	minTicketRank = 0; //이 Ride를 타기 위한 최소 티켓 등급 (0~10)
 	totalUser = 0; //개장하고 탑승한 총 User 수
 	numWaitingUser = 0; //지금 기다리고 있는 사람의 수
 	isOpen = 1;
@@ -172,12 +173,6 @@ Ride::Ride() {
 
 bool Ride::calcWaitingTime() {
 	watingTime = (numWaitingUser / numPerRide) * requireTime;
-}
-
-
-Ride::Ride()
-{
-	ridingUser.setMax(numPerRide);
 }
 
 void Ride::setId(int _id)
@@ -196,11 +191,19 @@ bool Ride::addWaitingUser(User& user) {
 	return true;
 }
 
-/**
-	*	@brief	Ride를 탑승 완료한 User을 다른 곳으로 보내는 함수.
-	*	@pre	ridingUser에 User가 존재해야함
-	*	@post	ridingUser의 User를 비우며 rideListPointer를
-	이용해 위치 이동시켜준다.
-	*	@return 잘 작동시 true 아니면 false
-	*/
-bool outUser();
+int Ride::getMinAge() const {
+	return minAge;
+}
+
+bool Ride::moveToUser(User* user) {
+	//???????what function????
+}
+
+void Ride::printInfo() const {
+	cout << "\n\tid : " << id;
+	cout << "\n\trequire time : " << requireTime;
+	cout << "\n\tnum of seats : " << numPerRide;
+	cout << "\n\twaiting time : " << watingTime;
+	cout << "\n\tmin age : " << minAge;
+	cout << "\n\ttotal user today : " << totalUser;
+}

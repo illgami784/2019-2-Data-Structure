@@ -20,7 +20,7 @@ public:
 	id에 Admin의 numOfEnterPeople을 넣음, wantToRide를 조건에 따라 생성함.
 	나머지 변수 초기화도 진행
 	*/
-	User(int numOfEnterPeople)
+	User(int numOfEnterPeople);
 
 	/**
 	*	@brief	무슨 함수인지 모르겠어요~ wantToRide가

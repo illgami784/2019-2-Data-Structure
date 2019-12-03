@@ -120,7 +120,7 @@ bool Ride::rideUser() {//requireTime마다 실행
 	// if numPerRide is more than waitingUser
 	if (numWaitingUser < numPerRide) {
 		for (int i = 0; i < numWaitingUser; i++) {
-			ridingUser.Pop();//만약에 rideUser가 null이면?? 처리필요!
+			user = ridingUser.Pop();//만약에 rideUser가 null이면?? 처리필요!
 			user->moveToUser();
 			waitingUser.DeQueue(user);
 			ridingUser.Push(user);
@@ -131,7 +131,7 @@ bool Ride::rideUser() {//requireTime마다 실행
 	// if numPerRide is less than waitingUser
 	else {
 		for (int i = 0; i < numPerRide; i++) {
-			ridingUser.Pop();//만약에 rideUser가 null이면?? 처리필요!
+			user = ridingUser.Pop();//만약에 rideUser가 null이면?? 처리필요!
 			user->moveToUser();
 			waitingUser.DeQueue(user);
 			ridingUser.Push(user);

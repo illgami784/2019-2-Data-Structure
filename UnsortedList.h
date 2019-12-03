@@ -200,12 +200,12 @@ int  UnsortedList<T>::Get(T& data) {
 	ResetList();
 	GetNextItem(temp);
 	while (m_CurPointer < m_Length) {
-		if (inData == m_Array[location])
+		if (data == m_Array[location])
 		{
 			data = temp;
 			return 1;
 		}
-		else if (inData < m_Array[location])
+		else if (data < m_Array[location])
 		{
 			return 0;
 		}

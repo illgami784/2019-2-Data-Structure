@@ -13,8 +13,6 @@ void Ride::setAllFromKB() {
 	cin >> requireTime;
 	cout << "\tSet the minAge(0-100) of Ride : ";
 	cin >> minAge;
-	cout << "\tSet the minTicketRank(0-10) of Ride : ";
-	cin >> minTicketRank;
 
 	cout << "\n\tThe Setup completed.\n";
 }

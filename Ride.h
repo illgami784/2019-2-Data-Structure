@@ -1,13 +1,13 @@
 #pragma once
 
 
-#include "User.h"
+//#include "User.h"
 #include "DoublySortedLinkedList.h"
 #include "Stack.h"
-#include "Admin.h"
+//#include "Admin.h"
 #include "Queue.h"
-class Admin;
 class User;
+class Admin;
 
 class Ride{
 public:
@@ -116,11 +116,10 @@ private:
 
 };
 bool Ride::rideUser() {//requireTime마다 실행
-	User* user;
 	// if numPerRide is more than waitingUser
 	if (numWaitingUser < numPerRide) {
 		for (int i = 0; i < numWaitingUser; i++) {
-			user = ridingUser.Pop();//만약에 rideUser가 null이면?? 처리필요!
+			User* user = ridingUser.Pop();//만약에 rideUser가 null이면?? 처리필요!
 			user->moveToUser();
 			waitingUser.DeQueue(user);
 			ridingUser.Push(user);
@@ -131,7 +130,7 @@ bool Ride::rideUser() {//requireTime마다 실행
 	// if numPerRide is less than waitingUser
 	else {
 		for (int i = 0; i < numPerRide; i++) {
-			user = ridingUser.Pop();//만약에 rideUser가 null이면?? 처리필요!
+			User* user = ridingUser.Pop();//만약에 rideUser가 null이면?? 처리필요!
 			user->moveToUser();
 			waitingUser.DeQueue(user);
 			ridingUser.Push(user);

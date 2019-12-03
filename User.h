@@ -2,9 +2,11 @@
 #include "Stack.h"
 #include "UnsortedList.h"
 #include <iostream>
-#include "Ride.h"
+//#include "Ride.h"
 //#include "Admin.h"
 using namespace std;
+class Ride;
+class Admin;
 
 class User {
 public:
@@ -92,18 +94,3 @@ private:
 	UnsortedList<int> wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
 	Stack<int> hadRide; //이미 탑승한 놀이기구가 담긴 스택
 };
-bool User::moveToUser() {
-	int min = 100000000000;
-	int cur;
-	wantToRide.ResetList();
-	for(int i = 0; i < wantToRide.GetLength(); i++){
-		wantToRide.GetNextItem(cur);
-		Ride test;
-		test.setId(cur);
-		Admin::rideList.Get(test);
-		if(min>test.getWaitingTime()){
-			min = test.getWaitingTime();
-			setNowLocation(cur);
-		}
-	}
-}

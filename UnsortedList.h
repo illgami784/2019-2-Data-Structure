@@ -199,6 +199,7 @@ int  UnsortedList<T>::Get(T& data) {
 	T temp;
 	ResetList();
 	GetNextItem(temp);
+	int location = 0;
 	while (m_CurPointer < m_Length) {
 		if (data == m_Array[location])
 		{

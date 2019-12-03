@@ -61,3 +61,19 @@ int User::getNowLocation() const
 {
 	return nowLocation;
 }
+
+/*bool User::moveToUser() {
+	int min = 100000000000;
+	int cur;
+	wantToRide.ResetList();
+	for (int i = 0; i < wantToRide.GetLength(); i++) {
+		wantToRide.GetNextItem(cur);
+		Ride test;
+		test.setId(cur);
+		Admin::rideList.Get(test);
+		if (min > test.getWaitingTime()) {
+			min = test.getWaitingTime();
+			setNowLocation(cur);
+		}
+	}
+}*/

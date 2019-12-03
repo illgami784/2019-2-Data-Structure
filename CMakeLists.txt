@@ -9,17 +9,18 @@ add_executable(amusement
         Admin.h
         Application.cpp
         Application.h
-        AppScreen.cpp
-        CircularQueue.h
+#        AppScreen.cpp
+#        CircularQueue.h
         DoublyIterator.h
         DoublySortedLinkedList.h
         main.cpp
         Queue.h
         Ride.cpp
         Ride.h
-        Screen.cpp
+#        Screen.cpp
         SortedList.h
         Stack.h
         UnsortedList.h
         User.cpp
-        User.h)
+        User.h
+        queue1.h)

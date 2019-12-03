@@ -1,13 +1,13 @@
 #pragma once
 
-
-#include "User.h"
+#include "queue1.h"
+//#include "User.h"
 #include "DoublySortedLinkedList.h"
 #include "Stack.h"
 #include "Admin.h"
 #include "Queue.h"
+
 class Admin;
-class User;
 
 class Ride{
 public:
@@ -112,18 +112,21 @@ private:
 
 	DoublySortedLinkedList<Ride>* rideListPointer; //자신이 담긴 rideList의 시작 주소를 가진다.
 	Stack<User*> ridingUser; //현재 탑승 중인 User을 담는 Stack
-	CircularQueueType<User*> waitingUser; //기다리는 User들을 담는 Queue - 추후 heap으로
+	Queue<User*> waitingUser; //기다리는 User들을 담는 Queue - 추후 heap으로
 
 };
 bool Ride::rideUser() {//requireTime마다 실행
 	User* user;
 	for (int i = 0; i < numPerRide; i++) {
-		ridingUser.Pop(user);
+		user = ridingUser.Pop();
 		user->moveToUser();
-		waitingUser.DeQueue(user);
+		waitingUser.dequeue(user);
 		ridingUser.Push(user);
 	}//일단 이렇게 하고 나중에 waitingUser가 numperRide 보다 작을때 (waitingUser가 Null일떄 예외처리)
 	calcWaitingTime();
+	Sleep(requireTime);
+	callback();
+
 
 }
 

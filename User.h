@@ -20,7 +20,7 @@ public:
 	id에 Admin의 numOfEnterPeople을 넣음, wantToRide를 조건에 따라 생성함.
 	나머지 변수 초기화도 진행
 	*/
-	User(int numOfEnterPeople)
+//	User(int numOfEnterPeople);
 
 	/**
 	*	@brief	무슨 함수인지 모르겠어요~ wantToRide가
@@ -88,10 +88,13 @@ private:
 	int ticketRank; //age와 함께 탈 수 있는 Ride 결정 ( 길이에서 변경 )
 	int age; //ticketRank와 함께 탈 수 있는 Ride 결정
 	int nowLocation; //현재 위치한 놀이기구 id, 초기 값은 -1, 놀이공원 바깥은 -2
+	static int count;
 
 	UnsortedList<int> wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
 	Stack<int> hadRide; //이미 탑승한 놀이기구가 담긴 스택
 };
+int User::count = 1;
+
 bool User::moveToUser() {
 	int min = 100000000000;
 	int cur;
@@ -100,12 +103,12 @@ bool User::moveToUser() {
 		wantToRide.GetNextItem(cur);
 		Ride test;
 		test.setId(cur);
-		Admin::rideList.Get(test);
-		if(min>test.getWaitingTime()){
-			min = test.getWaitingTime();
-			setNowLocation(cur);
+		auto ride = Admin::rideListPointer();
+		for(int j = 0; j < ride->GetLength();j++) {
+			if (min > test.getWaitingTime()) {
+				min = test.getWaitingTime();
+				setNowLocation(cur);
+			}
 		}
-		cur=0;
 	}
-	cur = 0;
 }

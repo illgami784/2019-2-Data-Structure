@@ -123,33 +123,6 @@ amusement/fast:
 	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/build
 .PHONY : amusement/fast
 
-AppScreen.o: AppScreen.cpp.o
-
-.PHONY : AppScreen.o
-
-# target to build an object file
-AppScreen.cpp.o:
-	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/AppScreen.cpp.o
-.PHONY : AppScreen.cpp.o
-
-AppScreen.i: AppScreen.cpp.i
-
-.PHONY : AppScreen.i
-
-# target to preprocess a source file
-AppScreen.cpp.i:
-	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/AppScreen.cpp.i
-.PHONY : AppScreen.cpp.i
-
-AppScreen.s: AppScreen.cpp.s
-
-.PHONY : AppScreen.s
-
-# target to generate assembly for a file
-AppScreen.cpp.s:
-	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/AppScreen.cpp.s
-.PHONY : AppScreen.cpp.s
-
 Application.o: Application.cpp.o
 
 .PHONY : Application.o
@@ -203,33 +176,6 @@ Ride.s: Ride.cpp.s
 Ride.cpp.s:
 	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/Ride.cpp.s
 .PHONY : Ride.cpp.s
-
-Screen.o: Screen.cpp.o
-
-.PHONY : Screen.o
-
-# target to build an object file
-Screen.cpp.o:
-	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/Screen.cpp.o
-.PHONY : Screen.cpp.o
-
-Screen.i: Screen.cpp.i
-
-.PHONY : Screen.i
-
-# target to preprocess a source file
-Screen.cpp.i:
-	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/Screen.cpp.i
-.PHONY : Screen.cpp.i
-
-Screen.s: Screen.cpp.s
-
-.PHONY : Screen.s
-
-# target to generate assembly for a file
-Screen.cpp.s:
-	$(MAKE) -f CMakeFiles/amusement.dir/build.make CMakeFiles/amusement.dir/Screen.cpp.s
-.PHONY : Screen.cpp.s
 
 User.o: User.cpp.o
 
@@ -294,18 +240,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... amusement"
-	@echo "... AppScreen.o"
-	@echo "... AppScreen.i"
-	@echo "... AppScreen.s"
 	@echo "... Application.o"
 	@echo "... Application.i"
 	@echo "... Application.s"
 	@echo "... Ride.o"
 	@echo "... Ride.i"
 	@echo "... Ride.s"
-	@echo "... Screen.o"
-	@echo "... Screen.i"
-	@echo "... Screen.s"
 	@echo "... User.o"
 	@echo "... User.i"
 	@echo "... User.s"

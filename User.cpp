@@ -1,19 +1,20 @@
 #include "User.h"
 
+//User::User()
+//{
+//	id = -1;
+//	ticketRank = -1;
+//	age = -1;
+//	nowLocation = -1;
+//}
+
 User::User()
 {
-	id = -1;
-	ticketRank = -1;
-	age = -1;
-	nowLocation = -1;
-}
-
-User::User(int numOfEnterPeople)
-{
-	id = numOfEnterPeople;
+	id = count;
 	ticketRank = rand() % 5;
 	age = rand() % 40 +10;
 	nowLocation = 0;
+	count++;
 };
 
 //bool User::WantToRide()

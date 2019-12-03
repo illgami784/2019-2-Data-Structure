@@ -5,6 +5,8 @@
 #include "DoublySortedLinkedList.h"
 #include "CircularQueue.h"
 #include "SortedList.h"
+#include <thread>
+#include <vector>
 class Ride;
 class User;
 
@@ -70,14 +72,24 @@ public:
     *   @brief   rideList pointer 반환
     *   @return rideList pointer
    */
-	DoublySortedLinkedList<Ride>* rideListPointer()
+	static DoublySortedLinkedList<Ride>* rideListPointer()
 	{
 		return &rideList;
 	}
-	friend class Admin;
+	void run(){
+		DoublyIterator<Ride> itor(rideList);
+		vector<thread> run;
+		thread temp;
+		while(itor.NotNull()){
+			run.push_back(thread(itor.GetCurrentNode().data.rideUser()));
+			itor.Next();
+		}
 
-	static DoublySortedLinkedList<Ride> rideList;
+
+	}
+
 private:
+	static DoublySortedLinkedList<Ride> rideList;
 	int numOfEnterUser; //개장 후 입장한 User의 수
 	int maxUser; //최대 수용 가능 User 수
 	int lenRideList; //rideList의 길이 = ride 갯수

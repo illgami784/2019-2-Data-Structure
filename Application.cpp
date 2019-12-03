@@ -1,4 +1,5 @@
 #include "Application.h"
+#include "AppScreen.cpp"
 
 Application::Application()
 {
@@ -23,12 +24,40 @@ void Application::run()
 }
 
 void Application::open()
-{
-	while (true) {
-		cout << "\n\t 종료를 위해서는 ~를 입력하세요";
+{	
+	//#include <conio.h>, <time.h>, <windows.h> needed
+	//visualizing random graph -> have to change into REAL Amuse graph
+	int input = 1;
 
+	cout << "\n\t Amusement Park Statistic";
+
+	cout << "\n\t Press 's' to close the park";
+
+	int randomgraph;//length of graph
+	int ridenum = 5;//5 rides 
+
+	while (true) { //repeat until press 's'
+
+		for (int i = 0; i <= ridenum; i++) {
+			cout << "\n\t" << i << "th Ride : ";
+			randomgraph = rand() % 60 + 1; // random graph
+			for(int i = 0; i <= randomgraph;i++)
+				cout << "+";
+			cout << endl;
+		}
+
+		if (_kbhit())
+		{
+			input = _getch(); //get input
+		}
+		Sleep(70);
+
+		if (input == 's') { //if input == 's'
+			isOpen = 0;//close
+			break;
+		}
 	}
-	isOpen = false;
+
 	return;
 }
 
@@ -84,6 +113,7 @@ bool Application::getCloseCommand()
 bool Application::getOpenCommand()
 {
 	cout << "\n\t안녕";
+	
 }
 
 

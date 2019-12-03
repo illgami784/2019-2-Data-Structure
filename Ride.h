@@ -107,6 +107,7 @@ private:
 	int minAge; //이 Ride를 타기 위한 최소 나이 (0~100)
 	int minTicketRank; //이 Ride를 타기 위한 최소 티켓 등급 (0~10)
 	int totalUser; //개장하고 탑승한 총 User 수
+	int numWaitingUser; //지금 기다리고 있는 사람의 수
 	bool isOpen; //개장 여부를 나타냄, rideUser 무한 루프를 깨기 위해 사용
 
 
@@ -117,12 +118,26 @@ private:
 };
 bool Ride::rideUser() {//requireTime마다 실행
 	User* user;
-	for (int i = 0; i < numPerRide; i++) {
-		ridingUser.Pop(user);
-		user->moveToUser();
-		waitingUser.DeQueue(user);
-		ridingUser.Push(user);
-	}//일단 이렇게 하고 나중에 waitingUser가 numperRide 보다 작을때 (waitingUser가 Null일떄 예외처리)
+	// numPerRide is more than waitingUser
+	if (numWatingUser < numPerRide) {
+		or (int i = 0; i < numWaitingUser; i++) {
+			ridingUser.Pop(user);
+			user->moveToUser();
+			waitingUser.DeQueue(user);
+			ridingUser.Push(user);
+		}
+		numWaitingUser = 0;
+	}
+	// numPerRide is less than waitingUser
+	else {
+		for (int i = 0; i < numPerRide; i++) {
+			ridingUser.Pop(user);
+			user->moveToUser();
+			waitingUser.DeQueue(user);
+			ridingUser.Push(user);
+		}
+		numWaitingUser -= numPerRide;
+	}
 	calcWaitingTime();
 
 }
@@ -144,8 +159,19 @@ bool Ride::rideUser() {//requireTime마다 실행
 //	calcWaitingTime();
 //}
 
+Ride::Ride() {
+	requireTime = 0; //놀이기구를 한번에 작동하는데 걸리는 시간(초 단위)
+	numPerRide = 0; //한 번에 놀이기구를  탈 수 있는 User 수
+	watingTime = 0; //예상 대기 시간(초 단위)
+	minAge = 0; //이 Ride를 타기 위한 최소 나이 (0~100)
+	minTicketRank = 0; //이 Ride를 타기 위한 최소 티켓 등급 (0~10)
+	totalUser = 0; //개장하고 탑승한 총 User 수
+	numWaitingUser = 0; //지금 기다리고 있는 사람의 수
+	isOpen = 1;
+}
+
 bool Ride::calcWaitingTime() {
-	watingTime = (waitingUser.getLength() / numPerRide) * requireTime;
+	watingTime = (numWaitingUser / numPerRide) * requireTime;
 }
 
 
@@ -161,4 +187,11 @@ void Ride::setId(int _id)
 
 void Ride::setMinAge(int minAge) {
 	Ride::minAge = minAge;
+}
+
+bool Ride::addWaitingUser(User user) {
+	numwWatingUser++;
+	waitingUser.EnQueue(user); //add User in the waitinglist
+
+	return true;
 }

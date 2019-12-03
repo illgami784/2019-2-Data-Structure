@@ -135,10 +135,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="AppScreen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Ride.cpp" />
-    <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="test.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

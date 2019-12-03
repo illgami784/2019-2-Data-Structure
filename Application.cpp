@@ -60,15 +60,14 @@ int Application::getKey()
 void Application::printLive()
 {
 	// ID, 대기인원, 대기시간? 이거만 있음될듯
-	// 에러 나는게 정상임다~ Ride가 개발용에서 쓰던 구조체 이름이라
+	// 이 함수랑
 	system("CLS");
 	fakeRide* ride = fAdmin.getRide();
 	int size = fAdmin.getSize();
-	cout << "\n" << setw(10) << "아이디" << setw(10) << "대기인원" << setw(10) << "대기시간";
+	cout << "\n" << setw(25) << "놀이기구 목록" << setw(10) << "대기인원";
 	for (int i = 0; i < size; i++) {
-		cout << "\n" << setw(10) << ride[i].id;
+		cout << "\n" << setw(25) << ride[i].info;
 		cout << setw(10) << ride[i].numWatingUser;
-		cout << setw(10) << ride[i].watingTime;
 		cout << '\t';
 		for (int j = 0; j < ride[i].watingTime; j++) {
 			cout << "■";

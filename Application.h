@@ -121,4 +121,5 @@ private:
 	int CloseTime; //폐장한 시간 통계에 사용?
 	bool isOpen; //개장 여부
 	Admin admin; //놀이동산 Admin
+	fakeAdmin fAdmin;
 };

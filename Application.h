@@ -1,6 +1,7 @@
 #pragma once
 #include "Admin.h"
 #include "test.cpp"
+#include "User.h"
 #include <iostream>
 #include <Windows.h>
 #include <iomanip>
@@ -50,12 +51,6 @@ public:
 	*	@return	open 리턴
 	*/
 	bool isItOpen() const;
-
-	/**
-	*	@brief	해당하는 id의 Ride의 상세 정보를 출력한다.
-	*	@pre	rideList에 해당하는 id의 Ride가 존재해야함
-	*/
-	void printRideInfo(int _id) const;
 
 	/**
 	*	@brief	모른 Ride의 대략적인 정보를 출력한다.

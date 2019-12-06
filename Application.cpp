@@ -23,24 +23,27 @@ void Application::run()
 
 void Application::open()
 {
-	int menu = 0;
+	m_Command = 0;
+	admin.run();
 	while (true) {
-		if (menu == -1) break;
-		switch (menu)
+		if (m_Command == -1) break;
+		switch (m_Command)
 		{
 		case 0:
 			printLive();
 			break;
 		case 1:
-			searchAllUser();
+			searchRide();
 			break;
 		case 2:
 			searchAllUser();
 			break;
 		}
-		menu = getKey();
+		m_Command = getKey();
 	}
 	isOpen = false;
+	admin.runDelete();
+	system("CLS");
 	return;
 }
 
@@ -149,14 +152,18 @@ bool Application::isItOpen() const
 bool Application::searchAllUser()
 {
 	int num = admin.getNumOfEnterUser();
-	cout << "\n\t현재 유저는 0~" << num;
-
+	int id;
+	while (true) {
+		cout << "\n\t현재 유저는 0~" << num - 1 << "까지 입니다.";
+		cout << "\n\t검색하고 싶은 유저 번호를 입력하세요-->";
+		cin >> id;
+		if (id >= 0 && id < num) { break; }
+		cout << "\n\t잘못된 입력입니다.";
+	}
+	User searchedUser = admin.searchUser(id);
+	searchedUser.printInfo();
+	m_Command = 0;
 	return true;
-}
-
-void Application::printRideInfo(int _id) const
-{
-
 }
 
 void Application::printAllRideInfo() const
@@ -168,23 +175,49 @@ void Application::printAllRideInfo() const
 
 bool Application::searchRide()
 {
+	int num = admin.getRideLength();
 	int id;
-	cout << "\n\t검색하고 싶은 놀이기구의 id를 입력하세요 -->";
+	while (true) {
+		cout << "\n\t현재 놀이기구는 0~" << num - 1 << "까지 입니다.";
+		cout << "\n\t검색하고 싶은 놀이기구 번호를 입력하세요-->";
+		cin >> id;
+		if (id >= 0 && id < num) { break; }
+		cout << "\n\t잘못된 입력입니다.";
+	}
+	Ride searchedRide = admin.searchRide(id);
+	searchedRide.printInfo();
+	m_Command = 0;
 	return true;
 }
 
 
 bool Application::addRide()
 {
-
+	Ride addingRide;
+	addingRide.setAllFromKB();
+	admin.addRide(addingRide);
 	return true;
 }
 
 
 bool Application::deleteRide()
 {
-
-	return true;
+	int id;
+	int num = admin.getRideLength();
+	while (true) {
+		cout << "\n\t현재 놀이기구는 0~" << num - 1 << "까지 입니다.";
+		cout << "\n\t삭제하고 싶은 놀이기구 번호를 입력하세요-->";
+		cin >> id;
+		if (id >= 0 && id < num) { break; }
+		cout << "\n\t잘못된 입력입니다.";
+	}
+	if (admin.deleteRide(id))
+	{
+		cout << "\n\t삭제에 성공했습니다.";
+		return true;
+	}
+	cout << "\n\t삭제에 실패했습니다.";
+	return false;
 }
 
 bool Application::updateRide()

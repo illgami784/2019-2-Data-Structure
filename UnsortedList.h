@@ -233,8 +233,8 @@ void  UnsortedList::Delete(int data) {
 }
 
 
-void  UnsortedList::Replace(T data) {
-	T temp = data;
+void  UnsortedList::Replace(int data) {
+	int temp = data;
 	if (Get(data)) {
 		cout << "\n\t" << "대체 성공했습니다.";
 		m_Array[m_CurPointer] = data;

@@ -98,7 +98,8 @@ public:
 		{
 			if (itor.GetCurrentNode().data.getId() == idx)
 			{
-				return itor.GetCurrentNode().data;
+				Ride temp(itor.GetCurrentNodePointer()->data);
+				return temp;
 			}
 			itor.Next();
 		}

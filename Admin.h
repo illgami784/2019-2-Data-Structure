@@ -65,6 +65,7 @@ public:
 					}
 				}
 			}
+			itor.Next();
 		}
 		user.setNowLocation(idx);
 	}
@@ -99,6 +100,7 @@ public:
 			{
 				return itor.GetCurrentNode().data;
 			}
+			itor.Next();
 		}
 	}
 
@@ -213,14 +215,16 @@ bool Admin::deleteRide(int _id)
 }
 
 bool Admin::newUser() {
-	User user;
+	User user(numOfEnterUser);
 	if (waitingEnterUser.getLength())
 	{
 		waitingEnterUser.dequeue(user);
+		user.WantToRide();
 		nextRide(user);
 		userList.Add(user);
 	}
 	else if (!userList.IsFull()) {
+		user.WantToRide();
 		nextRide(user);
 		userList.Add(user);
 	}

@@ -9,6 +9,13 @@
 class User;
 class Admin;
 
+struct liveInfo{
+	int info;
+	int totalUser;
+	int numWatingUser;
+	int watingtime;
+};
+
 void my_sleep(unsigned msec) {
 	struct timespec req, rem;
 	int err;
@@ -37,6 +44,25 @@ public:
 	id는 Admin의 RideList의 길이에 따라 정해짐, watingTime 0으로 초기화
 	*/
 	Ride();
+
+	/*
+	copy constructure
+	int id; //고유 번호 RideList의 길이에 따라 정해짐
+	int requireTime; //놀이기구를 한번에 작동하는데 걸리는 시간(초 단위)
+	int numPerRide; //한 번에 놀이기구를  탈 수 있는 User 수
+	int watingTime; //예상 대기 시간(초 단위)
+	int minAge; //이 Ride를 타기 위한 최소 나이 (0~100)
+	int totalUser; //개장하고 탑승한 총 User 수
+	int numWaitingUser; //지금 기다리고 있는 사람의 수
+	bool isOpen;
+	*/
+	Ride(Ride& ride) {
+		this->id = ride.id;
+		this->requireTime = ride.requireTime;
+		this->minAge = ride.minAge;
+		this->numPerRide = ride.numPerRide;
+		this->totalUser = ride.totalUser;
+	}
 
 	/**
 	*	@brief	watingTime을 산출함. rideUser 루프가 돌때마다 호출
@@ -117,6 +143,30 @@ public:
 	int getWaitingTime(){
 		return watingTime;
 	}
+
+	int getId() {
+		return id;
+	}
+
+	liveInfo getLiveInfo() {
+		liveInfo print;
+		print.info = id;
+		print.numWatingUser = numWaitingUser;
+		print.watingtime = watingTime;
+
+		return print;
+	}
+
+	liveInfo printStat() {
+		liveInfo print;
+		print.info = id;
+		print.totalUser = totalUser;
+		print.watingtime = maxWatingTime;
+		print.numWatingUser = maxNumWatingUser;
+
+		return liveInfo;
+	}
+
 	bool operator<(const Ride &rhs) const;
 
 	bool operator>(const Ride &rhs) const;
@@ -141,6 +191,8 @@ private:
 	int totalUser; //개장하고 탑승한 총 User 수
 	int numWaitingUser; //지금 기다리고 있는 사람의 수
 	bool isOpen; //개장 여부를 나타냄, rideUser 무한 루프를 깨기 위해 사용
+	int maxWatingTime;//하루 최대 watingTime
+	int maxNumWatingUser;//하루 최대 기다린사람
 
 
 	DoublySortedLinkedList<Ride>* rideListPointer; //자신이 담긴 rideList의 시작 주소를 가진다.
@@ -202,7 +254,7 @@ Ride::Ride() {
 	minAge = 0; //이 Ride를 타기 위한 최소 나이 (0~100)
 	totalUser = 0; //개장하고 탑승한 총 User 수
 	numWaitingUser = 0; //지금 기다리고 있는 사람의 수
-	isOpen = 1;
+	isOpen = 0; //false
 }
 
 bool Ride::calcWaitingTime() {
@@ -234,10 +286,10 @@ bool Ride::moveToUser(User* user) {
 }
 
 void Ride::printInfo() const {
-	cout << "\n\tid : " << id;
-	cout << "\n\trequire time : " << requireTime;
-	cout << "\n\tnum of seats : " << numPerRide;
-	cout << "\n\twaiting time : " << watingTime;
-	cout << "\n\tmin age : " << minAge;
-	cout << "\n\ttotal user today : " << totalUser;
+	cout << "\n\tid : " << id << endl;
+	cout << "\n\trequire time : " << requireTime << endl;
+	cout << "\n\tnum of seats : " << numPerRide << endl;
+	cout << "\n\tmin age : " << minAge << endl;
 }
+
+

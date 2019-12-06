@@ -1,6 +1,7 @@
 #pragma once
 #include "Stack.h"
 #include "UnsortedList.h"
+#include "DoublySortedLinkedList.h"
 #include <iostream>
 //#include "Ride.h"
 #include "Admin.h"
@@ -32,6 +33,14 @@ public:
 		this->age = user.age;
 		this->ticketRank = user.ticketRank;
 		this->nowLocation = user.nowLocation;
+
+		int i = user->wantToRide.GetLength();
+		user.wantToRide.ResetList();
+		int temp;
+		for (int j = 0; j < i; j++) {
+			user.wantToRide.GetNextItem(temp);
+			this->wantToRide.Add(temp);
+		}
 	}
 
 	/**
@@ -92,11 +101,16 @@ public:
 	*/
 	int getNowLocation() const;
 
+	void setAllFromKB() {
+
+	}
+
 	/*wanted to ride list의 포인터를 반환*/
 	UnsortedList* wantToRidePointer()
 	{
 		return &wantToRide;
 	}
+
 
 	friend class Ride;
 	
@@ -114,9 +128,10 @@ public:
 
 private:
 	int id; //고유 번호, numOfEnterPeople로 정함
-	int ticketRank; //age와 함께 탈 수 있는 Ride 결정 ( 길이에서 변경 )
 	int age; //ticketRank와 함께 탈 수 있는 Ride 결정
 	int nowLocation; //현재 위치한 놀이기구 id, 초기 값은 -1, 놀이공원 바깥은 -2
+
+	DoublySortedLinkedList<Ride>* rideListPointer;
 
 	UnsortedList wantToRide; //타고 싶은 놀이기구 id가 담긴 배열
 	Stack<int> hadRide; //이미 탑승한 놀이기구가 담긴 스택

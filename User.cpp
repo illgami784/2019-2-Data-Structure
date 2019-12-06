@@ -1,33 +1,47 @@
 #include "User.h"
 
+
 User::User()
 {
 	id = -1;
 	ticketRank = -1;
 	age = -1;
 	nowLocation = -1;
-	
-	wantToRide.Add(6);
-	wantToRide.Add(3);
 }
 
-User::User(int numOfEnterPeople)
+User::User(int numOfEnterPeople., DoublySortedLinkedList<Ride>* ride)
 {
 	id = numOfEnterPeople;
-	ticketRank = rand() % 5;
 	age = rand() % 40 +10;
 	nowLocation = 0;
+
+	rideListPointer = ride;
 };
 
-//bool User::WantToRide()
-//{
-//	return false;
-//}
+//wantToRide 초기화
+bool User::WantToRide()
+{
+	DoublyIterator<Ride> itor(*rideListPointer());
+	itor.Next();
+	int half;
+	while (itor.NextNotNull())
+	{
+		int i = itor.GetCurrentNode().data.getMinAge();//놀이기구의 minAge
+		if (i <= age) {
+			half = rand() % 2;
+			if (half == 1)
+				wantToRide.Add(i);
+		}
+		itor.Next();
+	}
+	return true;
+}
 
 void User::printInfo() const
 {
-	cout << "\nID : " << id << "\tTicketRank : " << ticketRank 
-		<< "\tAge : " << age << "\tNowLocation : " << nowLocation;
+	cout << "\n\tID : " << id;
+	cout << "\n\tAge : " << age;
+	cout << "\n\tNowLocation : " << nowLocation;
 }
 
 bool User::setAge(int _age)

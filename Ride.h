@@ -117,6 +117,20 @@ public:
 	int getWaitingTime(){
 		return watingTime;
 	}
+	bool operator<(const Ride &rhs) const;
+
+	bool operator>(const Ride &rhs) const;
+
+	bool operator<=(const Ride &rhs) const;
+
+	bool operator>=(const Ride &rhs) const;
+	
+	bool operator==(const Ride &rhs) const;
+
+	bool operator!=(const Ride &rhs) const;
+
+	friend class User;
+
 
 private:
 	int id; //고유 번호 RideList의 길이에 따라 정해짐

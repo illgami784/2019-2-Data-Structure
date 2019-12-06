@@ -92,5 +92,7 @@ public:
     void MakeEmpty(){
      for(temp = head; temp != NULL; temp = temp->next)
          delete temp;
+      head = NULL;
+      tail = NULL;
     }
 };

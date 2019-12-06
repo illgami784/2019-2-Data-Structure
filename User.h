@@ -24,6 +24,16 @@ public:
 	*/
 	User(int numOfEnterPeople);
 
+	/*
+	복사생성자
+	*/
+	User(User& user) {
+		this->id = user.id;
+		this->age = user.age;
+		this->ticketRank = user.ticketRank;
+		this->nowLocation = user.nowLocation;
+	}
+
 	/**
 	*	@brief	무슨 함수인지 모르겠어요~ wantToRide가
 	비었는지에 대한 여부를 알려주는건가?
@@ -81,7 +91,13 @@ public:
 	*	@return	nowLocation을 리턴함.
 	*/
 	int getNowLocation() const;
-	bool moveToUser();
+
+	/*wanted to ride list의 포인터를 반환*/
+	UnsortedList* wantToRidePointer()
+	{
+		return &wantToRide;
+	}
+
 	friend class Ride;
 	
 	bool operator==(const User &rhs) const;

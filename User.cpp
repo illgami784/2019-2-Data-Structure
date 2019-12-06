@@ -89,6 +89,7 @@ bool User::operator!=(const User &rhs) const {
 	return !(rhs == *this);
 }
 
+
 /*bool User::moveToUser() {
 	int min = 100000000000;
 	int cur;

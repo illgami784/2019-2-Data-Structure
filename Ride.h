@@ -1,11 +1,10 @@
 #pragma once
-
-
 //#include "User.h"
 #include "DoublySortedLinkedList.h"
 #include "Stack.h"
 //#include "Admin.h"
 #include "Queue.h"
+#include <Windows.h>
 class User;
 class Admin;
 
@@ -15,25 +14,6 @@ struct liveInfo{
 	int numWatingUser;
 	int watingtime;
 };
-
-void my_sleep(unsigned msec) {
-	struct timespec req, rem;
-	int err;
-	req.tv_sec = msec / 1000;
-	req.tv_nsec = (msec % 1000) * 1000000;
-	while ((req.tv_sec != 0) || (req.tv_nsec != 0)) {
-		if (nanosleep(&req, &rem) == 0)
-			break;
-		err = errno;
-		// Interrupted; continue
-		if (err == EINTR) {
-			req.tv_sec = rem.tv_sec;
-			req.tv_nsec = rem.tv_nsec;
-		}
-		// Unhandleable error (EFAULT (bad pointer), EINVAL (bad timeval in tv_nsec), or ENOSYS (function not supported))
-		break;
-	}
-}
 
 class Ride{
 public:
@@ -140,6 +120,11 @@ public:
 
 	void setMinAge(int minAge);
 
+	void setRideListPointer(DoublySortedLinkedList<Ride>* _rideListPointer)
+	{
+		rideListPointer = _rideListPointer;
+	}
+
 	int getWaitingTime(){
 		return watingTime;
 	}
@@ -162,9 +147,9 @@ public:
 		print.info = id;
 		print.totalUser = totalUser;
 		print.watingtime = maxWatingTime;
-		print.numWatingUser = maxNumWatingUser;
+		print.numWatingUser = maxNumWaitingUser;
 
-		return liveInfo;
+		return print;
 	}
 
 	bool operator<(const Ride &rhs) const;
@@ -192,12 +177,12 @@ private:
 	int numWaitingUser; //지금 기다리고 있는 사람의 수
 	bool isOpen; //개장 여부를 나타냄, rideUser 무한 루프를 깨기 위해 사용
 	int maxWatingTime;//하루 최대 watingTime
-	int maxNumWatingUser;//하루 최대 기다린사람
+	int maxNumWaitingUser;//하루 최대 기다린사람
 
 
 	DoublySortedLinkedList<Ride>* rideListPointer; //자신이 담긴 rideList의 시작 주소를 가진다.
 	Stack<User*> ridingUser; //현재 탑승 중인 User을 담는 Stack
-	CircularQueueType<User*> waitingUser; //기다리는 User들을 담는 Queue - 추후 heap으로
+	Queue<User*> waitingUser; //기다리는 User들을 담는 Queue - 추후 heap으로
 
 };
 bool Ride::rideUser() {//requireTime마다 실행
@@ -205,8 +190,8 @@ bool Ride::rideUser() {//requireTime마다 실행
 	if (numWaitingUser < numPerRide) {
 		for (int i = 0; i < numWaitingUser; i++) {
 			User* user = ridingUser.Pop();//만약에 rideUser가 null이면?? 처리필요!
-			user->moveToUser();
-			waitingUser.DeQueue(user);
+			moveToUser(user);
+			waitingUser.dequeue(user);
 			ridingUser.Push(user);
 			totalUser++;//이용객 수 +1 
 		}
@@ -216,15 +201,15 @@ bool Ride::rideUser() {//requireTime마다 실행
 	else {
 		for (int i = 0; i < numPerRide; i++) {
 			User* user = ridingUser.Pop();//만약에 rideUser가 null이면?? 처리필요!
-			user->moveToUser();
-			waitingUser.DeQueue(user);
+			moveToUser(user);
+			waitingUser.dequeue(user);
 			ridingUser.Push(user);
 			totalUser++;//이용객 수 +1 
 		}
 		numWaitingUser -= numPerRide;
 	}
 	calcWaitingTime();
-	my_sleep(requireTime);
+	Sleep(requireTime);
 
 }
 
@@ -237,7 +222,7 @@ bool Ride::moveToUser(User* user) {
 		user->wantToRide.GetNextItem(cur);
 		Ride test;
 		test.setId(cur);
-		Admin::rideList.Get(test);
+		rideListPointer->Get(test);
 		if(min>test.getWaitingTime()){
 			min = test.getWaitingTime();
 			user->setNowLocation(cur);
@@ -259,6 +244,13 @@ Ride::Ride() {
 
 bool Ride::calcWaitingTime() {
 	watingTime = (numWaitingUser / numPerRide) * requireTime;
+
+	if (watingTime > maxWatingTime) {
+		maxWatingTime = watingTime;
+	}
+	if (numWaitingUser > maxNumWaitingUser) {
+		maxNumWaitingUser = numWaitingUser;
+	}
 }
 
 void Ride::setId(int _id)
@@ -272,17 +264,13 @@ void Ride::setMinAge(int minAge) {
 
 bool Ride::addWaitingUser(User& user) {
 	numWaitingUser++;
-	waitingUser.EnQueue(&user); //add User in the waitinglist
+	waitingUser.enqueue(&user); //add User in the waitinglist
 
 	return true;
 }
 
 int Ride::getMinAge() const {
 	return minAge;
-}
-
-bool Ride::moveToUser(User* user) {
-	//???????what function????
 }
 
 void Ride::printInfo() const {
@@ -292,4 +280,21 @@ void Ride::printInfo() const {
 	cout << "\n\tmin age : " << minAge << endl;
 }
 
+bool Ride::run() {
+	totalUser = 0;
+	isOpen = true;
+	maxNumWaitingUser = 0;
+	maxWatingTime = 0;
+	while (true)
+	{
+		rideUser();
+	}
+}
 
+bool Ride::stop() {
+	numWaitingUser = 0;
+	isOpen = false;
+	watingTime = 0;
+	ridingUser.Empty();
+	waitingUser.MakeEmpty();
+}

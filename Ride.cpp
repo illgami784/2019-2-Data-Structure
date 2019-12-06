@@ -6,7 +6,7 @@ using namespace std;
 
 
 void Ride::setAllFromKB() {
-	//id, requireTime, minAge, minticketRankÀ» Å°º¸µå·ÎºÎÅÍ ÀÔ·Â ¹Ş¾Æ ¼³Á¤.
+	//id, requireTime, minAge, minticketRankì„ í‚¤ë³´ë“œë¡œë¶€í„° ì…ë ¥ ë°›ì•„ ì„¤ì •.
 	cout << "\tSet the id of Ride : ";
 	cin >> id;
 	cout << "\tSet the requireTime(second) of Ride : ";
@@ -15,4 +15,8 @@ void Ride::setAllFromKB() {
 	cin >> minAge;
 
 	cout << "\n\tThe Setup completed.\n";
+}
+
+int Ride::getMinAge() const {
+	return minAge;
 }

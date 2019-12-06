@@ -23,7 +23,7 @@ public:
 	id에 Admin의 numOfEnterPeople을 넣음, wantToRide를 조건에 따라 생성함.
 	나머지 변수 초기화도 진행
 	*/
-	User(int numOfEnterPeople);
+	User(int numOfEnterPeople, DoublySortedLinkedList<Ride>* ride);
 
 	/*
 	복사생성자
@@ -31,7 +31,6 @@ public:
 	User(User& user) {
 		this->id = user.id;
 		this->age = user.age;
-		this->ticketRank = user.ticketRank;
 		this->nowLocation = user.nowLocation;
 
 		int i = user->wantToRide.GetLength();
@@ -106,7 +105,7 @@ public:
 	}
 
 	/*wanted to ride list의 포인터를 반환*/
-	UnsortedList* wantToRidePointer()
+	UnsortedList* WantToRidePointer()
 	{
 		return &wantToRide;
 	}

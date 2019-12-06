@@ -48,16 +48,17 @@ public:
 	*/
 	bool nextRide(User& user)
 	{
-	;
+		int temp;
 		DoublyIterator<Ride> itor(*rideListPointer());
 		int idx;
 		int min = 100000;
 		itor.Next();
+		user.WantToRidePointer()->ResetList();
 		while (itor.NextNotNull())
 		{
 			for (int i = 0; i < user.WantToRidePointer().getLength(); i++)
 			{
-				if (itor.GetCurrentNode().data == *(user.WantToRidePointer() + i))
+				if (itor.GetCurrentNode().data.getId() == temp)
 				{
 					if (itor.GetCurrentNode().data.getWaitingTime() < min)
 					{
@@ -130,7 +131,7 @@ public:
 		for (int i = 0; i < userList.GetLength(); i++)
 		{
 			userList.GetNextItem(temp);
-			if (temp == idx)
+			if (temp.getId() == idx)
 			{
 				return temp;
 			}

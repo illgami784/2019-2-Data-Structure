@@ -33,7 +33,7 @@ public:
 		this->age = user.age;
 		this->nowLocation = user.nowLocation;
 
-		int i = user->wantToRide.GetLength();
+		int i = user.wantToRide.GetLength();
 		user.wantToRide.ResetList();
 		int temp;
 		for (int j = 0; j < i; j++) {

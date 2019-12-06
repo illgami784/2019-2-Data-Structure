@@ -56,7 +56,7 @@ public:
 		user.WantToRidePointer()->ResetList();
 		while (itor.NextNotNull())
 		{
-			for (int i = 0; i < user.WantToRidePointer().getLength(); i++)
+			for (int i = 0; i < user.WantToRidePointer()->GetLength(); i++)
 			{
 				if (itor.GetCurrentNode().data.getId() == temp)
 				{
@@ -217,7 +217,7 @@ bool Admin::deleteRide(int _id)
 }
 
 bool Admin::newUser() {
-	User user(numOfEnterUser);
+	User user(numOfEnterUser,userList);
 	if (waitingEnterUser.getLength())
 	{
 		waitingEnterUser.dequeue(user);

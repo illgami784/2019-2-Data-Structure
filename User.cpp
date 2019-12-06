@@ -4,12 +4,11 @@
 User::User()
 {
 	id = -1;
-	ticketRank = -1;
 	age = -1;
 	nowLocation = -1;
 }
 
-User::User(int numOfEnterPeople., DoublySortedLinkedList<Ride>* ride)
+User::User(int numOfEnterPeople, DoublySortedLinkedList<Ride>* ride)
 {
 	id = numOfEnterPeople;
 	age = rand() % 40 +10;
@@ -21,7 +20,7 @@ User::User(int numOfEnterPeople., DoublySortedLinkedList<Ride>* ride)
 //wantToRide √ ±‚»≠
 bool User::WantToRide()
 {
-	DoublyIterator<Ride> itor(*rideListPointer());
+	DoublyIterator<Ride> itor(*rideListPointer);
 	itor.Next();
 	int half;
 	while (itor.NextNotNull())

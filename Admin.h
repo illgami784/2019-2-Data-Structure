@@ -7,7 +7,8 @@
 #include "SortedList.h"
 #include <thread>
 #include <vector>
-#include "queue1.h"
+#include "Queue.h"
+
 class Ride;
 class User;
 
@@ -95,6 +96,11 @@ public:
 		for(auto elem: *runVector){
 			delete elem;
 		}
+	}
+
+	int getNumOfEnterUser()
+	{
+		return numOfEnterUser;
 	}
 
 private:

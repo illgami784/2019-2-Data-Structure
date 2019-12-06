@@ -32,9 +32,11 @@ void Application::open()
 			printLive();
 			break;
 		case 1:
-			int i;
-			cout << "\n\t검색할 기구 아이디 -->";
-			cin >> i;
+			searchAllUser();
+			break;
+		case 2:
+			searchAllUser();
+			break;
 		}
 		menu = getKey();
 	}
@@ -52,6 +54,8 @@ int Application::getKey()
 			return -1;
 		case 's':
 			return 1;
+		case 'u':
+			return 2;
 		}
 	}
 	return 0;
@@ -73,7 +77,7 @@ void Application::printLive()
 			cout << "■";
 		}
 	}
-	cout << "\n\n\t" << "- 중단하기(p)" << "\n\t" << "- 놀이기구 상세 정보 검색(s)" << "\n\t-->";
+	cout << "\n\n\t" << "- 중단하기(p)" << "\n\t" << "- 놀이기구 상세 정보 검색(s)" << "\n\t" << "- 유저 상세 정보 검색(u)" "\n\t-->";
 	Sleep(1000);
 }
 
@@ -139,12 +143,13 @@ bool Application::getOpenCommand()
 
 bool Application::isItOpen() const
 {
-
-	return true;
+	return isOpen;
 }
 
 bool Application::searchAllUser()
 {
+	int num = admin.getNumOfEnterUser();
+	cout << "\n\t현재 유저는 0~" << num;
 
 	return true;
 }
@@ -163,7 +168,8 @@ void Application::printAllRideInfo() const
 
 bool Application::searchRide()
 {
-
+	int id;
+	cout << "\n\t검색하고 싶은 놀이기구의 id를 입력하세요 -->";
 	return true;
 }
 

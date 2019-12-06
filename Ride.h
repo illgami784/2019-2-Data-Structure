@@ -176,22 +176,23 @@ bool Ride::rideUser() {//requireTime마다 실행
 
 }
 
-//bool Ride::moveToUser(User* user) {
-//	int min = 100000000000;
-//	int cur;
-//	user->wantToRide.ResetList();
-//	for(int i = 0; i < user->wantToRide.GetLength(); i++){
-//		user->wantToRide.GetNextItem(cur);
-//		Ride test;
-//		test.setId(cur);
-//		Admin::rideList.Get(test);
-//		if(min>test.getWaitingTime()){
-//			min = test.getWaitingTime();
-//			user->setNowLocation(cur);
-//		}
-//	}
-//	calcWaitingTime();
-//}
+bool Ride::moveToUser(User* user) {
+	int min = 100000000000;
+	int cur;
+	user->wantToRide.ResetList();
+
+	for(int i = 0; i < user->wantToRide.GetLength(); i++){
+		user->wantToRide.GetNextItem(cur);
+		Ride test;
+		test.setId(cur);
+		Admin::rideList.Get(test);
+		if(min>test.getWaitingTime()){
+			min = test.getWaitingTime();
+			user->setNowLocation(cur);
+		}
+	}
+	calcWaitingTime();
+}
 
 Ride::Ride() {
 	id = -1;

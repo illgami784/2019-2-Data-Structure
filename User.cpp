@@ -6,6 +6,9 @@ User::User()
 	ticketRank = -1;
 	age = -1;
 	nowLocation = -1;
+	
+	wantToRide.Add(6);
+	wantToRide.Add(3);
 }
 
 User::User(int numOfEnterPeople)
@@ -60,6 +63,30 @@ int User::getId() const
 int User::getNowLocation() const
 {
 	return nowLocation;
+}
+
+bool User::operator==(const User &rhs) const {
+	return id == rhs.id;
+}
+
+bool User::operator<(const User &rhs) const {
+	return id < rhs.id;
+}
+
+bool User::operator>(const User &rhs) const {
+	return rhs < *this;
+}
+
+bool User::operator<=(const User &rhs) const {
+	return !(rhs < *this);
+}
+
+bool User::operator>=(const User &rhs) const {
+	return !(*this < rhs);
+}
+
+bool User::operator!=(const User &rhs) const {
+	return !(rhs == *this);
 }
 
 /*bool User::moveToUser() {

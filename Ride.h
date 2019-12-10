@@ -36,7 +36,7 @@ public:
 	int numWaitingUser; //지금 기다리고 있는 사람의 수
 	bool isOpen;
 	*/
-	Ride(Ride& ride) {
+	Ride(const Ride& ride) {
 		this->id = ride.id;
 		this->requireTime = ride.requireTime;
 		this->minAge = ride.minAge;
@@ -163,6 +163,8 @@ public:
 	bool operator==(const Ride &rhs) const;
 
 	bool operator!=(const Ride &rhs) const;
+
+	Ride& operator=(const Ride& rhs);
 
 	friend class User;
 

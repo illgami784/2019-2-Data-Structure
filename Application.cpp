@@ -1,3 +1,4 @@
+#pragma once
 #include "Application.h"
 Application::Application()
 {
@@ -195,7 +196,7 @@ bool Application::addRide()
 {
 	Ride addingRide;
 	addingRide.setAllFromKB();
-	admin.addRide(addingRide);
+	admin.insertRide(addingRide);
 	return true;
 }
 
@@ -211,7 +212,7 @@ bool Application::deleteRide()
 		if (id >= 0 && id < num) { break; }
 		cout << "\n\t잘못된 입력입니다.";
 	}
-	if (admin.deleteRide(id))
+	if (admin.removeRide(id))
 	{
 		cout << "\n\t삭제에 성공했습니다.";
 		return true;

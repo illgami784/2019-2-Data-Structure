@@ -89,7 +89,7 @@ public:
         }
     }
     int getLength(){
-
+		return length;
     }
     
     void MakeEmpty(){

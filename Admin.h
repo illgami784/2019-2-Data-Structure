@@ -53,6 +53,7 @@ public:
 		int min = 100000;
 		itor.Next();
 		user.WantToRidePointer()->ResetList();
+		user.WantToRidePointer()->GetNextItem(temp);
 		while (itor.NextNotNull())
 		{
 			for (int i = 0; i < user.WantToRidePointer()->GetLength(); i++)
@@ -64,10 +65,13 @@ public:
 						idx = itor.GetCurrentNode().data.getId();
 					}
 				}
+
+				user.WantToRidePointer()->GetNextItem(temp);
 			}
 			itor.Next();
 		}
 		user.setNowLocation(idx);
+		return 1;
 	}
 
 	/**
@@ -76,7 +80,7 @@ public:
 	*	@post	rideList의 끝에 ride 추가.
 	*	@return	성공시 true 실패시 false
 	*/
-	bool addRide(Ride& ride);
+	bool insertRide(Ride& ride);
 
 	/**
 	*	@brief	rideList에 ride를 제거한다.
@@ -84,7 +88,7 @@ public:
 	*	@post	rideList에서 해당 id의 놀이기구 제거
 	*	@return	성공시 true 실패시 false
 	*/
-	bool deleteRide(int _id);
+	bool removeRide(int _id);
 
 	/**
 	*	@brief	id를 받아 RideList에서 비교후 동일한 ride를 반환
@@ -159,12 +163,15 @@ public:
 		runVector = new vector<thread*>;
 		thread* temp = new thread;
 		while (itor.NotNull()) {
-			runVector->push_back(new thread(itor.GetCurrentNode().data.rideUser()));
+			runVector->push_back(new thread([&]() { itor.GetCurrentNode().data.rideUser();  }));
 			itor.Next();
 		}
 
 		//run 전체 실행
-
+		for (auto run : *runVector)
+		{
+			run->detach();
+		}
 
 	}
 	void runDelete() {
@@ -194,16 +201,17 @@ Admin::Admin()
 	numOfEnterUser = 0;
 	maxUser = 100; //maxUser 미정
 	lenRideList = 0;
+	runVector = NULL;
 }
 
-bool Admin::addRide(Ride& ride)
+bool Admin::insertRide(Ride& ride)
 {
 	if (rideList.Add(ride))
 		return 1;
 	return 0;
 }
 
-bool Admin::deleteRide(int _id)
+bool Admin::removeRide(int _id)
 {
 	Ride temp;
 	temp.setId(_id);
@@ -236,5 +244,5 @@ bool Admin::newUser() {
 	srand((unsigned int)time(0));
 	int time = rand() % 500 + 100;
 	Sleep(time);
-
+	return 1;
 }

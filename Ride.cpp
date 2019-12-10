@@ -1,3 +1,4 @@
+#pragma once
 #include "Ride.h"
 #include "User.h"
 

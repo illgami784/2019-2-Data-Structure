@@ -1,5 +1,6 @@
 #ifndef _UNSORTEDLIST_H
 #define _UNSORTEDLIST_H
+#pragma once
 
 #include <iostream>
 #include <fstream>	

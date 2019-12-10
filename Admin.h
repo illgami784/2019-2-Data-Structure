@@ -45,34 +45,8 @@ public:
 	*	@post	user의 setNowLocation 호출해 값 변경
 	*	@return	성공시 true, 실패시 false
 	*/
-	bool nextRide(User& user)
-	{
-		int temp;
-		DoublyIterator<Ride> itor(*rideListPointer());
-		int idx;
-		int min = 100000;
-		itor.Next();
-		user.WantToRidePointer()->ResetList();
-		user.WantToRidePointer()->GetNextItem(temp);
-		while (itor.NextNotNull())
-		{
-			for (int i = 0; i < user.WantToRidePointer()->GetLength(); i++)
-			{
-				if (itor.GetCurrentNode().data.getId() == temp)
-				{
-					if (itor.GetCurrentNode().data.getWaitingTime() < min)
-					{
-						idx = itor.GetCurrentNode().data.getId();
-					}
-				}
+	bool nextRide(User& user);
 
-				user.WantToRidePointer()->GetNextItem(temp);
-			}
-			itor.Next();
-		}
-		user.setNowLocation(idx);
-		return 1;
-	}
 
 	/**
 	*	@brief	rideList에 ride를 추가한다.
@@ -94,96 +68,36 @@ public:
 	*	@brief	id를 받아 RideList에서 비교후 동일한 ride를 반환
 	*	@return	성공시 RideList의 객체를 value로 반환
 	*/
-	Ride searchRide(int idx)
-	{
-		DoublyIterator<Ride> itor(*rideListPointer());
-		itor.Next();
-		while (itor.NextNotNull())
-		{
-			if (itor.GetCurrentNode().data.getId() == idx)
-			{
-				Ride temp(itor.GetCurrentNodePointer()->data);
-				return temp;
-			}
-			itor.Next();
-		}
-	}
+	Ride searchRide(int idx);
+
 
 	/**
 	*	@brief	RideList의 정보 출력
 	*/
-	void PrintRideAll()
-	{
-		DoublyIterator<Ride> itor(*rideListPointer());
-		itor.Next();
-		while (itor.NextNotNull())
-		{
-			itor.GetCurrentNode().data.printInfo();
-			itor.Next();
-		}
-	}
+	void PrintRideAll();
+
 
 	/**
 	*	@brief	id를 받아 userList에서 비교후 동일한 user를 반환
 	*	@return	성공시 user의 객체를 value로 반환
 	*/
-	User searchUser(int idx)
-	{
-		User temp;
-		userList.ResetList();
-		for (int i = 0; i < userList.GetLength(); i++)
-		{
-			userList.GetNextItem(temp);
-			if (temp.getId() == idx)
-			{
-				return temp;
-			}
-		}
-	}
+	User searchUser(int idx);
 	/**
 	*	@brief	rideList의 length 반환
 	*	@return	rideList의 length 반환
 	*/
-	int getRideLength()
-	{
-		return rideListPointer()->GetLength();
-	}
+	int getRideLength();
 
 	/**
 	*   @brief   rideList pointer 반환
 	*   @return rideList pointer
    */
-	DoublySortedLinkedList<Ride>* rideListPointer()
-	{
-		return &rideList;
-	}
+	DoublySortedLinkedList<Ride>* rideListPointer();
 
-	void run() {
-		DoublyIterator<Ride> itor(rideList);
-		runVector = new vector<thread*>;
-		thread* temp = new thread;
-		while (itor.NotNull()) {
-			runVector->push_back(new thread([&]() { itor.GetCurrentNode().data.rideUser();  }));
-			itor.Next();
-		}
+	void run();
+	void runDelete();
 
-		//run 전체 실행
-		for (auto run : *runVector)
-		{
-			run->detach();
-		}
-
-	}
-	void runDelete() {
-		for (auto elem : *runVector) {
-			delete elem;
-		}
-	}
-
-	int getNumOfEnterUser()
-	{
-		return numOfEnterUser;
-	}
+	int getNumOfEnterUser();
 
 private:
 	DoublySortedLinkedList<Ride> rideList;
@@ -195,54 +109,3 @@ private:
 	SortedList<User> userList; //User가 담긴 list
 	vector<thread*>* runVector;
 };
-
-Admin::Admin()
-{
-	numOfEnterUser = 0;
-	maxUser = 100; //maxUser 미정
-	lenRideList = 0;
-	runVector = NULL;
-}
-
-bool Admin::insertRide(Ride& ride)
-{
-	if (rideList.Add(ride))
-		return 1;
-	return 0;
-}
-
-bool Admin::removeRide(int _id)
-{
-	Ride temp;
-	temp.setId(_id);
-	if (rideList.Get(temp))
-	{
-		rideList.Delete(temp);
-		return 1;
-	}
-	return 0;
-}
-
-bool Admin::newUser() {
-	User user(numOfEnterUser, &rideList);
-	if (waitingEnterUser.getLength())
-	{
-		waitingEnterUser.dequeue(user);
-		user.WantToRide();
-		nextRide(user);
-		userList.Add(user);
-	}
-	else if (!userList.IsFull()) {
-		user.WantToRide();
-		nextRide(user);
-		userList.Add(user);
-	}
-	else {
-		waitingEnterUser.enqueue(user);
-	}
-	numOfEnterUser++;
-	srand((unsigned int)time(0));
-	int time = rand() % 500 + 100;
-	Sleep(time);
-	return 1;
-}

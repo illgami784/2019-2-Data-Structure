@@ -1,5 +1,3 @@
-#ifndef _UNSORTEDLIST_H
-#define _UNSORTEDLIST_H
 #pragma once
 
 #include <iostream>
@@ -129,7 +127,6 @@ private:
 	int m_CurPointer;			///< iterator pointer.
 	int max;
 };
-#endif
 
 // Make list empty.
 void UnsortedList::MakeEmpty()

@@ -18,9 +18,6 @@
     <ClInclude Include="Ride.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Admin.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Application.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -42,7 +39,7 @@
     <ClInclude Include="Queue.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Queue.h">
+    <ClInclude Include="Admin.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -60,6 +57,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Application.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Admin.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

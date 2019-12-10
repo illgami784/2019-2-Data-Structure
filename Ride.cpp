@@ -92,9 +92,9 @@ bool Ride::addWaitingUser(User& user) {
 }
 
 void Ride::printInfo() const {
-	cout << "\n\tid : " << id << endl;
-	cout << "\n\trequire time : " << requireTime << endl;
-	cout << "\n\tnum of seats : " << numPerRide << endl;
+	cout << "\n\tid : " << id;
+	cout << "\n\trequire time : " << requireTime;
+	cout << "\n\tnum of seats : " << numPerRide;
 	cout << "\n\tmin age : " << minAge << endl;
 }
 
@@ -137,6 +137,8 @@ void Ride::setAllFromKB() {
 		cin >> requireTime;
 		cout << "\n\tSet the minAge(0-100) of Ride : ";
 		cin >> minAge;
+		cout << "\n\tSet the num of People per of Ride :";
+		cin >> numPerRide;
 		if (minAge >= 0 && minAge <= 100)
 			break;
 		else

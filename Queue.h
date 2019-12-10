@@ -28,6 +28,9 @@ public:
     {
         head = NULL;
         tail = NULL;
+		length = 0;
+		prev = NULL;
+		temp = NULL;
     }
 
     void enqueue(T x)

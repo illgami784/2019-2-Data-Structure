@@ -1,10 +1,11 @@
 #pragma once
-//#include "User.h"
 #include "DoublySortedLinkedList.h"
 #include "Stack.h"
-//#include "Admin.h"
 #include "Queue.h"
 #include <Windows.h>
+#include <iostream>
+using namespace std;
+
 class User;
 class Admin;
 
@@ -36,13 +37,7 @@ public:
 	int numWaitingUser; //지금 기다리고 있는 사람의 수
 	bool isOpen;
 	*/
-	Ride(const Ride& ride) {
-		this->id = ride.id;
-		this->requireTime = ride.requireTime;
-		this->minAge = ride.minAge;
-		this->numPerRide = ride.numPerRide;
-		this->totalUser = ride.totalUser;
-	}
+	Ride(const Ride& ride);
 
 	/**
 	*	@brief	watingTime을 산출함. rideUser 루프가 돌때마다 호출
@@ -120,37 +115,15 @@ public:
 
 	void setMinAge(int minAge);
 
-	void setRideListPointer(DoublySortedLinkedList<Ride>* _rideListPointer)
-	{
-		rideListPointer = _rideListPointer;
-	}
+	void setRideListPointer(DoublySortedLinkedList<Ride>* _rideListPointer);
 
-	int getWaitingTime() {
-		return watingTime;
-	}
+	int getWaitingTime();
 
-	int getId() {
-		return id;
-	}
+	int getId();
 
-	liveInfo getLiveInfo() {
-		liveInfo print;
-		print.info = id;
-		print.numWatingUser = numWaitingUser;
-		print.watingtime = watingTime;
+	liveInfo getLiveInfo();
 
-		return print;
-	}
-
-	liveInfo printStat() {
-		liveInfo print;
-		print.info = id;
-		print.totalUser = totalUser;
-		print.watingtime = maxWatingTime;
-		print.numWatingUser = maxNumWaitingUser;
-
-		return print;
-	}
+	liveInfo printStat();
 
 	bool operator<(const Ride& rhs) const;
 
@@ -187,112 +160,3 @@ private:
 	Queue<User*> waitingUser; //기다리는 User들을 담는 Queue - 추후 heap으로
 
 };
-bool Ride::rideUser() {//requireTime마다 실행
-	// if numPerRide is more than waitingUser
-	if (numWaitingUser < numPerRide) {
-		for (int i = 0; i < numWaitingUser; i++) {
-			User* user = ridingUser.Pop();//만약에 rideUser가 null이면?? 처리필요!
-			moveToUser(user);
-			waitingUser.dequeue(user);
-			ridingUser.Push(user);
-			totalUser++;//이용객 수 +1 
-		}
-		numWaitingUser = 0;
-	}
-	// if numPerRide is less than waitingUser
-	else {
-		for (int i = 0; i < numPerRide; i++) {
-			User* user = ridingUser.Pop();//만약에 rideUser가 null이면?? 처리필요!
-			moveToUser(user);
-			waitingUser.dequeue(user);
-			ridingUser.Push(user);
-			totalUser++;//이용객 수 +1 
-		}
-		numWaitingUser -= numPerRide;
-	}
-	calcWaitingTime();
-	Sleep(requireTime);
-
-}
-
-bool Ride::moveToUser(User* user) {
-	int min = 100000000000;
-	int cur;
-	user->wantToRide.ResetList();
-
-	for (int i = 0; i < user->wantToRide.GetLength(); i++) {
-		user->wantToRide.GetNextItem(cur);
-		Ride test;
-		test.setId(cur);
-		rideListPointer->Get(test);
-		if (min > test.getWaitingTime()) {
-			min = test.getWaitingTime();
-			user->setNowLocation(cur);
-		}
-	}
-	calcWaitingTime();
-}
-
-Ride::Ride() {
-	id = -1;
-	requireTime = 0; //놀이기구를 한번에 작동하는데 걸리는 시간(초 단위)
-	numPerRide = 0; //한 번에 놀이기구를  탈 수 있는 User 수
-	watingTime = 0; //예상 대기 시간(초 단위)
-	minAge = 0; //이 Ride를 타기 위한 최소 나이 (0~100)
-	totalUser = 0; //개장하고 탑승한 총 User 수
-	numWaitingUser = 0; //지금 기다리고 있는 사람의 수
-	isOpen = 0; //false
-}
-
-bool Ride::calcWaitingTime() {
-	watingTime = (numWaitingUser / numPerRide) * requireTime;
-
-	if (watingTime > maxWatingTime) {
-		maxWatingTime = watingTime;
-	}
-	if (numWaitingUser > maxNumWaitingUser) {
-		maxNumWaitingUser = numWaitingUser;
-	}
-}
-
-void Ride::setId(int _id)
-{
-	this->id = _id;
-}
-
-void Ride::setMinAge(int minAge) {
-	Ride::minAge = minAge;
-}
-
-bool Ride::addWaitingUser(User& user) {
-	numWaitingUser++;
-	waitingUser.enqueue(&user); //add User in the waitinglist
-
-	return true;
-}
-
-void Ride::printInfo() const {
-	cout << "\n\tid : " << id << endl;
-	cout << "\n\trequire time : " << requireTime << endl;
-	cout << "\n\tnum of seats : " << numPerRide << endl;
-	cout << "\n\tmin age : " << minAge << endl;
-}
-
-bool Ride::run() {
-	totalUser = 0;
-	isOpen = true;
-	maxNumWaitingUser = 0;
-	maxWatingTime = 0;
-	while (true)
-	{
-		rideUser();
-	}
-}
-
-bool Ride::stop() {
-	numWaitingUser = 0;
-	isOpen = false;
-	watingTime = 0;
-	ridingUser.Empty();
-	waitingUser.MakeEmpty();
-}

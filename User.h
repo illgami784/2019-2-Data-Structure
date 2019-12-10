@@ -3,8 +3,6 @@
 #include "UnsortedList.h"
 #include "DoublySortedLinkedList.h"
 #include <iostream>
-//#include "Ride.h"
-//#include "Admin.h"
 using namespace std;
 class Ride;
 class Admin;
@@ -28,12 +26,7 @@ public:
 	/*
 	복사생성자
 	*/
-	User(const User& user) {
-		this->id = user.id;
-		this->age = user.age;
-		this->nowLocation = user.nowLocation;
-		this->wantToRide = user.wantToRide;
-	}
+	User(const User& user);
 
 	/**
 	*	@brief	무슨 함수인지 모르겠어요~ wantToRide가

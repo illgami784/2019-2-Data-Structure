@@ -17,6 +17,13 @@ User::User(int numOfEnterPeople, DoublySortedLinkedList<Ride>* ride)
 	rideListPointer = ride;
 };
 
+User::User(const User& user) {
+	this->id = user.id;
+	this->age = user.age;
+	this->nowLocation = user.nowLocation;
+	this->wantToRide = user.wantToRide;
+}
+
 //wantToRide √ ±‚»≠
 bool User::WantToRide()
 {
@@ -59,6 +66,7 @@ bool User::setNowLocation(int _location)
 	wantToRide.Delete(_location);
 	hadRide.Push(_location);
 	nowLocation = _location;
+	return true;
 }
 
 

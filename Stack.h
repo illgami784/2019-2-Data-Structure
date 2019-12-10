@@ -76,6 +76,8 @@ public:
 		{
 			cout << "\tCannot Push" << endl;
 		}
+
+		return 0;
 	}
 	/**
 	*	@brief	check stack is full

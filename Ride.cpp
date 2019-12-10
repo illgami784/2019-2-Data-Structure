@@ -48,3 +48,13 @@ bool Ride::operator<=(const Ride &rhs) const {
 bool Ride::operator>=(const Ride &rhs) const {
 	return !(*this < rhs);
 }
+
+
+Ride& Ride::operator=(const Ride& rhs) {
+	this->id = rhs.id;
+	this->requireTime = rhs.requireTime;
+	this->minAge = rhs.minAge;
+	this->numPerRide = rhs.numPerRide;
+	this->totalUser = rhs.totalUser;
+	return *this;
+}

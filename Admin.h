@@ -216,7 +216,7 @@ bool Admin::deleteRide(int _id)
 }
 
 bool Admin::newUser() {
-	User user(numOfEnterUser,&userList);
+	User user(numOfEnterUser,&rideList);
 	if (waitingEnterUser.getLength())
 	{
 		waitingEnterUser.dequeue(user);

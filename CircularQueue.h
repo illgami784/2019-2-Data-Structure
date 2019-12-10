@@ -3,7 +3,36 @@ using namespace std;
 
 #define maxQueue 10
 
+/**
+*	@brief	Exception class thrown by Enqueue when queue is full.
+*/
+class FullQueue
+{
+public:
+	/**
+	*	@brief	Display a message for full queue on screen.
+	*/
+	void print()
+	{
+		cout << "FullQueue exception thrown." << endl;
+	}
+};
 
+
+/**
+*	@brief	Exception class thrown by Dequeue when queue is empty.
+*/
+class EmptyQueue
+{
+public:
+	/**
+	*	@brief	Display a message for empty queue on screen.
+	*/
+	void print()
+	{
+		cout << "EmtpyQueue exception thrown." << endl;
+	}
+};
 
 
 /**
@@ -143,7 +172,7 @@ template <class T>
 void CircularQueue<T>::EnQueue(T item)
 {
 	if (IsFull())
-		throw FullQueue();	//꽉 찼을땐 throw FullQueue
+		throw FullQueue;	//꽉 찼을땐 throw FullQueue
 
 	m_iRear = (m_iRear + 1) % m_nMaxQueue;
 	m_pItems[m_iRear] = item;	//m_iRear를 1증가시켜주고 item값을 넣어준다.
@@ -199,7 +228,7 @@ template <typename T>
 void CircularQueue<T>::DeQueue(T& item)
 {
 	if (IsEmpty())
-		throw EmptyQueue();	//비어있을땐 throw EmptyQueue
+		throw EmptyQueue;	//비어있을땐 throw EmptyQueue
 	m_iFront = (m_iFront + 1) % m_nMaxQueue;
 	item = m_pItems[m_iFront];	//m_iFront를 1 증가시켜주고 삭제될 값을 item에 복사해준다.
 }

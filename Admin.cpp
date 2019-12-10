@@ -7,10 +7,13 @@ Admin::Admin()
 	maxUser = 100; //maxUser πÃ¡§
 	lenRideList = 0;
 	runVector = NULL;
+	
 }
 
 bool Admin::insertRide(Ride& ride)
 {
+	ride.setId(lenRideList);
+	lenRideList++;
 	if (rideList.Add(ride))
 		return 1;
 	return 0;

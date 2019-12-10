@@ -35,14 +35,15 @@ public:
 	{
 		delete[] m_Array;
 	}
-
 	/*
 	*	기본 생성자 사용시를 위한 함수.
 	*/
 	int setMax(int _max)
 	{
+		delete[] m_Array;
 		max = _max;
 		m_Array = new int[max];
+
 	}
 
 	/**

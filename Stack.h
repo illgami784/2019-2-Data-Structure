@@ -10,14 +10,18 @@ public:
 	{
 		stack_length = 0;
 		max = 0;
+		m_stack = new T[max];
 	}
 	~Stack()
 	{
+
 		delete[] m_stack;
 	}
 
 	void setMax(int _max)
 	{
+		delete[] m_stack;
+		stack_length = 0;
 		max = _max;
 		m_stack = new T[max];
 	}

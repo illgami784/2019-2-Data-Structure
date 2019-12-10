@@ -170,8 +170,7 @@ int DoublySortedLinkedList<T>::Add(T item)
 	DoublyNodeType<T>* temp = new DoublyNodeType<T>;
 	temp->data = item;
 	T buf;
-	DoublyIterator<T> itor(*this);
-	itor.Next(); 
+	 
 	if(IsEmpty()) 	
 	{
 		temp->prev = m_pFirst;
@@ -183,6 +182,8 @@ int DoublySortedLinkedList<T>::Add(T item)
 	}
 	else 
 	{
+		DoublyIterator<T> itor(*this);
+		itor.Next();
 		while(itor.NextNotNull())
 		{
 			if(item < itor.m_pCurPointer->data) 

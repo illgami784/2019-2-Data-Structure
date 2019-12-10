@@ -58,6 +58,7 @@ Ride::Ride() {
 	totalUser = 0; //개장하고 탑승한 총 User 수
 	numWaitingUser = 0; //지금 기다리고 있는 사람의 수
 	isOpen = 0; //false
+	ridingUser.setMax(numPerRide);
 }
 
 bool Ride::calcWaitingTime() {

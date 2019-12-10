@@ -14,6 +14,7 @@ bool Admin::insertRide(Ride& ride)
 {
 	ride.setId(lenRideList);
 	lenRideList++;
+	ride.setRideListPointer(&rideList);
 	if (rideList.Add(ride))
 		return 1;
 	return 0;
@@ -134,7 +135,8 @@ void Admin::run() {
 	DoublyIterator<Ride> itor(rideList);
 	runVector = new vector<thread*>;
 	thread* temp = new thread;
-	while (itor.NotNull()) {
+	itor.Next();
+	while (itor.NextNotNull()) {
 		runVector->push_back(new thread([&]() { itor.GetCurrentNode().data.rideUser();  }));
 		itor.Next();
 	}
@@ -147,6 +149,14 @@ void Admin::run() {
 
 }
 void Admin::runDelete() {
+
+	DoublyIterator<Ride> itor(rideList);
+	itor.Next();
+	while (itor.NextNotNull())
+	{
+		itor.GetCurrentNode().data.stop();
+		itor.Next();
+	}
 	for (auto elem : *runVector) {
 		delete elem;
 	}

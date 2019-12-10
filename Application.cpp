@@ -28,6 +28,7 @@ void Application::open()
 	admin.run();
 	while (true) {
 		if (m_Command == -1) break;
+	
 		switch (m_Command)
 		{
 		case 0:

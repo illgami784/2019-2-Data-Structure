@@ -4,9 +4,11 @@
 #include "Ride.h"
 #include "DoublySortedLinkedList.h"
 #include "SortedList.h"
-#include <thread>
 #include <vector>
+#include <iostream>
 #include "Queue.h"
+#include <chrono>
+using namespace std;
 
 class Ride;
 class User;
@@ -94,8 +96,10 @@ public:
    */
 	DoublySortedLinkedList<Ride>* rideListPointer();
 
-	void run();
+	void setRun();
+	void run(int tick);
 	void runDelete();
+
 
 	int getNumOfEnterUser();
 
@@ -107,5 +111,4 @@ private:
 	Queue<User> waitingEnterUser; //userList가 다 차 들어오지 못한 User
 	//Ride가 담긴 list
 	SortedList<User> userList; //User가 담긴 list
-	vector<thread*>* runVector;
 };

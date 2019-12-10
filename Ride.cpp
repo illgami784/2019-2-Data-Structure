@@ -103,10 +103,8 @@ bool Ride::run() {
 	isOpen = true;
 	maxNumWaitingUser = 0;
 	maxWatingTime = 0;
-	while (true)
-	{
-		rideUser();
-	}
+	return true;
+	
 }
 
 bool Ride::stop() {
@@ -144,7 +142,7 @@ void Ride::setAllFromKB() {
 		else
 			cout << "\n\t Interval Wrong! Please try again";
 	}
-
+	ridingUser.setMax(numPerRide);
 	cout << "\n\tThe Setup completed.\n";
 }
 
@@ -182,6 +180,10 @@ liveInfo Ride::printStat() {
 	print.numWatingUser = maxNumWaitingUser;
 
 	return print;
+}
+
+int Ride::getRequireTime() {
+	return requireTime;
 }
 
 

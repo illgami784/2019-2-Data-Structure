@@ -1,4 +1,5 @@
 #include "Admin.h"
+#include <chrono>
 
 
 Admin::Admin()
@@ -6,8 +7,7 @@ Admin::Admin()
 	numOfEnterUser = 0;
 	maxUser = 100; //maxUser 미정
 	lenRideList = 0;
-	runVector = NULL;
-	
+	//userList.setMax(100);
 }
 
 bool Admin::insertRide(Ride& ride)
@@ -78,7 +78,7 @@ bool Admin::nextRide(User& user)
 {
 	int temp;
 	DoublyIterator<Ride> itor(*rideListPointer());
-	int idx;
+	int idx = 0;
 	int min = 100000;
 	itor.Next();
 	while (itor.NextNotNull())
@@ -121,9 +121,8 @@ bool Admin::newUser() {
 		waitingEnterUser.enqueue(user);
 	}
 	numOfEnterUser++;
-	srand((unsigned int)time(0));
+	srand((unsigned int) time(NULL));
 	int time = rand() % 500 + 100;
-	Sleep(time);
 	return 1;
 }
 DoublySortedLinkedList<Ride>* Admin::rideListPointer()
@@ -131,23 +130,28 @@ DoublySortedLinkedList<Ride>* Admin::rideListPointer()
 	return &rideList;
 }
 
-void Admin::run() {
+void Admin::run(int  tick) {
 	DoublyIterator<Ride> itor(rideList);
-	runVector = new vector<thread*>;
-	thread* temp = new thread;
 	itor.Next();
 	while (itor.NextNotNull()) {
-		runVector->push_back(new thread([&]() { itor.GetCurrentNode().data.rideUser();  }));
+		if ((tick / itor.GetCurrentNodePointer()->data.getRequireTime()) == 0)
+		{
+			itor.GetCurrentNodePointer()->data.rideUser();
+		}
 		itor.Next();
 	}
-
-	//run 전체 실행
-	for (auto run : *runVector)
-	{
-		run->detach();
-	}
-
 }
+
+void Admin::setRun() {
+	DoublyIterator<Ride> itor(rideList);
+	itor.Next();
+	while (itor.NextNotNull()) {
+		itor.GetCurrentNodePointer()->data.run();
+		
+		itor.Next();
+	}
+}
+
 void Admin::runDelete() {
 
 	DoublyIterator<Ride> itor(rideList);
@@ -156,9 +160,6 @@ void Admin::runDelete() {
 	{
 		itor.GetCurrentNode().data.stop();
 		itor.Next();
-	}
-	for (auto elem : *runVector) {
-		delete elem;
 	}
 }
 

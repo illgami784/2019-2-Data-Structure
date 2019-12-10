@@ -25,10 +25,14 @@ void Application::run()
 void Application::open()
 {
 	m_Command = 0;
-	admin.run();
+	int tick = 0;
+	admin.setRun();
+
 	while (true) {
 		if (m_Command == -1) break;
-	
+		
+		tick++;
+
 		switch (m_Command)
 		{
 		case 0:
@@ -41,6 +45,13 @@ void Application::open()
 			searchAllUser();
 			break;
 		}
+
+		admin.newUser();
+
+		admin.run(tick);
+
+		Sleep(900);
+
 		m_Command = getKey();
 	}
 	isOpen = false;
@@ -92,7 +103,6 @@ void Application::printLive()
 	cout << '\n';
 	
 	cout << "\n\n\t" << "- 중단하기(p)" << "\n\t" << "- 놀이기구 상세 정보 검색(s)" << "\n\t" << "- 유저 상세 정보 검색(u)" "\n\t-->";
-	Sleep(1000);
 }
 
 void Application::close()

@@ -8,6 +8,7 @@ User::User()
 	id = -1;
 	age = -1;
 	nowLocation = -1;
+	wantToRide.setMax(5);
 }
 
 User::User(int numOfEnterPeople, DoublySortedLinkedList<Ride>* ride)
@@ -17,6 +18,7 @@ User::User(int numOfEnterPeople, DoublySortedLinkedList<Ride>* ride)
 	nowLocation = 0;
 
 	rideListPointer = ride;
+	wantToRide.setMax(5);
 };
 
 User::User(const User& user) {
@@ -34,11 +36,12 @@ bool User::WantToRide()
 	int half;
 	while (itor.NextNotNull())
 	{
-		int i = itor.GetCurrentNode().data.getMinAge();//≥Ó¿Ã±‚±∏¿« minAge
-		if (i <= age) {
+		int Id = itor.GetCurrentNode().data.getId();//≥Ó¿Ã±‚±∏¿« minAge
+		int getAge = itor.GetCurrentNode().data.getMinAge();
+		if (getAge <= age) {
 			half = rand() % 2;
 			if (half == 1)
-				wantToRide.Add(i);
+				wantToRide.Add(Id);
 		}
 		itor.Next();
 	}

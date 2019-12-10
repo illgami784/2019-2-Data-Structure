@@ -121,9 +121,13 @@ public:
 
 	int getId();
 
+	int getRequireTime();
+
 	liveInfo getLiveInfo();
 
 	liveInfo printStat();
+
+	
 
 	bool operator<(const Ride& rhs) const;
 

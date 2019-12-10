@@ -130,6 +130,7 @@
     <ClInclude Include="DoublyIterator.h" />
     <ClInclude Include="DoublySortedLinkedList.h" />
     <ClInclude Include="Queue.h" />
+    <ClInclude Include="SortedList.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="UnsortedList.h" />
     <ClInclude Include="User.h" />

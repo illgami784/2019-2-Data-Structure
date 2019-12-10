@@ -22,6 +22,7 @@ public:
 		m_Length = 0;
 		ResetList();
 		maxsize = 1;
+		m_Array = new T[maxsize];
 	}
 
 	/**
@@ -30,6 +31,13 @@ public:
 	~SortedList()
 	{
 		delete[] m_Array;
+	}
+
+	void setMax(int _max)
+	{
+		delete[] m_Array;
+		maxsize = _max;
+		m_Array = new T[maxsize];
 	}
 
 	/**
@@ -71,75 +79,29 @@ public:
 	*/
 	int Add(T data)
 	{
-		if (m_Length == 0)
+		if (!IsFull())
 		{
-			m_Array = new T[maxsize];
-			m_Array[0] = data;
-			cout << "추가에 성공했습니다." << endl;
-			m_Length++;
-			return 1;
+			T CurItem;
+			ResetList();
+			GetNextItem(CurItem);
+
+			while (m_CurPointer <= m_Length) //처음부터 끝까지
+			{
+				if (CurItem> data || m_CurPointer == m_Length)   //만약 CurItem>inData일경우 혹은 배열의 마지막이라서 비교대상이 없는경우
+				{
+					for (int i = m_Length; i > m_CurPointer; i--)   //맨뒤에서 부터 하나씩 땡긴다.
+						m_Array[i] = m_Array[i - 1];   //배열 밀기
+					m_Array[m_CurPointer] = data;   //배열 밀은 후 현재 포인터에 아이템 넣는다.
+					m_Length++;   //개수 증가
+					break;
+				}
+				GetNextItem(CurItem);   //다음아이템으로
+			}
 		}
 		else
-		{
-			T temp;
-			ResetList();
-			GetNextItem(temp);
-			for (int i = 0; i < m_Length; i++)
-			{
-				if (data == temp)
-				{
-					cout << "\tError" << endl;
-					cout << "\t동일한 메일 항목 존재" << endl;
-					return 0;
-				}
-				GetNextItem(temp);
-			}
-		}
-		if (IsFull())
-		{
-			T* temp = new T[maxsize];
-			for (int i = 0; i < m_Length; i++)
-			{
-				temp[i] = m_Array[i];
-			}
-			delete[] m_Array;
-
-			maxsize++;
-			m_Array = new T[maxsize];
-			for (int i = 0; i < m_Length; i++)
-			{
-				m_Array[i] = temp[i];
-			}
-			delete[] temp;
-
-			T temp2 = m_Array[m_Length - 1];
-			if (temp2 > data)
-			{
-				m_Array[m_Length] = data;
-				m_Length++;
-				return 1;
-			}
-
-			ResetList();
-			T item;
-			GetNextItem(item);
-			for (int i = 0; i < m_Length; i++)
-			{
-				T temp3 = m_Array[i];
-				if (temp3 < data)
-				{
-					for (int j = m_Length; j > m_CurPointer; j--)
-					{
-						m_Array[j] = m_Array[j - 1];
-					}
-					m_Array[i] = data;
-					m_Length++;
-					return 1;
-				}
-				GetNextItem(item);
-			}
 			return 0;
-		}
+
+		return 1;
 	}
 
 	/**

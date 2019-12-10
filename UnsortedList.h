@@ -43,7 +43,7 @@ public:
 		delete[] m_Array;
 		max = _max;
 		m_Array = new int[max];
-
+		return 1;
 	}
 
 	/**

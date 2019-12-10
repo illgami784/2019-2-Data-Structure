@@ -271,6 +271,10 @@ bool Ride::addWaitingUser(User& user) {
 	return true;
 }
 
+int Ride::getMinAge() const {
+	return minAge;
+}
+
 void Ride::printInfo() const {
 	cout << "\n\tid : " << id << endl;
 	cout << "\n\trequire time : " << requireTime << endl;

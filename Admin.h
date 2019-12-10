@@ -3,7 +3,6 @@
 #include "User.h"
 #include "Ride.h"
 #include "DoublySortedLinkedList.h"
-#include "CircularQueue.h"
 #include "SortedList.h"
 #include <thread>
 #include <vector>
@@ -217,7 +216,7 @@ bool Admin::deleteRide(int _id)
 }
 
 bool Admin::newUser() {
-	User user(numOfEnterUser,userList);
+	User user(numOfEnterUser,&userList);
 	if (waitingEnterUser.getLength())
 	{
 		waitingEnterUser.dequeue(user);
@@ -236,6 +235,6 @@ bool Admin::newUser() {
 	numOfEnterUser++;
 	srand((unsigned int)time(0));
 	int time = rand() % 500+100;
-	my_sleep(time);
+	Sleep(time);
 
 }

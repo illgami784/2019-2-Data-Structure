@@ -70,17 +70,25 @@ void Application::printLive()
 	// ID, 대기인원, 대기시간? 이거만 있음될듯
 	// 이 함수랑
 	system("CLS");
-	fakeRide* ride = fAdmin.getRide();
-	int size = fAdmin.getSize();
-	cout << "\n" << setw(25) << "놀이기구 목록" << setw(10) << "대기인원";
-	for (int i = 0; i < size; i++) {
-		cout << "\n" << setw(25) << ride[i].info;
-		cout << setw(10) << ride[i].numWatingUser;
+	DoublyIterator<Ride> itor( *(admin.rideListPointer()) );
+	itor.Next();
+	while (itor.NextNotNull())
+	{
+		itor.Next();
+		Ride ride = itor.GetCurrentNode().data;
+		liveInfo live = ride.getLiveInfo();
+		
+		cout << "\n" << setw(25) << "놀이기구 목록" << setw(10) << "대기인원";
+		cout << "\n" << setw(25) << live.info;
+		cout << setw(10) << live.numWatingUser;
 		cout << '\t';
-		for (int j = 0; j < ride[i].watingTime; j++) {
+		for (int j = 0; j < live.watingtime; j++) {
 			cout << "■";
 		}
+
 	}
+	cout << '\n';
+	
 	cout << "\n\n\t" << "- 중단하기(p)" << "\n\t" << "- 놀이기구 상세 정보 검색(s)" << "\n\t" << "- 유저 상세 정보 검색(u)" "\n\t-->";
 	Sleep(1000);
 }
@@ -167,9 +175,9 @@ bool Application::searchAllUser()
 	return true;
 }
 
-void Application::printAllRideInfo() const
+void Application::printAllRideInfo()
 {
-
+	admin.PrintRideAll();
 }
 
 
@@ -227,10 +235,17 @@ bool Application::updateRide()
 	return true;
 }
 
-
-void Application::printTodayInfo()
-{
-
+void Application::printTodayInfo() {
+	DoublySortedLinkedList<Ride>* rideList = admin.rideListPointer();
+	Ride cur;
+	liveInfo print;
+	for (int i = 0; i < rideList->GetLength(); i++) {
+		cur.setId(i);
+		rideList->Get(cur);
+		print = cur.printStat();
+		cout << "\n\tid : " << print.info;
+		cout << "\n\ttotlaUser : " << print.totalUser;
+		cout << "\n\tMax waitingtime : " << print.watingtime;
+		cout << "\n\tMax waitingUser number : " << print.numWatingUser << '\n';
+	}
 }
-
-

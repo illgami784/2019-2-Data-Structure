@@ -4,7 +4,7 @@
 #include "DoublySortedLinkedList.h"
 #include <iostream>
 //#include "Ride.h"
-#include "Admin.h"
+//#include "Admin.h"
 using namespace std;
 class Ride;
 class Admin;
@@ -13,20 +13,20 @@ class User {
 public:
 
 	/**
-	*	ê¸°ë³¸ ìƒì„±ì ì…ë‹ˆë‹¤.
+	*	±âº» »ı¼ºÀÚ ÀÔ´Ï´Ù.
 	*/
 	User();
 
 	/**
-	*	@brief	ìƒì„±ìì…ë‹ˆë‹¤.
-	*	@post	ticketRank(0~9), age(0~99)ì˜ ê°’ ëœë¤ ìƒì„±,
-	idì— Adminì˜ numOfEnterPeopleì„ ë„£ìŒ, wantToRideë¥¼ ì¡°ê±´ì— ë”°ë¼ ìƒì„±í•¨.
-	ë‚˜ë¨¸ì§€ ë³€ìˆ˜ ì´ˆê¸°í™”ë„ ì§„í–‰
+	*	@brief	»ı¼ºÀÚÀÔ´Ï´Ù.
+	*	@post	ticketRank(0~9), age(0~99)ÀÇ °ª ·£´ı »ı¼º,
+	id¿¡ AdminÀÇ numOfEnterPeopleÀ» ³ÖÀ½, wantToRide¸¦ Á¶°Ç¿¡ µû¶ó »ı¼ºÇÔ.
+	³ª¸ÓÁö º¯¼ö ÃÊ±âÈ­µµ ÁøÇà
 	*/
 	User(int numOfEnterPeople, DoublySortedLinkedList<Ride>* ride);
 
 	/*
-	ë³µì‚¬ìƒì„±ì
+	º¹»ç»ı¼ºÀÚ
 	*/
 	User(const User& user) {
 		this->id = user.id;
@@ -36,8 +36,8 @@ public:
 	}
 
 	/**
-	*	@brief	ë¬´ìŠ¨ í•¨ìˆ˜ì¸ì§€ ëª¨ë¥´ê² ì–´ìš”~ wantToRideê°€
-	ë¹„ì—ˆëŠ”ì§€ì— ëŒ€í•œ ì—¬ë¶€ë¥¼ ì•Œë ¤ì£¼ëŠ”ê±´ê°€?
+	*	@brief	¹«½¼ ÇÔ¼öÀÎÁö ¸ğ¸£°Ú¾î¿ä~ wantToRide°¡
+	ºñ¾ú´ÂÁö¿¡ ´ëÇÑ ¿©ºÎ¸¦ ¾Ë·ÁÁÖ´Â°Ç°¡?
 	*	@pre
 	*	@post
 	*	@return
@@ -45,51 +45,51 @@ public:
 	bool WantToRide();
 
 	/**
-	*	@brief	ì´ Userì˜ ì •ë³´ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.
+	*	@brief	ÀÌ UserÀÇ Á¤º¸¸¦ Ãâ·ÂÇÕ´Ï´Ù.
 	*/
 	void printInfo() const;
 
 	/**
-	*	@brief	age ì„¤ì •
-	*	@post	ageê°€ ì…ë ¥í•œ ê°’ìœ¼ë¡œ ë³€í•©ë‹ˆë‹¤.
-	*	@return ì„±ê³µí•˜ë©´ true, ì‹¤íŒ¨í•˜ë©´ false
+	*	@brief	age ¼³Á¤
+	*	@post	age°¡ ÀÔ·ÂÇÑ °ªÀ¸·Î º¯ÇÕ´Ï´Ù.
+	*	@return ¼º°øÇÏ¸é true, ½ÇÆĞÇÏ¸é false
 	*/
 	bool setAge(int _age);
 
 	/**
-	*	@brief	id ì„¤ì • - ì´ê±° ë°”ê¾¸ë©´ ì•ˆë˜ì§€ ì•Šë‚˜ìš”?
-	*	@post	idê°€ ì…ë ¥í•œ ê°’ìœ¼ë¡œ ë³€í•©ë‹ˆë‹¤.
-	*	@return	ì„±ê³µí•˜ë©´ true, ì‹¤íŒ¨í•˜ë©´ false
+	*	@brief	id ¼³Á¤ - ÀÌ°Å ¹Ù²Ù¸é ¾ÈµÇÁö ¾Ê³ª¿ä?
+	*	@post	id°¡ ÀÔ·ÂÇÑ °ªÀ¸·Î º¯ÇÕ´Ï´Ù.
+	*	@return	¼º°øÇÏ¸é true, ½ÇÆĞÇÏ¸é false
 	*/
 	bool setID();
 
 	/**
-	*	@brief	ì…ë ¥ ë°›ì€ _locationìœ¼ë¡œ Userì˜ ìœ„ì¹˜ë¥¼ ì˜®ê¹ë‹ˆë‹¤.
-	*	@pre	wantToRideì— _locationì˜ ê°’ì´ ì¡´ì¬í•´ì•¼ í•©ë‹ˆë‹¤.
-	*	@post	wantToRideì—ì„œ í•´ë‹¹ ê°’ì„ ì°¾ì•„ ì œê±° í›„ hadRideë¡œ ì˜®ê¹ë‹ˆë‹¤.
-	nowLocationì´ ì…ë ¥í•œ ê°’ìœ¼ë¡œ ë³€ê²½ë©ë‹ˆë‹¤.
-	*	@return	ì„±ê³µí•˜ë©´ true, ì‹¤íŒ¨í•˜ë©´ false
+	*	@brief	ÀÔ·Â ¹ŞÀº _locationÀ¸·Î UserÀÇ À§Ä¡¸¦ ¿Å±é´Ï´Ù.
+	*	@pre	wantToRide¿¡ _locationÀÇ °ªÀÌ Á¸ÀçÇØ¾ß ÇÕ´Ï´Ù.
+	*	@post	wantToRide¿¡¼­ ÇØ´ç °ªÀ» Ã£¾Æ Á¦°Å ÈÄ hadRide·Î ¿Å±é´Ï´Ù.
+	nowLocationÀÌ ÀÔ·ÂÇÑ °ªÀ¸·Î º¯°æµË´Ï´Ù.
+	*	@return	¼º°øÇÏ¸é true, ½ÇÆĞÇÏ¸é false
 	*/
 	bool setNowLocation(int _location);
 
 	/**
-	*	@brief	ageë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
-	*	@pre	ageê°€ ì¡´ì¬í•´ì•¼í•¨.
-	*	@return	ageë¥¼ ë¦¬í„´í•¨.
+	*	@brief	age¸¦ ¹İÈ¯ÇÕ´Ï´Ù.
+	*	@pre	age°¡ Á¸ÀçÇØ¾ßÇÔ.
+	*	@return	age¸¦ ¸®ÅÏÇÔ.
 	*/
 	int getAge() const;
 
 	/**
-	*	@brief	idë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
-	*	@pre	idê°€ ì¡´ì¬í•´ì•¼í•¨.
-	*	@return	idë¥¼ ë¦¬í„´í•¨.
+	*	@brief	id¸¦ ¹İÈ¯ÇÕ´Ï´Ù.
+	*	@pre	id°¡ Á¸ÀçÇØ¾ßÇÔ.
+	*	@return	id¸¦ ¸®ÅÏÇÔ.
 	*/
 	int getId() const;
 
 	/**
-	*	@brief	nowLocationì„ ë°˜í™˜í•©ë‹ˆë‹¤.
-	*	@pre	nowLocationì´ ì¡´ì¬í•´ì•¼í•¨.
-	*	@return	nowLocationì„ ë¦¬í„´í•¨.
+	*	@brief	nowLocationÀ» ¹İÈ¯ÇÕ´Ï´Ù.
+	*	@pre	nowLocationÀÌ Á¸ÀçÇØ¾ßÇÔ.
+	*	@return	nowLocationÀ» ¸®ÅÏÇÔ.
 	*/
 	int getNowLocation() const;
 
@@ -97,7 +97,7 @@ public:
 
 	}
 
-	/*wanted to ride listì˜ í¬ì¸í„°ë¥¼ ë°˜í™˜*/
+	/*wanted to ride listÀÇ Æ÷ÀÎÅÍ¸¦ ¹İÈ¯*/
 	UnsortedList* WantToRidePointer()
 	{
 		return &wantToRide;
@@ -105,28 +105,28 @@ public:
 
 
 	friend class Ride;
-	
-	bool operator==(const User &rhs) const;
 
-	bool operator!=(const User &rhs) const;
-	
-	bool operator<(const User &rhs) const;
+	bool operator==(const User& rhs) const;
 
-	bool operator>(const User &rhs) const;
+	bool operator!=(const User& rhs) const;
 
-	bool operator<=(const User &rhs) const;
+	bool operator<(const User& rhs) const;
 
-	bool operator>=(const User &rhs) const;
+	bool operator>(const User& rhs) const;
 
-	User& operator= (const User & rhs);
+	bool operator<=(const User& rhs) const;
+
+	bool operator>=(const User& rhs) const;
+
+	User& operator= (const User& rhs);
 
 private:
-	int id; //ê³ ìœ  ë²ˆí˜¸, numOfEnterPeopleë¡œ ì •í•¨
-	int age; //ticketRankì™€ í•¨ê»˜ íƒˆ ìˆ˜ ìˆëŠ” Ride ê²°ì •
-	int nowLocation; //í˜„ì¬ ìœ„ì¹˜í•œ ë†€ì´ê¸°êµ¬ id, ì´ˆê¸° ê°’ì€ -1, ë†€ì´ê³µì› ë°”ê¹¥ì€ -2
+	int id; //°íÀ¯ ¹øÈ£, numOfEnterPeople·Î Á¤ÇÔ
+	int age; //ticketRank¿Í ÇÔ²² Å» ¼ö ÀÖ´Â Ride °áÁ¤
+	int nowLocation; //ÇöÀç À§Ä¡ÇÑ ³îÀÌ±â±¸ id, ÃÊ±â °ªÀº -1, ³îÀÌ°ø¿ø ¹Ù±ùÀº -2
 
 	DoublySortedLinkedList<Ride>* rideListPointer;
 
-	UnsortedList wantToRide; //íƒ€ê³  ì‹¶ì€ ë†€ì´ê¸°êµ¬ idê°€ ë‹´ê¸´ ë°°ì—´
-	Stack<int> hadRide; //ì´ë¯¸ íƒ‘ìŠ¹í•œ ë†€ì´ê¸°êµ¬ê°€ ë‹´ê¸´ ìŠ¤íƒ
+	UnsortedList wantToRide; //Å¸°í ½ÍÀº ³îÀÌ±â±¸ id°¡ ´ã±ä ¹è¿­
+	Stack<int> hadRide; //ÀÌ¹Ì Å¾½ÂÇÑ ³îÀÌ±â±¸°¡ ´ã±ä ½ºÅÃ
 };

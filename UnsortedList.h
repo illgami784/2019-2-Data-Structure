@@ -14,16 +14,6 @@ public:
 	*	default constructor.
 	*/
 
-	UnsortedList(const UnsortedList& un) {
-		this->m_Array = new int[un.max];
-		for (int i = 0; i < un.m_Length; i++) {
-			this->m_Array[i] = un.m_Array[i];
-		}
-		this->max = un.max;
-		this->m_CurPointer = 0;
-		this->m_Length = un.m_Length;
-	}
-
 	UnsortedList()
 	{
 		m_Length = 0;
@@ -42,13 +32,13 @@ public:
 	/**
 	*	destructor.
 	*/
-	~UnsortedList() 
+	~UnsortedList()
 	{
 		delete[] m_Array;
 	}
 
 	/*
-	*	ê¸°ë³¸ ìƒì„±ì ì‚¬ìš©ì‹œë¥¼ ìœ„í•œ í•¨ìˆ˜.
+	*	±âº» »ı¼ºÀÚ »ç¿ë½Ã¸¦ À§ÇÑ ÇÔ¼ö.
 	*/
 	int setMax(int _max)
 	{
@@ -104,30 +94,30 @@ public:
 	*/
 	int GetNextItem(int& data);
 
-	/** [ì‘ì„±]
-	*	@brief ì…ë ¥ë°›ì€ ë°ì´í„°ì˜ Idê°€ ê¸°ì¡´ì˜ ì¡´ì¬í•˜ëŠ” ê±°ë‘ ê°™ì„ì‹œ ê·¸ ì•„ì´í…œì˜ í¬ì¸í„°ë¥¼ ë°˜í™˜
-	*	@pre	ì•„ì´í…œì´ 1ê°œë¼ë„ ì¡´ì¬í•´ì•¼í•¨.
+	/** [ÀÛ¼º]
+	*	@brief ÀÔ·Â¹ŞÀº µ¥ÀÌÅÍÀÇ Id°¡ ±âÁ¸ÀÇ Á¸ÀçÇÏ´Â °Å¶û °°À»½Ã ±× ¾ÆÀÌÅÛÀÇ Æ÷ÀÎÅÍ¸¦ ¹İÈ¯
+	*	@pre	¾ÆÀÌÅÛÀÌ 1°³¶óµµ Á¸ÀçÇØ¾ßÇÔ.
 	*	@post none
-	*	@param data ì„œì¹˜í•  ì•„ì´í…œ Idë§Œì„ ê°€ì§€ë©´ ë¨
-	*	@return Idê°€ ê°™ì€ ì•„ì´í…œì˜ í¬ì¸í„°
+	*	@param data ¼­Ä¡ÇÒ ¾ÆÀÌÅÛ Id¸¸À» °¡Áö¸é µÊ
+	*	@return Id°¡ °°Àº ¾ÆÀÌÅÛÀÇ Æ÷ÀÎÅÍ
 	*/
 	int Get(int& data);
 
-	/** [ì‘ì„±]
-	*	@brief ì…ë ¥ë°›ì€ ë°ì´í„°ì˜ ì‹œê°„ì´ ê¸°ì¡´ì˜ ì¡´ì¬í•˜ëŠ” ê±°ë‘ ê°™ì„ì‹œ ê·¸ ì•„ì´í…œì„ ì‚­ì œ
-	*	@pre ì•„ì´í…œì´ í•˜ë‚˜ë¼ë„ ì¡´ì¬í•´ì•¼í•¨.
-	*	@post ì•„ì´í…œì´ í•˜ë‚˜ ì‚­ì œë©ë‹ˆë‹¤.
-	*	@param data ì‚­ì œí•  ì•„ì´í…œ ì‹œê°„ë§Œì„ ê°€ì§€ë©´ ë¨
+	/** [ÀÛ¼º]
+	*	@brief ÀÔ·Â¹ŞÀº µ¥ÀÌÅÍÀÇ ½Ã°£ÀÌ ±âÁ¸ÀÇ Á¸ÀçÇÏ´Â °Å¶û °°À»½Ã ±× ¾ÆÀÌÅÛÀ» »èÁ¦
+	*	@pre ¾ÆÀÌÅÛÀÌ ÇÏ³ª¶óµµ Á¸ÀçÇØ¾ßÇÔ.
+	*	@post ¾ÆÀÌÅÛÀÌ ÇÏ³ª »èÁ¦µË´Ï´Ù.
+	*	@param data »èÁ¦ÇÒ ¾ÆÀÌÅÛ ½Ã°£¸¸À» °¡Áö¸é µÊ
 	*	@return none
 	*/
 	void Delete(int data);
 
 
-	/** [ì‘ì„±]
-	*	@brief ì…ë ¥ë°›ì€ ë°ì´í„°ì˜ Idê°€ ê¸°ì¡´ì˜ ì¡´ì¬í•˜ëŠ” ê±°ë‘ ê°™ì„ì‹œ ê·¸ ì•„ì´í…œì„ ì…ë ¥ë°›ì•„ ê°±ì‹ 
-	*	@pre ì•„ì´í…œì´ í•˜ë‚˜ë¼ë„ ì¡´ì¬í•´ì•¼í•¨
-	*	@post ì•„ì´í…œ ë ˆì½”ë“œë¥¼ ëŒ€ì²´í•©ë‹ˆë‹¤.
-	*	@param data ì‚­ì œí•  ì•„ì´í…œ Idë§Œì„ ê°€ì§€ë©´ ë¨
+	/** [ÀÛ¼º]
+	*	@brief ÀÔ·Â¹ŞÀº µ¥ÀÌÅÍÀÇ Id°¡ ±âÁ¸ÀÇ Á¸ÀçÇÏ´Â °Å¶û °°À»½Ã ±× ¾ÆÀÌÅÛÀ» ÀÔ·Â¹Ş¾Æ °»½Å
+	*	@pre ¾ÆÀÌÅÛÀÌ ÇÏ³ª¶óµµ Á¸ÀçÇØ¾ßÇÔ
+	*	@post ¾ÆÀÌÅÛ ·¹ÄÚµå¸¦ ´ëÃ¼ÇÕ´Ï´Ù.
+	*	@param data »èÁ¦ÇÒ ¾ÆÀÌÅÛ Id¸¸À» °¡Áö¸é µÊ
 	*	@return none
 	*/
 	void Replace(int data);
@@ -168,7 +158,7 @@ bool UnsortedList::IsFull()
 int UnsortedList::Add(int inData)
 {
 	if (IsFull()) {
-		cout << "\n\të¦¬ìŠ¤íŠ¸ê°€ ê°€ë“ ì°¼ìŠµë‹ˆë‹¤.";
+		cout << "\n\t¸®½ºÆ®°¡ °¡µæ Ã¡½À´Ï´Ù.";
 		return 0;
 	}
 	int location = 0;
@@ -178,10 +168,10 @@ int UnsortedList::Add(int inData)
 	while (moreToSearch) {
 		if (inData == m_Array[location])
 		{
-			cout << "\n\të™ì¼í•œ IDê°€ ì¡´ì¬í•©ë‹ˆë‹¤.";
+			cout << "\n\tµ¿ÀÏÇÑ ID°¡ Á¸ÀçÇÕ´Ï´Ù.";
 			return 0;
 		}
-		else if(inData < m_Array[location])
+		else if (inData < m_Array[location])
 		{
 			location++;
 			moreToSearch = (location < m_Length);
@@ -191,7 +181,7 @@ int UnsortedList::Add(int inData)
 			moreToSearch = false;
 		}
 	}
-	cout << "\n\tì¶”ê°€ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.";
+	cout << "\n\tÃß°¡¿¡ ¼º°øÇß½À´Ï´Ù.";
 	for (int i = m_Length; i > location; i--) {
 		m_Array[i] = m_Array[i - 1];
 	}
@@ -227,9 +217,9 @@ int  UnsortedList::Get(int& data) {
 void  UnsortedList::Delete(int data) {
 	int location = 0;
 
-	while ( data != m_Array[location]) {
+	while (data != m_Array[location]) {
 		if (location >= m_Length) {
-			cout << "\n\tIDê°€ ê°™ì€ ê°’ì´ ì—†ìŠµë‹ˆë‹¤.";
+			cout << "\n\tID°¡ °°Àº °ªÀÌ ¾ø½À´Ï´Ù.";
 			return;
 		}
 
@@ -238,7 +228,7 @@ void  UnsortedList::Delete(int data) {
 	for (int i = location + 1; i < max; i++) {
 		m_Array[i - 1] = m_Array[i];
 	}
-	cout << "\n\tì‚­ì œì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.";
+	cout << "\n\t»èÁ¦¿¡ ¼º°øÇß½À´Ï´Ù.";
 	m_Length--;
 }
 
@@ -246,12 +236,12 @@ void  UnsortedList::Delete(int data) {
 void  UnsortedList::Replace(int data) {
 	int temp = data;
 	if (Get(data)) {
-		cout << "\n\t" << "ëŒ€ì²´ ì„±ê³µí–ˆìŠµë‹ˆë‹¤.";
+		cout << "\n\t" << "´ëÃ¼ ¼º°øÇß½À´Ï´Ù.";
 		m_Array[m_CurPointer] = data;
 	}
 	else
 	{
-		cout << "\n\t" << "ê°™ì€ ê°’ì´ ì—†ì–´ ëŒ€ì²´ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.";
+		cout << "\n\t" << "°°Àº °ªÀÌ ¾ø¾î ´ëÃ¼¿¡ ½ÇÆĞÇß½À´Ï´Ù.";
 		return;
 	}
 }
@@ -266,10 +256,10 @@ void UnsortedList::ResetList()
 // move list iterator to the next item in list and get that item.
 int UnsortedList::GetNextItem(int& data)
 {
-	m_CurPointer++;	// list pointer ì¦ê°€
-	if (m_CurPointer == max)	// end of listì´ë©´ -1ì„ ë¦¬í„´
+	m_CurPointer++;	// list pointer Áõ°¡
+	if (m_CurPointer == max)	// end of listÀÌ¸é -1À» ¸®ÅÏ
 		return -1;
-	data = m_Array[m_CurPointer];	// í˜„ì¬ list pointerì˜ ë ˆì½”ë“œë¥¼ ë³µì‚¬
+	data = m_Array[m_CurPointer];	// ÇöÀç list pointerÀÇ ·¹ÄÚµå¸¦ º¹»ç
 
 	return m_CurPointer;
 }

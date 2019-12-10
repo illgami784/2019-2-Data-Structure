@@ -2,7 +2,6 @@
 
 #include "DoublyIterator.h"
 
-
 template<typename T>
 class DoublyIterator;
 

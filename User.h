@@ -28,7 +28,7 @@ public:
 	/*
 	복사생성자
 	*/
-	User(User& user) {
+	User(const User& user) {
 		this->id = user.id;
 		this->age = user.age;
 		this->nowLocation = user.nowLocation;

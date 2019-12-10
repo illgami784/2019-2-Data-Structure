@@ -14,6 +14,16 @@ public:
 	*	default constructor.
 	*/
 
+	UnsortedList(const UnsortedList& un) {
+		this->m_Array = new int[un.max];
+		for (int i = 0; i < un.m_Length; i++) {
+			this->m_Array[i] = un.m_Array[i];
+		}
+		this->max = un.max;
+		this->m_CurPointer = 0;
+		this->m_Length = un.m_Length;
+	}
+
 	UnsortedList()
 	{
 		m_Length = 0;

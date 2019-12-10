@@ -72,10 +72,11 @@ void Application::printLive()
 	// 이 함수랑
 	system("CLS");
 	DoublyIterator<Ride> itor( *(admin.rideListPointer()) );
+
 	itor.Next();
 	while (itor.NextNotNull())
 	{
-		itor.Next();
+		
 		Ride ride = itor.GetCurrentNode().data;
 		liveInfo live = ride.getLiveInfo();
 		
@@ -86,7 +87,7 @@ void Application::printLive()
 		for (int j = 0; j < live.watingtime; j++) {
 			cout << "■";
 		}
-
+		itor.Next();
 	}
 	cout << '\n';
 	
@@ -164,10 +165,10 @@ bool Application::searchAllUser()
 	int num = admin.getNumOfEnterUser();
 	int id;
 	while (true) {
-		cout << "\n\t현재 유저는 0~" << num - 1 << "까지 입니다.";
-		cout << "\n\t검색하고 싶은 유저 번호를 입력하세요-->";
+		cout << "\n\t현재 유저는 0~" << num << "까지 입니다.";
+		cout << "\n\t검색하고 싶은 유저 번호를 입력하세요(input -7 to exit)-->";
 		cin >> id;
-		if (id >= 0 && id < num) { break; }
+		if ( (id >= 0 && id < num) || id == -7) { break; }
 		cout << "\n\t잘못된 입력입니다.";
 	}
 	User searchedUser = admin.searchUser(id);
@@ -188,10 +189,10 @@ bool Application::searchRide()
 	int num = admin.getRideLength();
 	int id;
 	while (true) {
-		cout << "\n\t현재 놀이기구는 0~" << num - 1 << "까지 입니다.";
-		cout << "\n\t검색하고 싶은 놀이기구 번호를 입력하세요-->";
+		cout << "\n\t현재 유저는 0~" << num << "까지 입니다.";
+		cout << "\n\t검색하고 싶은 유저 번호를 입력하세요(input -7 to exit)-->";
 		cin >> id;
-		if (id >= 0 && id < num) { break; }
+		if ((id >= 0 && id < num) || id == -7) { break; }
 		cout << "\n\t잘못된 입력입니다.";
 	}
 	Ride searchedRide = admin.searchRide(id);

@@ -3,7 +3,36 @@ using namespace std;
 
 #define maxQueue 10
 
+/**
+*	@brief	Exception class thrown by Enqueue when queue is full.
+*/
+class FullQueue
+{
+public:
+	/**
+	*	@brief	Display a message for full queue on screen.
+	*/
+	void print()
+	{
+		cout << "FullQueue exception thrown." << endl;
+	}
+};
 
+
+/**
+*	@brief	Exception class thrown by Dequeue when queue is empty.
+*/
+class EmptyQueue
+{
+public:
+	/**
+	*	@brief	Display a message for empty queue on screen.
+	*/
+	void print()
+	{
+		cout << "EmtpyQueue exception thrown." << endl;
+	}
+};
 
 
 /**

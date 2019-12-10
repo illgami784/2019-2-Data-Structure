@@ -6,7 +6,7 @@ using namespace std;
 
 
 void Ride::setAllFromKB() {
-	// requireTime, minAgeì„ í‚¤ë³´ë“œë¡œë¶€í„° ì…ë ¥ ë°›ì•„ ì„¤ì •.
+	// requireTime, minAgeÀ» Å°º¸µå·ÎºÎÅÍ ÀÔ·Â ¹Ş¾Æ ¼³Á¤.
 	while (1) {
 		cout << "\n\tSet the requireTime(second) of Ride : ";
 		cin >> requireTime;
@@ -25,27 +25,27 @@ int Ride::getMinAge() const {
 	return minAge;
 }
 
-bool Ride::operator<(const Ride &rhs) const {
+bool Ride::operator<(const Ride& rhs) const {
 	return id < rhs.id;
 }
 
-bool Ride::operator==(const Ride &rhs) const {
+bool Ride::operator==(const Ride& rhs) const {
 	return id == rhs.id;
 }
 
-bool Ride::operator!=(const Ride &rhs) const {
+bool Ride::operator!=(const Ride& rhs) const {
 	return !(rhs == *this);
 }
 
-bool Ride::operator>(const Ride &rhs) const {
+bool Ride::operator>(const Ride& rhs) const {
 	return rhs < *this;
 }
 
-bool Ride::operator<=(const Ride &rhs) const {
+bool Ride::operator<=(const Ride& rhs) const {
 	return !(rhs < *this);
 }
 
-bool Ride::operator>=(const Ride &rhs) const {
+bool Ride::operator>=(const Ride& rhs) const {
 	return !(*this < rhs);
 }
 

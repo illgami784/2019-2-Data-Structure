@@ -42,7 +42,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -125,7 +125,6 @@
   <ItemGroup>
     <ClInclude Include="Admin.h" />
     <ClInclude Include="Application.h" />
-    <ClInclude Include="CircularQueue.h" />
     <ClInclude Include="DoublyIterator.h" />
     <ClInclude Include="DoublySortedLinkedList.h" />
     <ClInclude Include="Queue.h" />

@@ -16,34 +16,34 @@ class Admin {
 public:
 
 	/**
-	*	@brief	ê¸°ë³¸ ìƒì„±ìì…ë‹ˆë‹¤
-	*	@post	maxUserë¥¼ ì…ë ¥ê°’ìœ¼ë¡œ ì„¤ì •, UserListì˜ ê¸¸ì´ë¥¼ maxUserì˜
-	í¬ê¸°ë¡œ ì„¤ì •, numOfEnterUser = 0
+	*	@brief	±âº» »ı¼ºÀÚÀÔ´Ï´Ù
+	*	@post	maxUser¸¦ ÀÔ·Â°ªÀ¸·Î ¼³Á¤, UserListÀÇ ±æÀÌ¸¦ maxUserÀÇ
+	Å©±â·Î ¼³Á¤, numOfEnterUser = 0
 	*/
 	Admin();
 
 	/**
-	*	@brief	ê¸°ë³¸ ì†Œë©¸ìì…ë‹ˆë‹¤.
+	*	@brief	±âº» ¼Ò¸êÀÚÀÔ´Ï´Ù.
 	*	@post
 	*/
 	~Admin() = default;
 
 	/**
-	*	@brief	íŠ¹ì • ì‹œê°„ë§ˆë‹¤ ì‹¤í–‰ë˜ë©° ìƒˆë¡œìš´ Userë¥¼ ë§Œë“œëŠ” í•¨ìˆ˜.
-	*	@pre	userListê°€ fullì´ ì•„ë‹ˆì—¬ì•¼í•¨ fullì¼ì‹œ watingEnterUserì— Userë¥¼ ë„£ìŒ
-	*	@post	userListê°€ fullì´ ì•„ë‹ˆë©´ numOfEnterUser++
-	ìƒˆë¡œìš´ User ì¶”ê°€ numOfEntterUserì„ idë¡œ ì„¤ì •í•´ì¤€ë‹¤. ì´í›„ nextRideë¥¼ í˜¸ì¶œ.
-	*	@return	ì„±ê³µì‹œ true, ì‹¤íŒ¨ì‹œ false
+	*	@brief	Æ¯Á¤ ½Ã°£¸¶´Ù ½ÇÇàµÇ¸ç »õ·Î¿î User¸¦ ¸¸µå´Â ÇÔ¼ö.
+	*	@pre	userList°¡ fullÀÌ ¾Æ´Ï¿©¾ßÇÔ fullÀÏ½Ã watingEnterUser¿¡ User¸¦ ³ÖÀ½
+	*	@post	userList°¡ fullÀÌ ¾Æ´Ï¸é numOfEnterUser++
+	»õ·Î¿î User Ãß°¡ numOfEntterUserÀ» id·Î ¼³Á¤ÇØÁØ´Ù. ÀÌÈÄ nextRide¸¦ È£Ãâ.
+	*	@return	¼º°ø½Ã true, ½ÇÆĞ½Ã false
 	*/
 	bool newUser();
 
 
 	/**
-	*	@brief	userì˜ wantToRideì™€ ê° Rideë“¤ì˜ watingTimeì„ í™•ì¸í•´ì„œ
-	userì˜ ë‹¤ìŒ ëª©ì ì§€ë¥¼ ê²°ì •í•´ì¤€ë‹¤.
-	*	@pre	userì˜ wantToRideê°€ ë¹„ì–´ìˆì§€ ì•Šì•„ì•¼í•¨
-	*	@post	userì˜ setNowLocation í˜¸ì¶œí•´ ê°’ ë³€ê²½
-	*	@return	ì„±ê³µì‹œ true, ì‹¤íŒ¨ì‹œ false
+	*	@brief	userÀÇ wantToRide¿Í °¢ RideµéÀÇ watingTimeÀ» È®ÀÎÇØ¼­
+	userÀÇ ´ÙÀ½ ¸ñÀûÁö¸¦ °áÁ¤ÇØÁØ´Ù.
+	*	@pre	userÀÇ wantToRide°¡ ºñ¾îÀÖÁö ¾Ê¾Æ¾ßÇÔ
+	*	@post	userÀÇ setNowLocation È£ÃâÇØ °ª º¯°æ
+	*	@return	¼º°ø½Ã true, ½ÇÆĞ½Ã false
 	*/
 	bool nextRide(User& user)
 	{
@@ -71,24 +71,24 @@ public:
 	}
 
 	/**
-	*	@brief	rideListì— rideë¥¼ ì¶”ê°€í•œë‹¤.
-	*	@pre	rideì˜ ê°’ì´ ì±„ì›Œì ¸ìˆì–´ì•¼í•¨
-	*	@post	rideListì˜ ëì— ride ì¶”ê°€.
-	*	@return	ì„±ê³µì‹œ true ì‹¤íŒ¨ì‹œ false
+	*	@brief	rideList¿¡ ride¸¦ Ãß°¡ÇÑ´Ù.
+	*	@pre	rideÀÇ °ªÀÌ Ã¤¿öÁ®ÀÖ¾î¾ßÇÔ
+	*	@post	rideListÀÇ ³¡¿¡ ride Ãß°¡.
+	*	@return	¼º°ø½Ã true ½ÇÆĞ½Ã false
 	*/
 	bool addRide(Ride& ride);
 
 	/**
-	*	@brief	rideListì— rideë¥¼ ì œê±°í•œë‹¤.
-	*	@pre	rideListì— í•´ë‹¹ idì˜ ë†€ì´ê¸°êµ¬ê°€ ì¡´ì¬í•´ì•¼í•œë‹¤.
-	*	@post	rideListì—ì„œ í•´ë‹¹ idì˜ ë†€ì´ê¸°êµ¬ ì œê±°
-	*	@return	ì„±ê³µì‹œ true ì‹¤íŒ¨ì‹œ false
+	*	@brief	rideList¿¡ ride¸¦ Á¦°ÅÇÑ´Ù.
+	*	@pre	rideList¿¡ ÇØ´ç idÀÇ ³îÀÌ±â±¸°¡ Á¸ÀçÇØ¾ßÇÑ´Ù.
+	*	@post	rideList¿¡¼­ ÇØ´ç idÀÇ ³îÀÌ±â±¸ Á¦°Å
+	*	@return	¼º°ø½Ã true ½ÇÆĞ½Ã false
 	*/
 	bool deleteRide(int _id);
 
 	/**
-	*	@brief	idë¥¼ ë°›ì•„ RideListì—ì„œ ë¹„êµí›„ ë™ì¼í•œ rideë¥¼ ë°˜í™˜
-	*	@return	ì„±ê³µì‹œ RideListì˜ ê°ì²´ë¥¼ valueë¡œ ë°˜í™˜
+	*	@brief	id¸¦ ¹Ş¾Æ RideList¿¡¼­ ºñ±³ÈÄ µ¿ÀÏÇÑ ride¸¦ ¹İÈ¯
+	*	@return	¼º°ø½Ã RideListÀÇ °´Ã¼¸¦ value·Î ¹İÈ¯
 	*/
 	Ride searchRide(int idx)
 	{
@@ -106,7 +106,7 @@ public:
 	}
 
 	/**
-	*	@brief	RideListì˜ ì •ë³´ ì¶œë ¥
+	*	@brief	RideListÀÇ Á¤º¸ Ãâ·Â
 	*/
 	void PrintRideAll()
 	{
@@ -120,8 +120,8 @@ public:
 	}
 
 	/**
-	*	@brief	idë¥¼ ë°›ì•„ userListì—ì„œ ë¹„êµí›„ ë™ì¼í•œ userë¥¼ ë°˜í™˜
-	*	@return	ì„±ê³µì‹œ userì˜ ê°ì²´ë¥¼ valueë¡œ ë°˜í™˜
+	*	@brief	id¸¦ ¹Ş¾Æ userList¿¡¼­ ºñ±³ÈÄ µ¿ÀÏÇÑ user¸¦ ¹İÈ¯
+	*	@return	¼º°ø½Ã userÀÇ °´Ã¼¸¦ value·Î ¹İÈ¯
 	*/
 	User searchUser(int idx)
 	{
@@ -137,38 +137,38 @@ public:
 		}
 	}
 	/**
-	*	@brief	rideListì˜ length ë°˜í™˜
-	*	@return	rideListì˜ length ë°˜í™˜
+	*	@brief	rideListÀÇ length ¹İÈ¯
+	*	@return	rideListÀÇ length ¹İÈ¯
 	*/
-	int getRideLength() 
- 	{
+	int getRideLength()
+	{
 		return rideListPointer()->GetLength();
 	}
 
 	/**
-    *   @brief   rideList pointer ë°˜í™˜
-    *   @return rideList pointer
+	*   @brief   rideList pointer ¹İÈ¯
+	*   @return rideList pointer
    */
 	DoublySortedLinkedList<Ride>* rideListPointer()
 	{
 		return &rideList;
 	}
 
-	void run(){
+	void run() {
 		DoublyIterator<Ride> itor(rideList);
 		runVector = new vector<thread*>;
-		thread *temp=new thread;
-		while(itor.NotNull()){
+		thread* temp = new thread;
+		while (itor.NotNull()) {
 			runVector->push_back(new thread(itor.GetCurrentNode().data.rideUser()));
 			itor.Next();
 		}
 
-		//run ì „ì²´ ì‹¤í–‰
+		//run ÀüÃ¼ ½ÇÇà
 
 
 	}
-	void runDelete(){
-		for(auto elem: *runVector){
+	void runDelete() {
+		for (auto elem : *runVector) {
 			delete elem;
 		}
 	}
@@ -180,19 +180,19 @@ public:
 
 private:
 	DoublySortedLinkedList<Ride> rideList;
-	int numOfEnterUser; //ê°œì¥ í›„ ì…ì¥í•œ Userì˜ ìˆ˜
-	int maxUser; //ìµœëŒ€ ìˆ˜ìš© ê°€ëŠ¥ User ìˆ˜
-	int lenRideList; //rideListì˜ ê¸¸ì´ = ride ê°¯ìˆ˜
-	Queue<User> waitingEnterUser; //userListê°€ ë‹¤ ì°¨ ë“¤ì–´ì˜¤ì§€ ëª»í•œ User
-	//Rideê°€ ë‹´ê¸´ list
-	SortedList<User> userList; //Userê°€ ë‹´ê¸´ list
+	int numOfEnterUser; //°³Àå ÈÄ ÀÔÀåÇÑ UserÀÇ ¼ö
+	int maxUser; //ÃÖ´ë ¼ö¿ë °¡´É User ¼ö
+	int lenRideList; //rideListÀÇ ±æÀÌ = ride °¹¼ö
+	Queue<User> waitingEnterUser; //userList°¡ ´Ù Â÷ µé¾î¿ÀÁö ¸øÇÑ User
+	//Ride°¡ ´ã±ä list
+	SortedList<User> userList; //User°¡ ´ã±ä list
 	vector<thread*>* runVector;
 };
 
 Admin::Admin()
 {
 	numOfEnterUser = 0;
-	maxUser = 100; //maxUser ë¯¸ì •
+	maxUser = 100; //maxUser ¹ÌÁ¤
 	lenRideList = 0;
 }
 
@@ -216,7 +216,7 @@ bool Admin::deleteRide(int _id)
 }
 
 bool Admin::newUser() {
-	User user(numOfEnterUser,&rideList);
+	User user(numOfEnterUser, &rideList);
 	if (waitingEnterUser.getLength())
 	{
 		waitingEnterUser.dequeue(user);
@@ -229,12 +229,12 @@ bool Admin::newUser() {
 		nextRide(user);
 		userList.Add(user);
 	}
-	else{
+	else {
 		waitingEnterUser.enqueue(user);
 	}
 	numOfEnterUser++;
 	srand((unsigned int)time(0));
-	int time = rand() % 500+100;
+	int time = rand() % 500 + 100;
 	Sleep(time);
 
 }

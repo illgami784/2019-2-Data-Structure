@@ -1,5 +1,5 @@
 #include "User.h"
-
+#include "Ride.h"
 
 User::User()
 {

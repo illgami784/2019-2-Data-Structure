@@ -8,6 +8,8 @@ struct DoublyNodeType;
 template<typename T>
 class DoublySortedLinkedList;
 
+class Ride;
+
 /**
 *	연결리스트에서 쓰이는 Iterator의 클래스.
 */

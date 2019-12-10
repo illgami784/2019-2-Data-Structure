@@ -102,6 +102,15 @@ bool User::operator!=(const User &rhs) const {
 	return !(rhs == *this);
 }
 
+User& User::operator=(const User& rhs)  {
+	this->id = rhs.id;
+	this->age =rhs.age;
+	this->nowLocation = rhs.nowLocation;
+	this->wantToRide = rhs.wantToRide;
+
+	return *this;
+}
+
 
 /*bool User::moveToUser() {
 	int min = 100000000000;

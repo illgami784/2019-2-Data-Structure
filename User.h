@@ -28,18 +28,11 @@ public:
 	/*
 	복사생성자
 	*/
-	User(User& user) {
+	User(const User& user) {
 		this->id = user.id;
 		this->age = user.age;
 		this->nowLocation = user.nowLocation;
-
-		int i = user.wantToRide.GetLength();
-		user.wantToRide.ResetList();
-		int temp;
-		for (int j = 0; j < i; j++) {
-			user.wantToRide.GetNextItem(temp);
-			this->wantToRide.Add(temp);
-		}
+		this->wantToRide = user.wantToRide;
 	}
 
 	/**
@@ -124,6 +117,8 @@ public:
 	bool operator<=(const User &rhs) const;
 
 	bool operator>=(const User &rhs) const;
+
+	User& operator= (const User & rhs);
 
 private:
 	int id; //고유 번호, numOfEnterPeople로 정함

@@ -122,7 +122,6 @@ bool Admin::newUser() {
 	}
 	numOfEnterUser++;
 	srand((unsigned int) time(NULL));
-	int time = rand() % 500 + 100;
 	return 1;
 }
 DoublySortedLinkedList<Ride>* Admin::rideListPointer()

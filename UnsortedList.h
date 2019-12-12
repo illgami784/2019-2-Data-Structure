@@ -16,8 +16,10 @@ public:
 	UnsortedList()
 	{
 		m_Length = 0;
-		max = 0;
+		max = 1;
+		m_Array = new int[max];
 		ResetList();
+		
 	}
 
 	UnsortedList(int _max)

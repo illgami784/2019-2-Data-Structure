@@ -16,19 +16,12 @@ public:
 	UnsortedList()
 	{
 		m_Length = 0;
-		max = 1;
-		m_Array = new int[max];
+		max = 100;
+		m_Array = new int[100];
 		ResetList();
 		
 	}
 
-	UnsortedList(int _max)
-	{
-		m_Length = 0;
-		max = _max;
-		m_Array = new int[max];
-		ResetList();
-	}
 
 	/**
 	*	destructor.

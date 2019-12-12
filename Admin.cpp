@@ -7,7 +7,7 @@ Admin::Admin()
 	numOfEnterUser = 0;
 	maxUser = 100; //maxUser ¹ÌÁ¤
 	lenRideList = 0;
-	//userList.setMax(100);
+	userList.setMax(maxUser);
 }
 
 bool Admin::insertRide(Ride& ride)
@@ -104,21 +104,21 @@ bool Admin::nextRide(User& user)
 }
 
 bool Admin::newUser() {
-	User user(numOfEnterUser, &rideList);
+	User* user=new User(numOfEnterUser, &rideList);
 	if (waitingEnterUser.getLength())
 	{
-		waitingEnterUser.dequeue(user);
-		user.WantToRide();
-		nextRide(user);
-		userList.Add(user);
+		waitingEnterUser.dequeue(*user);
+		user->WantToRide();
+		nextRide(*user);
+		userList.Add(*user);
 	}
 	else if (!userList.IsFull()) {
-		user.WantToRide();
-		nextRide(user);
-		userList.Add(user);
+		user->WantToRide();
+		nextRide(*user);
+		userList.Add(*user);
 	}
 	else {
-		waitingEnterUser.enqueue(user);
+		waitingEnterUser.enqueue(*user);
 	}
 	numOfEnterUser++;
 	srand((unsigned int) time(NULL));

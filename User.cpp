@@ -40,7 +40,7 @@ bool User::WantToRide()
 		int getAge = itor.GetCurrentNode().data.getMinAge();
 		if (getAge <= age) {
 			half = rand() % 2;
-			if (half == 1)
+			if (half == 1||half==0)
 				wantToRide.Add(Id);
 		}
 		itor.Next();

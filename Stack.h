@@ -9,8 +9,8 @@ public:
 	Stack()
 	{
 		stack_length = 0;
-		max = 0;
-		m_stack = new T;
+		max = 100;
+		m_stack = new T[100];
 	}
 	~Stack()
 	{

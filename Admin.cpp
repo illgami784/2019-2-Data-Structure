@@ -78,6 +78,7 @@ bool Admin::nextRide(User& user)
 {
 	int temp;
 	DoublyIterator<Ride> itor(*rideListPointer());
+	DoublyNodeType<Ride>* tp = NULL;
 	int idx = 0;
 	int min = 100000;
 	itor.Next();
@@ -92,6 +93,7 @@ bool Admin::nextRide(User& user)
 				if (itor.GetCurrentNode().data.getWaitingTime() < min)
 				{
 					idx = itor.GetCurrentNode().data.getId();
+					tp = itor.GetCurrentNodePointer();
 				}
 			}
 
@@ -100,25 +102,28 @@ bool Admin::nextRide(User& user)
 		itor.Next();
 	}
 	user.setNowLocation(idx);
+	tp->data.addWaitingUser(user);
+	tp = NULL;
+	delete tp;
 	return 1;
 }
 
 bool Admin::newUser() {
-	User user(numOfEnterUser, &rideList);
+	User* user=new User(numOfEnterUser, &rideList);
 	if (waitingEnterUser.getLength())
 	{
-		waitingEnterUser.dequeue(user);
-		user.WantToRide();
-		nextRide(user);
-		userList.Add(user);
+		waitingEnterUser.dequeue(*user);
+		user->WantToRide();
+		nextRide(*user);
+		userList.Add(*user);
 	}
 	else if (!userList.IsFull()) {
-		user.WantToRide();
-		nextRide(user);
-		userList.Add(user);
+		user->WantToRide();
+		nextRide(*user);
+		userList.Add(*user);
 	}
 	else {
-		waitingEnterUser.enqueue(user);
+		waitingEnterUser.enqueue(*user);
 	}
 	numOfEnterUser++;
 	srand((unsigned int) time(NULL));
@@ -142,12 +147,13 @@ void Admin::run(int  tick) {
 }
 
 void Admin::setRun() {
+	Ride temp;
 	DoublyIterator<Ride> itor(rideList);
-	itor.Next();
+	temp=itor.Next();
 	while (itor.NextNotNull()) {
 		itor.GetCurrentNodePointer()->data.run();
 		
-		itor.Next();
+		temp=itor.Next();
 	}
 }
 

@@ -127,7 +127,7 @@ public:
 
 	liveInfo printStat();
 
-	
+	void increwatinguser();
 
 	bool operator<(const Ride& rhs) const;
 

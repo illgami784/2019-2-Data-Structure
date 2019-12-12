@@ -200,7 +200,7 @@ bool Application::searchRide()
 	int num = admin.getRideLength();
 	int id;
 	while (true) {
-		cout << "\n\t현재 유저는 0~" << num << "까지 입니다.";
+		cout << "\n\t현재 유저는 0~" << num-1 << "까지 입니다.";
 		cout << "\n\t검색하고 싶은 유저 번호를 입력하세요(input -7 to exit)-->";
 		cin >> id;
 		if ((id >= 0 && id < num) || id == -7) { break; }
@@ -209,15 +209,16 @@ bool Application::searchRide()
 	Ride searchedRide = admin.searchRide(id);
 	searchedRide.printInfo();
 	m_Command = 0;
+	system("pause");
 	return true;
 }
 
 
 bool Application::addRide()
 {
-	Ride addingRide;
-	addingRide.setAllFromKB();
-	admin.insertRide(addingRide);
+	Ride* addingRide=new Ride;
+	addingRide->setAllFromKB();
+	admin.insertRide(*addingRide);
 	return true;
 }
 

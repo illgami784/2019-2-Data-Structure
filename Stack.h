@@ -12,11 +12,7 @@ public:
 		max = 100;
 		m_stack = new T[100];
 	}
-	~Stack()
-	{
-
-		delete[] m_stack;
-	}
+	~Stack() = default;
 
 	void setMax(int _max)
 	{
@@ -36,12 +32,9 @@ public:
 	*	@post	
 	*	@return	stack depth
 	*/
-	void GetLength()
+	int GetLength()
 	{
-		for (int i = 0; i < stack_length; i++)
-		{
-			cout << m_stack[i]->GetPath();
-		}
+		return stack_length;
 	}
 	/**
 	*	@brief	pop item

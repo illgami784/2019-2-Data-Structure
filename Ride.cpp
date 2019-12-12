@@ -6,22 +6,73 @@ bool Ride::rideUser() {//requireTime마다 실행
 	// if numPerRide is more than waitingUser
 	if (numWaitingUser < numPerRide) {
 		for (int i = 0; i < numWaitingUser; i++) {
-			User* user = ridingUser.Pop();//만약에 rideUser가 null이면?? 처리필요!
-			moveToUser(user);
-			waitingUser.dequeue(user);
-			ridingUser.Push(user);
-			totalUser++;//이용객 수 +1 
+			if (waitingUser.getLength()!=0&&ridingUser.GetLength()!=0)
+			{
+				User* user = ridingUser.Pop();
+				moveToUser(user);
+				waitingUser.dequeue(user);
+				ridingUser.Push(user);
+				totalUser++;//이용객 수 +1 
+				user = NULL;
+				delete user;
+			}
+			else if(waitingUser.getLength() != 0 && ridingUser.GetLength() == 0)
+			{
+				User *user=new User;
+				waitingUser.dequeue(user);
+				ridingUser.Push(user);
+				user = NULL;
+				delete user;
+			}
+			else if (waitingUser.getLength() == 0 && ridingUser.GetLength() != 0)
+			{
+				User* user = ridingUser.Pop();
+				moveToUser(user);
+				totalUser++;//이용객 수 +1 
+				user = NULL;
+				delete user;
+			}
+			else
+			{
+				numWaitingUser = 0;
+			}
 		}
 		numWaitingUser = 0;
+		return 1;
 	}
 	// if numPerRide is less than waitingUser
 	else {
 		for (int i = 0; i < numPerRide; i++) {
-			User* user = ridingUser.Pop();//만약에 rideUser가 null이면?? 처리필요!
-			moveToUser(user);
-			waitingUser.dequeue(user);
-			ridingUser.Push(user);
-			totalUser++;//이용객 수 +1 
+			if (waitingUser.getLength() != 0 && ridingUser.GetLength() != 0)
+			{
+				User* user = ridingUser.Pop();
+				moveToUser(user);
+				waitingUser.dequeue(user);
+				ridingUser.Push(user);
+				totalUser++;//이용객 수 +1 
+				user = NULL;
+				delete user;
+			}
+			else if (waitingUser.getLength() != 0 && ridingUser.GetLength() == 0)
+			{
+				User* user = new User;
+				waitingUser.dequeue(user);
+				ridingUser.Push(user);
+				user = NULL;
+				delete user;
+			}
+			else if (waitingUser.getLength() == 0 && ridingUser.GetLength() != 0)
+			{
+				User* user = ridingUser.Pop();
+				moveToUser(user);
+				totalUser++;//이용객 수 +1 
+				user = NULL;
+				delete user;
+			}
+			else
+			{
+				numWaitingUser = 0;
+			}
 		}
 		numWaitingUser -= numPerRide;
 	}
@@ -60,7 +111,8 @@ Ride::Ride() {
 	isOpen = 0; //false
 	ridingUser.setMax(numPerRide);
 	rideListPointer = NULL;
-
+	maxNumWaitingUser = numPerRide * 50;
+	maxWatingTime = watingTime * 50;
 }
 
 bool Ride::calcWaitingTime() {
@@ -126,6 +178,9 @@ Ride::Ride(const Ride& ride) {
 	this->rideListPointer = ride.rideListPointer;
 	this->maxNumWaitingUser = ride.maxNumWaitingUser;
 	this->maxWatingTime = ride.maxWatingTime;
+	this->numWaitingUser = ride.numWaitingUser;
+	this->ridingUser = ride.ridingUser;
+	this->waitingUser = ride.waitingUser;
 }
 
 void Ride::setAllFromKB() {
@@ -168,7 +223,7 @@ liveInfo Ride::getLiveInfo() {
 	print.info = id;
 	print.numWatingUser = numWaitingUser;
 	print.watingtime = watingTime;
-
+	print.totalUser = totalUser;
 	return print;
 }
 
@@ -218,6 +273,12 @@ Ride& Ride::operator=(const Ride& rhs) {
 	this->minAge = rhs.minAge;
 	this->numPerRide = rhs.numPerRide;
 	this->totalUser = rhs.totalUser;
+	this->ridingUser = rhs.ridingUser;
+	this->waitingUser = rhs.waitingUser;
 	return *this;
 }
 
+void Ride::increwatinguser()
+{
+	numWaitingUser++;
+}

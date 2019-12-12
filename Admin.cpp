@@ -104,21 +104,21 @@ bool Admin::nextRide(User& user)
 }
 
 bool Admin::newUser() {
-	User* user=new User(numOfEnterUser, &rideList);
+	User user(numOfEnterUser, &rideList);
 	if (waitingEnterUser.getLength())
 	{
-		waitingEnterUser.dequeue(*user);
-		user->WantToRide();
-		nextRide(*user);
-		userList.Add(*user);
+		waitingEnterUser.dequeue(user);
+		user.WantToRide();
+		nextRide(user);
+		userList.Add(user);
 	}
 	else if (!userList.IsFull()) {
-		user->WantToRide();
-		nextRide(*user);
-		userList.Add(*user);
+		user.WantToRide();
+		nextRide(user);
+		userList.Add(user);
 	}
 	else {
-		waitingEnterUser.enqueue(*user);
+		waitingEnterUser.enqueue(user);
 	}
 	numOfEnterUser++;
 	srand((unsigned int) time(NULL));

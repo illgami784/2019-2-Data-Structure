@@ -26,10 +26,7 @@ public:
 	/**
 	*	destructor.
 	*/
-	~UnsortedList()
-	{
-		delete[] m_Array;
-	}
+	~UnsortedList() = default;
 	/*
 	*	기본 생성자 사용시를 위한 함수.
 	*/
@@ -175,7 +172,6 @@ int UnsortedList::Add(int inData)
 			moreToSearch = false;
 		}
 	}
-	cout << "\n\t추가에 성공했습니다.";
 	for (int i = m_Length; i > location; i--) {
 		m_Array[i] = m_Array[i - 1];
 	}
@@ -222,7 +218,6 @@ void  UnsortedList::Delete(int data) {
 	for (int i = location + 1; i < max; i++) {
 		m_Array[i - 1] = m_Array[i];
 	}
-	cout << "\n\t삭제에 성공했습니다.";
 	m_Length--;
 }
 

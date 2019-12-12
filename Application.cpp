@@ -56,7 +56,8 @@ void Application::open()
 	}
 	isOpen = false;
 	admin.runDelete();
-	system("CLS");
+	if(m_Command==-1)
+		system("CLS");
 	return;
 }
 

@@ -87,9 +87,11 @@ public:
 		Node<T>* t = temp;
 		while (temp->next!=tail)
 		{
+			
 			t = temp;
 			temp = temp->next;
 			delete t;
+			if (temp == NULL) break;
 		}
 		delete temp;
 

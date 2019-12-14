@@ -177,7 +177,7 @@ void Admin::runDelete() {
 	itor.Next();
 	while (itor.NextNotNull())
 	{
-		itor.GetCurrentNode().data.stop();
+		itor.GetCurrentNodePointer()->data.stop();
 		itor.Next();
 	}
 	userList.MakeEmpty();

@@ -174,10 +174,8 @@ int UnsortedList::Add(int inData)
 			moreToSearch = false;
 		}
 	}
-	for (int i = m_Length; i > location; i--) {
-		m_Array[i] = m_Array[i - 1];
-	}
-	m_Array[location] = inData;
+	
+	m_Array[m_Length] = inData;
 	m_Length++;
 	return 1;
 }
@@ -215,9 +213,7 @@ void  UnsortedList::Delete(int data) {
 
 		location++;
 	}
-	for (int i = location + 1; i < max; i++) {
-		m_Array[i - 1] = m_Array[i];
-	}
+	m_Array[0]=m_Array[m_Length - 1];
 	m_Length--;
 }
 

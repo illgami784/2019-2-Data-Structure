@@ -76,7 +76,12 @@ bool User::setNowLocation(int _location)
 		wantToRide.Delete(_location);
 		hadRide.Push(_location);
 	}
-	nowLocation = _location;
+	if (wantToRide.GetLength() == 0)
+	{
+		nowLocation = -2;
+	}
+	else
+		nowLocation = _location;
 	return true;
 }
 

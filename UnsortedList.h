@@ -242,7 +242,7 @@ void UnsortedList::ResetList()
 int UnsortedList::GetNextItem(int& data)
 {
 	m_CurPointer++;	// list pointer 증가
-	if (m_CurPointer == max)	// end of list이면 -1을 리턴
+	if (m_CurPointer == m_Length)	// end of list이면 -1을 리턴
 		return -1;
 	data = m_Array[m_CurPointer];	// 현재 list pointer의 레코드를 복사
 

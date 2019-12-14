@@ -41,7 +41,7 @@ void Application::open()
 		cin >> num;
 		if (num >= 1) break;
 	}
-	admin.setMaxUser(num * 10);
+	admin.setMaxUser(num * 100);
 
 	admin.setRun();
 

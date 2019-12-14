@@ -27,29 +27,44 @@ bool Ride::rideUser() {//requireTime마다 실행
 }
 
 bool Ride::moveToUser(User*& user) {
-	int min = 100000;
-	int minId = -2;
-	int cur = -2;
-	user->wantToRide.ResetList();
-	
-	if (user->wantToRide.GetLength() == 0) {
-		user->setNowLocation(-2);
-	}
-	else
+	int temp;
+	if (rideListPointer->GetLength() == 0)
 	{
-		for (int i = 0; i < user->wantToRide.GetLength(); i++) {
-			user->wantToRide.GetNextItem(cur);
-			Ride test;
-			test.setId(cur);
-			rideListPointer->Get(test);
-			if (min > test.getWaitingTime()) {
-				minId = cur;
-			}
-		}
-		user->setNowLocation(minId);
+		user->setNowLocation(-2);
+		return 0;
 	}
-	
-	return true;
+	DoublyIterator<Ride> itor(*rideListPointer);
+	DoublyNodeType<Ride>* tp = NULL;
+	int idx = 0;
+	int min = 100000;
+	itor.Next();
+	while (itor.NextNotNull())
+	{
+		user->WantToRidePointer()->ResetList();
+		user->WantToRidePointer()->GetNextItem(temp);
+		for (int i = 0; i < user->WantToRidePointer()->GetLength(); i++)
+		{
+			if (itor.GetCurrentNode().data.getId() == temp)
+			{
+				itor.GetCurrentNodePointer()->data.calcWaitingTime();
+				if (itor.GetCurrentNode().data.getWaitingTime() < min)
+				{
+					min = itor.GetCurrentNode().data.getWaitingTime();
+					idx = itor.GetCurrentNode().data.getId();
+					tp = itor.GetCurrentNodePointer();
+				}
+			}
+
+			user->WantToRidePointer()->GetNextItem(temp);
+		}
+		itor.Next();
+	}
+	user->setNowLocation(idx);
+	if (tp != NULL)
+		tp->data.addWaitingUser(user);
+	tp = NULL;
+	delete tp;
+	return 1;
 }
 
 Ride::Ride() {

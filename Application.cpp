@@ -10,6 +10,14 @@ Application::Application()
 
 void Application::run()
 {
+	int temp;
+	intro.title();
+	cout << "\t계속하시려면 아무것이나 입력해주세요 -";
+	while (true)
+	{
+		if (getKey()) break;
+	}
+	system("cls");
 	while (true) {
 		if (isOpen)
 		{
@@ -44,14 +52,14 @@ void Application::open()
 
 		switch (m_Command)
 		{
-		case 0:
-			printLive(tick);
-			break;
 		case 1:
 			searchRide();
 			break;
 		case 2:
 			searchAllUser();
+			break;
+		default:
+			printLive(tick);
 			break;
 		}
 		
@@ -82,6 +90,8 @@ int Application::getKey()
 			return 1;
 		case 'u':
 			return 2;
+		default:
+			return 100;
 		}
 	}
 	return 0;

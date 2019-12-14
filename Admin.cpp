@@ -118,26 +118,28 @@ bool Admin::nextRide(User*& user)
 
 bool Admin::newUser() {
 	User* user=new User(numOfEnterUser, &rideList);
-	if (waitingEnterUser.getLength())
-	{
-		waitingEnterUser.dequeue(user);
-		user->setRideListPointer(rideListPointer());
-		user->WantToRide();
-		nextRide(user);
-		userList.Add(user);
-		
-	}
-	else if (!userList.IsFull()) {
-		user->setRideListPointer(rideListPointer());
-		user->WantToRide();
-		nextRide(user);
-		userList.Add(user);
+
+	 if (!userList.IsFull()) {
+		if (waitingEnterUser.getLength())
+		{
+			waitingEnterUser.dequeue(user);
+			user->setRideListPointer(rideListPointer());
+			user->WantToRide();
+			nextRide(user);
+			userList.Add(user);
+		}
+		else {
+			user->setRideListPointer(rideListPointer());
+			user->WantToRide();
+			nextRide(user);
+			userList.Add(user);
+		}
 	}
 	else {
 		waitingEnterUser.enqueue(user);
 	}
 	numOfEnterUser++;
-	srand((unsigned int) time(NULL));
+	//srand((unsigned int) time(NULL));
 	return 1;
 }
 DoublySortedLinkedList<Ride>* Admin::rideListPointer()
@@ -166,6 +168,7 @@ void Admin::setRun() {
 		
 		temp=itor.Next();
 	}
+	numOfEnterUser = 0;
 }
 
 void Admin::runDelete() {
@@ -177,6 +180,8 @@ void Admin::runDelete() {
 		itor.GetCurrentNode().data.stop();
 		itor.Next();
 	}
+	userList.MakeEmpty();
+	waitingEnterUser.MakeEmpty();
 }
 
 int Admin::getNumOfEnterUser()

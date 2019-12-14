@@ -32,7 +32,7 @@ public:
 	*/
 	int setMax(int _max)
 	{
-		delete[] m_Array;
+		// delete[] m_Array;
 		max = _max;
 		m_Array = new int[max];
 		return 1;

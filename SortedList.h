@@ -35,7 +35,7 @@ public:
 
 	void setMax(int _max)
 	{
-		delete[] m_Array;
+		// delete[] m_Array;
 		maxsize = _max;
 		m_Array = new T[maxsize];
 	}

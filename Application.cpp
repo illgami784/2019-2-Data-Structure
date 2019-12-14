@@ -175,15 +175,33 @@ bool Application::searchAllUser()
 {
 	int num = admin.getNumOfEnterUser();
 	int id;
+
+	if (num == 0)
+	{
+		cout << "\n\t유저가 존재하지 않습니다. 자동으로 돌아갑니다.";
+		Sleep(500);
+		return false;
+	}
+
 	while (true) {
-		cout << "\n\t현재 유저는 0~" << num << "까지 입니다.";
+		cout << "\n\t현재 유저는 0~" << num- 1<< "까지 입니다.";
 		cout << "\n\t검색하고 싶은 유저 번호를 입력하세요(input -7 to exit)-->";
 		cin >> id;
 		if ( (id >= 0 && id < num) || id == -7) { break; }
 		cout << "\n\t잘못된 입력입니다.";
 	}
-	User searchedUser = admin.searchUser(id);
-	searchedUser.printInfo();
+
+	if ((id >= 0 && id < num))
+	{
+		User searchedUser = admin.searchUser(id);
+		searchedUser.printInfo();
+		cout << "\n\t나가시려면 p를 눌러주세요";
+		while (true)
+		{
+			if (getKey() == -1) break;
+			Sleep(500);
+		}
+	}
 	m_Command = 0;
 	return true;
 }
@@ -199,17 +217,33 @@ bool Application::searchRide()
 {
 	int num = admin.getRideLength();
 	int id;
+
+	if (num == 0)
+	{
+		cout << "\n\t놀이기구가 존재하지 않습니다. 자동으로 돌아갑니다.";
+		Sleep(500);
+		return false;
+	}
 	while (true) {
-		cout << "\n\t현재 유저는 0~" << num-1 << "까지 입니다.";
-		cout << "\n\t검색하고 싶은 유저 번호를 입력하세요(input -7 to exit)-->";
+		cout << "\n\t현재 놀이기구는 0~" << num-1 << "까지 입니다.";
+		cout << "\n\t검색하고 싶은 놀이기구 번호를 입력하세요(input -7 to exit)-->";
 		cin >> id;
 		if ((id >= 0 && id < num) || id == -7) { break; }
 		cout << "\n\t잘못된 입력입니다.";
 	}
-	Ride searchedRide = admin.searchRide(id);
-	searchedRide.printInfo();
+	if ((id >= 0 && id < num))
+	{
+		Ride searchedRide = admin.searchRide(id);
+		searchedRide.printInfo();
+		cout << "\n\t나가시려면 p를 눌러주세요";
+		while (true)
+		{
+			if (getKey() == -1) break;
+			Sleep(500);
+		}
+	}
+	
 	m_Command = 0;
-	system("pause");
 	return true;
 }
 
@@ -227,19 +261,30 @@ bool Application::deleteRide()
 {
 	int id;
 	int num = admin.getRideLength();
+	if (num == 0)
+	{
+		cout << "\n\t놀이기구가 존재하지 않습니다. 자동으로 돌아갑니다.";
+		Sleep(500);
+		return false;
+	}
+
 	while (true) {
-		cout << "\n\t현재 놀이기구는 0~" << num - 1 << "까지 입니다.";
+		cout << "\n\t현재 놀이기구는 0~" << num -1<< "까지 입니다.";
 		cout << "\n\t삭제하고 싶은 놀이기구 번호를 입력하세요-->";
 		cin >> id;
 		if (id >= 0 && id < num) { break; }
 		cout << "\n\t잘못된 입력입니다.";
 	}
-	if (admin.removeRide(id))
+	if (id >= 0 && id < num)
 	{
-		cout << "\n\t삭제에 성공했습니다.";
-		return true;
+		if (admin.removeRide(id))
+		{
+			cout << "\n\t삭제에 성공했습니다.";
+			return true;
+		}
+		cout << "\n\t삭제에 실패했습니다.";
 	}
-	cout << "\n\t삭제에 실패했습니다.";
+	
 	return false;
 }
 

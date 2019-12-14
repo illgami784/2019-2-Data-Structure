@@ -210,7 +210,6 @@ void  UnsortedList::Delete(int data) {
 
 	while (data != m_Array[location]) {
 		if (location >= m_Length) {
-			cout << "\n\tID가 같은 값이 없습니다.";
 			return;
 		}
 

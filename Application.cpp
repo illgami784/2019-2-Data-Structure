@@ -25,7 +25,15 @@ void Application::run()
 void Application::open()
 {
 	m_Command = 0;
-	int tick = 0;
+	int tick = 0, num = 1;
+	
+	cout << "\n\t한 번에 추가할 유저 수를 입력해주세요 : ";
+	while (true)
+	{
+		cin >> num;
+		if (num >= 1) break;
+	}
+
 	admin.setRun();
 
 	while (true) {

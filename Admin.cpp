@@ -178,3 +178,8 @@ int Admin::getNumOfEnterUser()
 {
 	return numOfEnterUser;
 }
+
+void Admin::setMaxUser(int _num) {
+	maxUser = _num;
+	userList.setMax(maxUser);
+}

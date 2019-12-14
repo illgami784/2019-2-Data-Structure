@@ -33,6 +33,7 @@ void Application::open()
 		cin >> num;
 		if (num >= 1) break;
 	}
+	admin.setMaxUser(num * 10);
 
 	admin.setRun();
 
@@ -53,8 +54,8 @@ void Application::open()
 			searchAllUser();
 			break;
 		}
-
-		admin.newUser();
+		
+		for(int i = 0; i < num; i++) admin.newUser();
 
 		admin.run(tick);
 

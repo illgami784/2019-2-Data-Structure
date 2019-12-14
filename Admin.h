@@ -99,7 +99,8 @@ public:
 	void setRun();
 	void run(int tick);
 	void runDelete();
-
+	
+	void setMaxUser(int _num);
 
 	int getNumOfEnterUser();
 

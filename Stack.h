@@ -71,7 +71,7 @@ public:
 		}
 		else
 		{
-			cout << "\tCannot Push" << endl;
+			return 0;
 		}
 
 		return 0;
@@ -87,7 +87,6 @@ public:
 	{
 		if (stack_length == max)
 		{
-			cout << "\tStack is full" << endl;
 			return 1;
 		}
 		return 0;

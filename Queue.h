@@ -8,57 +8,58 @@ template <typename T>
 struct Node
 {
     T data;
-    Node *next;
+	Node<T>* prev=NULL;
+    Node<T> *next=NULL;
 };
 
 template <typename T>
 class Queue
 {
+private:
     Node<T> *head;
     Node<T> *tail;
-    Node<T> *prev;
-    Node<T> *temp;
     int length;
     bool isEmpty()
     {
-        return head == NULL;
+		return length == 0;
     }
 public:
     Queue()
     {
-        head = NULL;
-        tail = NULL;
+		head = new Node<T>;
+		tail= new Node<T>;
 		length = 0;
-		prev = NULL;
-		temp = NULL;
     }
 
     void enqueue(T x)
     {
-        temp = new Node<T>;
+        Node<T>* temp = new Node<T>;
         temp->data = x;
-        temp->next = NULL;
         if(isEmpty())
         {
-            head = temp;
-            tail = temp;
+            
+			head->next = temp;
+			temp->prev = head;
+			temp->next = tail;
+			tail->prev = temp;
             length++;
         }
         else
         {
-            prev = tail;
-            tail->next = temp;
-            tail = temp;
+			tail->prev->next = temp;
+			temp->prev = tail->prev;
+			temp->next = tail;
+			tail->prev = temp;
             length++;
         }
     }
 
     void dequeue(T& input)
     {
-        temp = head;
-        input = temp->data;
-        head = head->next;
-        length--;
+		Node<T>* temp = head;
+		head = head->next;
+		input = temp->data;
+		length--;
     }
 
 //    void find(int x)
@@ -75,33 +76,23 @@ public:
 //        }
 //    }
 
-    void display()
-    {
-        if(!isEmpty())
-        {
-            for(temp = head; temp != NULL; temp=temp->next)
-                cout << temp->data << " ";
-            cout << endl;
-        }
-        else
-        {
-            cout << "Queue is Empty!" << endl;
-        }
-    }
+ 
     int getLength(){
 		return length;
     }
     
     void MakeEmpty(){
-		for (temp = head; temp != NULL; temp = temp->next)
+		Node<T>* temp = head;
+		Node<T>* t = temp;
+		while (temp->next!=tail)
 		{
-			if (temp->next == NULL) break;
-			delete temp;
-			
-		 }
-			 
-		  head = NULL;
-		  tail = NULL;
-		  length = 0;
+			t = temp;
+			temp = temp->next;
+			delete t;
+		}
+		delete temp;
+
+		
+		length = 0;
     }
 };

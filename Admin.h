@@ -47,7 +47,7 @@ public:
 	*	@post	user의 setNowLocation 호출해 값 변경
 	*	@return	성공시 true, 실패시 false
 	*/
-	bool nextRide(User& user);
+	bool nextRide(User*& user);
 
 
 	/**

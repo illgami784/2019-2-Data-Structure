@@ -111,7 +111,7 @@ public:
 
 	int getMinAge() const;
 
-	bool moveToUser(User* user);
+	bool moveToUser(User*& user);
 
 	void setMinAge(int minAge);
 

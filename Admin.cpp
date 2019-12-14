@@ -74,12 +74,12 @@ Ride Admin:: searchRide(int idx)
 		itor.Next();
 	}
 }
-bool Admin::nextRide(User& user)
+bool Admin::nextRide(User*& user)
 {
 	int temp;
 	if (rideList.GetLength() == 0)
 	{
-		user.setNowLocation(-2);
+		user->setNowLocation(-2);
 		return 0;
 	}
 	DoublyIterator<Ride> itor(*rideListPointer());
@@ -89,9 +89,9 @@ bool Admin::nextRide(User& user)
 	itor.Next();
 	while (itor.NextNotNull())
 	{
-		user.WantToRidePointer()->ResetList();
-		user.WantToRidePointer()->GetNextItem(temp);
-		for (int i = 0; i < user.WantToRidePointer()->GetLength(); i++)
+		user->WantToRidePointer()->ResetList();
+		user->WantToRidePointer()->GetNextItem(temp);
+		for (int i = 0; i < user->WantToRidePointer()->GetLength(); i++)
 		{
 			if (itor.GetCurrentNode().data.getId() == temp)
 			{
@@ -104,13 +104,13 @@ bool Admin::nextRide(User& user)
 				}
 			}
 
-			user.WantToRidePointer()->GetNextItem(temp);
+			user->WantToRidePointer()->GetNextItem(temp);
 		}
 		itor.Next();
 	}
-	user.setNowLocation(idx);
+	user->setNowLocation(idx);
 	if(tp!=NULL)
-		tp->data.addWaitingUser(user);
+		tp->data.addWaitingUser(*user);
 	tp = NULL;
 	delete tp;
 	return 1;
@@ -122,13 +122,13 @@ bool Admin::newUser() {
 	{
 		waitingEnterUser.dequeue(*user);
 		user->WantToRide();
-		nextRide(*user);
+		nextRide(user);
 		userList.Add(*user);
 		
 	}
 	else if (!userList.IsFull()) {
 		user->WantToRide();
-		nextRide(*user);
+		nextRide(user);
 		userList.Add(*user);
 	}
 	else {

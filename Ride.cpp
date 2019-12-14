@@ -4,7 +4,7 @@
 
 bool Ride::rideUser() {//requireTime마다 실행
 	// if numPerRide is more than waitingUser
-	int length = ridingUser.GetLength();
+	int length = ridingUser.GetLength()-1;
 	for (length; length > 0; length--)
 	{
 		User* user = ridingUser.Pop();
@@ -25,7 +25,7 @@ bool Ride::rideUser() {//requireTime마다 실행
 	return true;
 }
 
-bool Ride::moveToUser(User* user) {
+bool Ride::moveToUser(User*& user) {
 	int min = 100000;
 	int minId = -2;
 	int cur = -2;

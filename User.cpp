@@ -53,6 +53,8 @@ void User::printInfo() const
 	cout << "\n\tID : " << id;
 	cout << "\n\tAge : " << age;
 	cout << "\n\tNowLocation : " << nowLocation;
+	cout << "\n\tWantToRide :";
+	wantToRide.Print();
 }
 
 bool User::setAge(int _age)

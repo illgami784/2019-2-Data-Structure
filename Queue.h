@@ -58,8 +58,9 @@ public:
     {
 		Node<T>* temp = head;
 		head = head->next;
-		input = temp->data;
+		input = head->data;
 		length--;
+	    delete temp;
     }
 
 //    void find(int x)

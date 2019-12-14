@@ -72,7 +72,7 @@ public:
 	*	@post	watingUser에 user가 추가됨.
 	*	@return	성공하면 true, 실패하면 false
 	*/
-	bool addWaitingUser(User& user);
+	bool addWaitingUser(User*& user);
 
 	/**
 	*	@brief	놀이공원이 개장되면 Ride를 작동시키는 함수

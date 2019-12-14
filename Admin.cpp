@@ -95,8 +95,10 @@ bool Admin::nextRide(User& user)
 		{
 			if (itor.GetCurrentNode().data.getId() == temp)
 			{
+				itor.GetCurrentNodePointer()->data.calcWaitingTime();
 				if (itor.GetCurrentNode().data.getWaitingTime() < min)
 				{
+					min = itor.GetCurrentNode().data.getWaitingTime();
 					idx = itor.GetCurrentNode().data.getId();
 					tp = itor.GetCurrentNodePointer();
 				}
@@ -122,6 +124,7 @@ bool Admin::newUser() {
 		user->WantToRide();
 		nextRide(*user);
 		userList.Add(*user);
+		
 	}
 	else if (!userList.IsFull()) {
 		user->WantToRide();

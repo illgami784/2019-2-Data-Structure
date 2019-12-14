@@ -77,6 +77,10 @@ Ride Admin:: searchRide(int idx)
 bool Admin::nextRide(User& user)
 {
 	int temp;
+	if (rideList.GetLength() == 0)
+	{
+		return 0;
+	}
 	DoublyIterator<Ride> itor(*rideListPointer());
 	DoublyNodeType<Ride>* tp = NULL;
 	int idx = 0;
@@ -138,7 +142,7 @@ void Admin::run(int  tick) {
 	DoublyIterator<Ride> itor(rideList);
 	itor.Next();
 	while (itor.NextNotNull()) {
-		if ((tick / itor.GetCurrentNodePointer()->data.getRequireTime()) == 0)
+		if ((tick % itor.GetCurrentNodePointer()->data.getRequireTime()) == 0)
 		{
 			itor.GetCurrentNodePointer()->data.rideUser();
 		}

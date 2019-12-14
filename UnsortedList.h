@@ -114,6 +114,8 @@ public:
 	*/
 	void Replace(int data);
 
+	void Print();
+
 private:
 	int* m_Array;  ///< list array.
 	int m_Length;				///< number of elements in list.
@@ -198,7 +200,6 @@ int  UnsortedList::Get(int& data) {
 		else
 		{
 			GetNextItem(temp);
-			break;
 		}
 	}
 	return 0;
@@ -253,3 +254,14 @@ int UnsortedList::GetNextItem(int& data)
 	return m_CurPointer;
 }
 
+void UnsortedList::Print()
+{
+	int temp;
+	ResetList();
+	GetNextItem(temp);
+	int location = 0;
+	while (m_CurPointer < m_Length) {
+		cout << m_Array[m_CurPointer] << ' ';
+		GetNextItem(temp);
+	}
+}

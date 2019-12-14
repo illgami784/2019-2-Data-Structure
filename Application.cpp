@@ -36,7 +36,7 @@ void Application::open()
 		switch (m_Command)
 		{
 		case 0:
-			printLive();
+			printLive(tick);
 			break;
 		case 1:
 			searchRide();
@@ -78,21 +78,19 @@ int Application::getKey()
 	return 0;
 }
 
-void Application::printLive()
+void Application::printLive(int tick)
 {
 	// ID, 대기인원, 대기시간? 이거만 있음될듯
 	// 이 함수랑
 	system("CLS");
 	DoublyIterator<Ride> itor( *(admin.rideListPointer()) );
-
+	cout << "\t현재 시간 - " << clock(tick) << "\n\t놀이기구 갯수 - " << admin.getRideLength()
+		<<"\n\t입장인원 수 - " << admin.getNumOfEnterUser();
 	itor.Next();
+	cout << "\n\n" << setw(25) << "놀이기구 목록" << setw(10) << "대기인원";
 	while (itor.NextNotNull())
 	{
-		
-		
 		liveInfo live = itor.GetCurrentNodePointer()->data.getLiveInfo();
-		
-		cout << "\n" << setw(25) << "놀이기구 목록" << setw(10) << "대기인원";
 		cout << "\n" << setw(25) << live.info;
 		cout << setw(10) << live.numWatingUser;
 		cout << '\t';
@@ -105,6 +103,23 @@ void Application::printLive()
 	
 	cout << "\n\n\t" << "- 중단하기(p)" << "\n\t" << "- 놀이기구 상세 정보 검색(s)" << "\n\t" << "- 유저 상세 정보 검색(u)" "\n\t-->";
 }
+
+string Application::clock(int tick)
+{
+	string temp = "";
+	int hour = tick / 60;
+	int min = tick % 60;
+	
+	if (hour == 0) temp += "00:";
+	else if (hour < 10) temp += "0" + to_string(hour) + ":";
+	else temp += to_string(hour) + ":";
+
+	if (min < 10) temp += "0" + to_string(min);
+	else temp += to_string(min);
+
+	return temp;
+}
+
 
 void Application::close()
 {

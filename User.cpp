@@ -48,11 +48,13 @@ bool User::WantToRide()
 	return true;
 }
 
-void User::printInfo() const
+void User::printInfo()
 {
 	cout << "\n\tID : " << id;
 	cout << "\n\tAge : " << age;
 	cout << "\n\tNowLocation : " << nowLocation;
+	cout << "\n\tWantToRide :";
+	wantToRide.Print();
 }
 
 bool User::setAge(int _age)

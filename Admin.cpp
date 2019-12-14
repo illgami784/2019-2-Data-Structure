@@ -110,7 +110,7 @@ bool Admin::nextRide(User*& user)
 	}
 	user->setNowLocation(idx);
 	if(tp!=NULL)
-		tp->data.addWaitingUser(*user);
+		tp->data.addWaitingUser(user);
 	tp = NULL;
 	delete tp;
 	return 1;

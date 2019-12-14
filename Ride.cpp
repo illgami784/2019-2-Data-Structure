@@ -88,9 +88,9 @@ void Ride::setMinAge(int minAge) {
 	Ride::minAge = minAge;
 }
 
-bool Ride::addWaitingUser(User& user) {
+bool Ride::addWaitingUser(User*& user) {
 	numWaitingUser++;
-	waitingUser.enqueue(&user); //add User in the waitinglist
+	waitingUser.enqueue(user); //add User in the waitinglist
 	calcWaitingTime();
 	return true;
 }

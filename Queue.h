@@ -52,16 +52,15 @@ public:
 			tail->prev = temp;
             length++;
         }
-	delete temp;
     }
 
     void dequeue(T& input)
     {
 		Node<T>* temp = head;
 		head = head->next;
-		input = temp->data;
+		input = head->data;
 		length--;
-	    	delete temp;
+	    delete temp;
     }
 
 //    void find(int x)

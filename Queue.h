@@ -31,7 +31,7 @@ public:
 		length = 0;
     }
 
-    void enqueue(T x)
+    void enqueue(T& x)
     {
         Node<T>* temp = new Node<T>;
         temp->data = x;
@@ -94,8 +94,9 @@ public:
 			if (temp == NULL) break;
 		}
 		delete temp;
-
-		
+		delete tail;
+		tail = new Node<T>;
+		head = new Node<T>;
 		length = 0;
     }
 };

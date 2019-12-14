@@ -21,8 +21,6 @@ bool Ride::rideUser() {//requireTime마다 실행
 				User *user=new User;
 				waitingUser.dequeue(user);
 				ridingUser.Push(user);
-				user = NULL;
-				delete user;
 			}
 			else if (waitingUser.getLength() == 0 && ridingUser.GetLength() != 0)
 			{
@@ -58,8 +56,6 @@ bool Ride::rideUser() {//requireTime마다 실행
 				User* user = new User;
 				waitingUser.dequeue(user);
 				ridingUser.Push(user);
-				user = NULL;
-				delete user;
 			}
 			else if (waitingUser.getLength() == 0 && ridingUser.GetLength() != 0)
 			{
@@ -181,6 +177,7 @@ Ride::Ride(const Ride& ride) {
 	this->numWaitingUser = ride.numWaitingUser;
 	this->ridingUser = ride.ridingUser;
 	this->waitingUser = ride.waitingUser;
+	this->watingTime = ride.watingTime;
 }
 
 void Ride::setAllFromKB() {
@@ -273,8 +270,14 @@ Ride& Ride::operator=(const Ride& rhs) {
 	this->minAge = rhs.minAge;
 	this->numPerRide = rhs.numPerRide;
 	this->totalUser = rhs.totalUser;
+	this->isOpen = rhs.isOpen;
+	this->rideListPointer = rhs.rideListPointer;
+	this->maxNumWaitingUser = rhs.maxNumWaitingUser;
+	this->maxWatingTime = rhs.maxWatingTime;
+	this->numWaitingUser = rhs.numWaitingUser;
 	this->ridingUser = rhs.ridingUser;
 	this->waitingUser = rhs.waitingUser;
+	this->watingTime = rhs.watingTime;
 	return *this;
 }
 

@@ -79,6 +79,7 @@ bool Admin::nextRide(User& user)
 	int temp;
 	if (rideList.GetLength() == 0)
 	{
+		user.setNowLocation(-2);
 		return 0;
 	}
 	DoublyIterator<Ride> itor(*rideListPointer());
@@ -106,7 +107,8 @@ bool Admin::nextRide(User& user)
 		itor.Next();
 	}
 	user.setNowLocation(idx);
-	tp->data.addWaitingUser(user);
+	if(tp!=NULL)
+		tp->data.addWaitingUser(user);
 	tp = NULL;
 	delete tp;
 	return 1;

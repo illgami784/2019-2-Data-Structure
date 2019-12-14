@@ -26,6 +26,8 @@ User::User(const User& user) {
 	this->age = user.age;
 	this->nowLocation = user.nowLocation;
 	this->wantToRide = user.wantToRide;
+	this->hadRide = user.hadRide;
+	this->rideListPointer = user.rideListPointer;
 }
 
 //wantToRide √ ±‚»≠

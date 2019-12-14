@@ -109,7 +109,7 @@ private:
 	int numOfEnterUser; //개장 후 입장한 User의 수
 	int maxUser; //최대 수용 가능 User 수
 	int lenRideList; //rideList의 길이 = ride 갯수
-	Queue<User> waitingEnterUser; //userList가 다 차 들어오지 못한 User
+	Queue<User*> waitingEnterUser; //userList가 다 차 들어오지 못한 User
 	//Ride가 담긴 list
-	SortedList<User> userList; //User가 담긴 list
+	SortedList<User*> userList; //User가 담긴 list
 };

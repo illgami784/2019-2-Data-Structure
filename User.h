@@ -95,7 +95,10 @@ public:
 	{
 		return &wantToRide;
 	}
-
+	void setRideListPointer(DoublySortedLinkedList<Ride>* _ridelistpointer)
+	{
+		rideListPointer = _ridelistpointer;
+	}
 
 	friend class Ride;
 

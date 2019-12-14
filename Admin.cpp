@@ -38,14 +38,14 @@ int Admin:: getRideLength()
 
 User Admin:: searchUser(int idx)
 {
-	User temp;
+	User* temp;
 	userList.ResetList();
 	for (int i = 0; i < userList.GetLength(); i++)
 	{
 		userList.GetNextItem(temp);
-		if (temp.getId() == idx)
+		if (temp->getId() == idx)
 		{
-			return temp;
+			return *temp;
 		}
 	}
 }
@@ -120,19 +120,21 @@ bool Admin::newUser() {
 	User* user=new User(numOfEnterUser, &rideList);
 	if (waitingEnterUser.getLength())
 	{
-		waitingEnterUser.dequeue(*user);
+		waitingEnterUser.dequeue(user);
+		user->setRideListPointer(rideListPointer());
 		user->WantToRide();
 		nextRide(user);
-		userList.Add(*user);
+		userList.Add(user);
 		
 	}
 	else if (!userList.IsFull()) {
+		user->setRideListPointer(rideListPointer());
 		user->WantToRide();
 		nextRide(user);
-		userList.Add(*user);
+		userList.Add(user);
 	}
 	else {
-		waitingEnterUser.enqueue(*user);
+		waitingEnterUser.enqueue(user);
 	}
 	numOfEnterUser++;
 	srand((unsigned int) time(NULL));

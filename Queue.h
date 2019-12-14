@@ -52,6 +52,7 @@ public:
 			tail->prev = temp;
             length++;
         }
+	delete temp;
     }
 
     void dequeue(T& input)

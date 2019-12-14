@@ -48,7 +48,7 @@ bool User::WantToRide()
 	return true;
 }
 
-void User::printInfo() const
+void User::printInfo()
 {
 	cout << "\n\tID : " << id;
 	cout << "\n\tAge : " << age;

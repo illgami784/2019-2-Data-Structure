@@ -40,7 +40,7 @@ public:
 	/**
 	*	@brief	이 User의 정보를 출력합니다.
 	*/
-	void printInfo() const;
+	void printInfo();
 
 	/**
 	*	@brief	age 설정

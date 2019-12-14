@@ -114,7 +114,7 @@ public:
 	*/
 	void Replace(int data);
 
-	void Print() const;
+	void Print();
 
 private:
 	int* m_Array;  ///< list array.
@@ -254,7 +254,7 @@ int UnsortedList::GetNextItem(int& data)
 	return m_CurPointer;
 }
 
-void UnsortedList::Print() const
+void UnsortedList::Print()
 {
 	int temp;
 	ResetList();

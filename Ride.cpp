@@ -17,6 +17,7 @@ bool Ride::rideUser() {//requireTime마다 실행
 		User* user = new User;
 		waitingUser.dequeue(user);
 		ridingUser.Push(user);
+		totalUser++;
 	}
 	numWaitingUser -= num;
 

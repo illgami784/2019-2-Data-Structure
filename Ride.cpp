@@ -4,74 +4,22 @@
 
 bool Ride::rideUser() {//requireTime마다 실행
 	// if numPerRide is more than waitingUser
-	if (numWaitingUser < numPerRide) {
-		for (int i = 0; i < numWaitingUser; i++) {
-			if (waitingUser.getLength()!=0&&ridingUser.GetLength()!=0)
-			{
-				User* user = ridingUser.Pop();
-				moveToUser(user);
-				waitingUser.dequeue(user);
-				ridingUser.Push(user);
-				totalUser++;//이용객 수 +1 
-				user = NULL;
-				delete user;
-			}
-			else if(waitingUser.getLength() != 0 && ridingUser.GetLength() == 0)
-			{
-				User *user=new User;
-				waitingUser.dequeue(user);
-				ridingUser.Push(user);
-			}
-			else if (waitingUser.getLength() == 0 && ridingUser.GetLength() != 0)
-			{
-				User* user = ridingUser.Pop();
-				moveToUser(user);
-				totalUser++;//이용객 수 +1 
-				user = NULL;
-				delete user;
-			}
-			else
-			{
-				numWaitingUser = 0;
-			}
-		}
-		numWaitingUser = 0;
-		return 1;
+	int length = ridingUser.GetLength();
+	for (length; length > 0; length--)
+	{
+		User* user = ridingUser.Pop();
+		moveToUser(user);
 	}
-	// if numPerRide is less than waitingUser
-	else {
-		for (int i = 0; i < numPerRide; i++) {
-			if (waitingUser.getLength() != 0 && ridingUser.GetLength() != 0)
-			{
-				User* user = ridingUser.Pop();
-				moveToUser(user);
-				waitingUser.dequeue(user);
-				ridingUser.Push(user);
-				totalUser++;//이용객 수 +1 
-				user = NULL;
-				delete user;
-			}
-			else if (waitingUser.getLength() != 0 && ridingUser.GetLength() == 0)
-			{
-				User* user = new User;
-				waitingUser.dequeue(user);
-				ridingUser.Push(user);
-			}
-			else if (waitingUser.getLength() == 0 && ridingUser.GetLength() != 0)
-			{
-				User* user = ridingUser.Pop();
-				moveToUser(user);
-				totalUser++;//이용객 수 +1 
-				user = NULL;
-				delete user;
-			}
-			else
-			{
-				numWaitingUser = 0;
-			}
-		}
-		numWaitingUser -= numPerRide;
+
+	int num = 0;
+	for (num; num < numWaitingUser ; num++) {
+		if (num > numPerRide - 1) break;
+		User* user = new User;
+		waitingUser.dequeue(user);
+		ridingUser.Push(user);
 	}
+	numWaitingUser -= num;
+
 	calcWaitingTime();
 	Sleep(requireTime);
 	return true;
@@ -79,20 +27,27 @@ bool Ride::rideUser() {//requireTime마다 실행
 
 bool Ride::moveToUser(User* user) {
 	int min = 100000;
-	int cur;
+	int minId = -2;
+	int cur = -2;
 	user->wantToRide.ResetList();
-
-	for (int i = 0; i < user->wantToRide.GetLength(); i++) {
-		user->wantToRide.GetNextItem(cur);
-		Ride test;
-		test.setId(cur);
-		rideListPointer->Get(test);
-		if (min > test.getWaitingTime()) {
-			min = test.getWaitingTime();
-			user->setNowLocation(cur);
-		}
+	
+	if (user->wantToRide.GetLength() == 0) {
+		user->setNowLocation(-2);
 	}
-	calcWaitingTime();
+	else
+	{
+		for (int i = 0; i < user->wantToRide.GetLength(); i++) {
+			user->wantToRide.GetNextItem(cur);
+			Ride test;
+			test.setId(cur);
+			rideListPointer->Get(test);
+			if (min > test.getWaitingTime()) {
+				minId = cur;
+			}
+		}
+		user->setNowLocation(minId);
+	}
+	
 	return true;
 }
 
@@ -135,7 +90,7 @@ void Ride::setMinAge(int minAge) {
 bool Ride::addWaitingUser(User& user) {
 	numWaitingUser++;
 	waitingUser.enqueue(&user); //add User in the waitinglist
-
+	calcWaitingTime();
 	return true;
 }
 

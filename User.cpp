@@ -70,8 +70,10 @@ bool User::setID()
 
 bool User::setNowLocation(int _location)
 {
-	wantToRide.Delete(_location);
-	hadRide.Push(_location);
+	if (_location != -2) {
+		wantToRide.Delete(_location);
+		hadRide.Push(_location);
+	}
 	nowLocation = _location;
 	return true;
 }

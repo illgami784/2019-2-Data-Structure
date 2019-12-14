@@ -105,6 +105,10 @@ void Application::printLive(int tick)
 		cout << '\t';
 		for (int j = 0; j < live.watingtime; j++) {
 			cout << "бс";
+			if (j > 25) {
+				cout << "...";
+				break;
+			}
 		}
 		itor.Next();
 	}

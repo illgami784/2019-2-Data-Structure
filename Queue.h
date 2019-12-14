@@ -93,9 +93,15 @@ public:
     }
     
     void MakeEmpty(){
-     for(temp = head; temp != NULL; temp = temp->next)
-         delete temp;
-      head = NULL;
-      tail = NULL;
+		for (temp = head; temp != NULL; temp = temp->next)
+		{
+			if (temp->next == NULL) break;
+			delete temp;
+			
+		 }
+			 
+		  head = NULL;
+		  tail = NULL;
+		  length = 0;
     }
 };

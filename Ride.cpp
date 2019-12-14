@@ -67,7 +67,7 @@ Ride::Ride() {
 }
 
 bool Ride::calcWaitingTime() {
-	watingTime = (numWaitingUser % numPerRide) * requireTime;
+	watingTime = (numWaitingUser / numPerRide) * requireTime;
 
 	if (watingTime > maxWatingTime) {
 		maxWatingTime = watingTime;

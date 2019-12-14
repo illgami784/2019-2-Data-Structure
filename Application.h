@@ -33,7 +33,7 @@ public:
 
 	int getKey();
 
-	void printLive();
+	void printLive(int tick);
 
 	void close();
 
@@ -111,7 +111,7 @@ public:
 	*/
 	void printTodayInfo();
 
-
+	string clock(int tick);
 
 
 

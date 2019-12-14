@@ -87,13 +87,10 @@ void Application::printLive(int tick)
 	cout << "\t현재 시간 - " << clock(tick) << "\n\t놀이기구 갯수 - " << admin.getRideLength()
 		<<"\n\t입장인원 수 - " << admin.getNumOfEnterUser();
 	itor.Next();
+	cout << "\n\n" << setw(25) << "놀이기구 목록" << setw(10) << "대기인원";
 	while (itor.NextNotNull())
 	{
-		
-		
 		liveInfo live = itor.GetCurrentNodePointer()->data.getLiveInfo();
-		
-		cout << "\n" << setw(25) << "놀이기구 목록" << setw(10) << "대기인원";
 		cout << "\n" << setw(25) << live.info;
 		cout << setw(10) << live.numWatingUser;
 		cout << '\t';

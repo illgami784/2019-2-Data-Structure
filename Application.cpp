@@ -89,8 +89,8 @@ void Application::printLive()
 	while (itor.NextNotNull())
 	{
 		
-		Ride ride = itor.GetCurrentNode().data;
-		liveInfo live = ride.getLiveInfo();
+		
+		liveInfo live = itor.GetCurrentNodePointer()->data.getLiveInfo();
 		
 		cout << "\n" << setw(25) << "놀이기구 목록" << setw(10) << "대기인원";
 		cout << "\n" << setw(25) << live.info;

@@ -60,6 +60,7 @@ public:
 		head = head->next;
 		input = temp->data;
 		length--;
+	    	delete temp;
     }
 
 //    void find(int x)

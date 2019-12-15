@@ -384,7 +384,7 @@ void Application::printTodayInfo() {
 
 		//plus
 		if (Day >= 1) {
-			int score1 = print.numWatingUser*2 * print.totalUser;
+			int score1 = print.numWatingUser + print.totalUser*2;
 			mostRide = (score1 > mostScore ? cur.getId() : mostRide);
 			mostScore = (score1 > mostScore ? score1 : mostScore);
 

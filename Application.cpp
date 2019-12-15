@@ -13,7 +13,7 @@ void Application::run()
 {
 	int temp;
 	intro.title();
-	cout << "\tê³„ì†í•˜ì‹œë ¤ë©´ ì•„ë¬´ê²ƒì´ë‚˜ ì…ë ¥í•´ì£¼ì„¸ìš” -";
+	cout << "\t°è¼ÓÇÏ½Ã·Á¸é ¾Æ¹«°ÍÀÌ³ª ÀÔ·ÂÇØÁÖ¼¼¿ä -";
 	while (true)
 	{
 		if (getKey()) break;
@@ -37,7 +37,7 @@ void Application::open()
 	m_Command = 0;
 	int tick = 0, num = 1;
 	
-	cout << "\n\tí•œ ë²ˆì— ì¶”ê°€í•  ìœ ì € ìˆ˜ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš” : ";
+	cout << "\n\tÇÑ ¹ø¿¡ Ãß°¡ÇÒ À¯Àú ¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä : ";
 	while (true)
 	{
 		cin >> num;
@@ -101,14 +101,14 @@ int Application::getKey()
 
 void Application::printLive(int tick)
 {
-	// ID, ëŒ€ê¸°ì¸ì›, ëŒ€ê¸°ì‹œê°„? ì´ê±°ë§Œ ìˆìŒë ë“¯
-	// ì´ í•¨ìˆ˜ë‘
+	// ID, ´ë±âÀÎ¿ø, ´ë±â½Ã°£? ÀÌ°Å¸¸ ÀÖÀ½µÉµí
+	// ÀÌ ÇÔ¼ö¶û
 	system("CLS");
 	DoublyIterator<Ride> itor( *(admin.rideListPointer()) );
-	cout << "\tí˜„ì¬ ì‹œê°„ - " << clock(tick) << "\n\të†€ì´ê¸°êµ¬ ê°¯ìˆ˜ - " << admin.getRideLength()
-		<<"\n\tì…ì¥ì¸ì› ìˆ˜ - " << admin.getNumOfEnterUser();
+	cout << "\tÇöÀç ½Ã°£ - " << clock(tick) << "\n\t³îÀÌ±â±¸ °¹¼ö - " << admin.getRideLength()
+		<<"\n\tÀÔÀåÀÎ¿ø ¼ö - " << admin.getNumOfEnterUser();
 	itor.Next();
-	cout << "\n\n" << setw(25) << "ë†€ì´ê¸°êµ¬ ëª©ë¡" << setw(10) << "ëŒ€ê¸°ì¸ì›";
+	cout << "\n\n" << setw(25) << "³îÀÌ±â±¸ ¸ñ·Ï" << setw(10) << "´ë±âÀÎ¿ø";
 	while (itor.NextNotNull())
 	{
 		liveInfo live = itor.GetCurrentNodePointer()->data.getLiveInfo();
@@ -116,7 +116,7 @@ void Application::printLive(int tick)
 		cout << setw(10) << live.numWatingUser;
 		cout << '\t';
 		for (int j = 0; j < live.watingtime; j++) {
-			cout << "â– ";
+			cout << "¡á";
 			if (j > 25) {
 				cout << "...";
 				break;
@@ -126,7 +126,7 @@ void Application::printLive(int tick)
 	}
 	cout << '\n';
 	
-	cout << "\n\n\t" << "- ì¤‘ë‹¨í•˜ê¸°(p)" << "\n\t" << "- ë†€ì´ê¸°êµ¬ ìƒì„¸ ì •ë³´ ê²€ìƒ‰(s)" << "\n\t" << "- ìœ ì € ìƒì„¸ ì •ë³´ ê²€ìƒ‰(u)" "\n\t-->";
+	cout << "\n\n\t" << "- Áß´ÜÇÏ±â(p)" << "\n\t" << "- ³îÀÌ±â±¸ »ó¼¼ Á¤º¸ °Ë»ö(s)" << "\n\t" << "- À¯Àú »ó¼¼ Á¤º¸ °Ë»ö(u)" "\n\t-->";
 }
 
 string Application::clock(int tick)
@@ -176,7 +176,7 @@ void Application::close()
 		case 0:
 			exit(100);
 		default:
-			cout << "\n\tì…ë ¥ ì˜¤ë¥˜ì…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”.";
+			cout << "\n\tÀÔ·Â ¿À·ùÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.";
 			break;
 		}
 	}
@@ -184,15 +184,15 @@ void Application::close()
 
 bool Application::getCloseCommand()
 {
-	cout << "\n\tíì¥ ìƒíƒœ";
-	cout << "\n\t1. ë†€ì´ê³µì› í†µê³„ ë³´ê¸°";
-	cout << "\n\t2. ì „ì²´ ë†€ì´ê¸°êµ¬ ì •ë³´ ë³´ê¸°";
-	cout << "\n\t3. ìƒì„¸ ë†€ì´ê¸°êµ¬ ì •ë³´ ë³´ê¸°";
-	cout << "\n\t4. ë†€ì´ê¸°êµ¬ ì¶”ê°€ í•˜ê¸°";
-	cout << "\n\t5. ë†€ì´ê¸°êµ¬ ìˆ˜ì • í•˜ê¸°";
-	cout << "\n\t6. ë†€ì´ê¸°êµ¬ ì‚­ì œ í•˜ê¸°";
-	cout << "\n\t7. ê°œì¥í•˜ê¸°";
-	cout << "\n\t0. í”„ë¡œê·¸ë¨ ì¢…ë£Œ";
+	cout << "\n\tÆóÀå »óÅÂ";
+	cout << "\n\t1. ³îÀÌ°ø¿ø Åë°è º¸±â";
+	cout << "\n\t2. ÀüÃ¼ ³îÀÌ±â±¸ Á¤º¸ º¸±â";
+	cout << "\n\t3. »ó¼¼ ³îÀÌ±â±¸ Á¤º¸ º¸±â";
+	cout << "\n\t4. ³îÀÌ±â±¸ Ãß°¡ ÇÏ±â";
+	cout << "\n\t5. ³îÀÌ±â±¸ ¼öÁ¤ ÇÏ±â";
+	cout << "\n\t6. ³îÀÌ±â±¸ »èÁ¦ ÇÏ±â";
+	cout << "\n\t7. °³ÀåÇÏ±â";
+	cout << "\n\t0. ÇÁ·Î±×·¥ Á¾·á";
 	cout << "\n\t->";
 	cin.clear();
 	cin >> m_Command;
@@ -201,7 +201,7 @@ bool Application::getCloseCommand()
 
 bool Application::getOpenCommand()
 {
-	cout << "\n\tì•ˆë…•";
+	cout << "\n\t¾È³ç";
 	return true;
 }
 
@@ -218,24 +218,24 @@ bool Application::searchAllUser()
 
 	if (num == 0)
 	{
-		cout << "\n\tìœ ì €ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ìë™ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤.";
+		cout << "\n\tÀ¯Àú°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù. ÀÚµ¿À¸·Î µ¹¾Æ°©´Ï´Ù.";
 		Sleep(500);
 		return false;
 	}
 
 	while (true) {
-		cout << "\n\tí˜„ì¬ ìœ ì €ëŠ” 0~" << num- 1<< "ê¹Œì§€ ì…ë‹ˆë‹¤.";
-		cout << "\n\tê²€ìƒ‰í•˜ê³  ì‹¶ì€ ìœ ì € ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”(input -7 to exit)-->";
+		cout << "\n\tÇöÀç À¯Àú´Â 0~" << num- 1<< "±îÁö ÀÔ´Ï´Ù.";
+		cout << "\n\t°Ë»öÇÏ°í ½ÍÀº À¯Àú ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä(input -7 to exit)-->";
 		cin >> id;
 		if ( (id >= 0 && id < num) || id == -7) { break; }
-		cout << "\n\tì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤.";
+		cout << "\n\tÀß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.";
 	}
 
 	if ((id >= 0 && id < num))
 	{
 		User searchedUser = admin.searchUser(id);
 		searchedUser.printInfo();
-		cout << "\n\të‚˜ê°€ì‹œë ¤ë©´ pë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”";
+		cout << "\n\t³ª°¡½Ã·Á¸é p¸¦ ´­·¯ÁÖ¼¼¿ä";
 		while (true)
 		{
 			if (getKey() == -1) break;
@@ -260,22 +260,22 @@ bool Application::searchRide()
 
 	if (num == 0)
 	{
-		cout << "\n\të†€ì´ê¸°êµ¬ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ìë™ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤.";
+		cout << "\n\t³îÀÌ±â±¸°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù. ÀÚµ¿À¸·Î µ¹¾Æ°©´Ï´Ù.";
 		Sleep(500);
 		return false;
 	}
 	while (true) {
-		cout << "\n\tí˜„ì¬ ë†€ì´ê¸°êµ¬ëŠ” 0~" << num-1 << "ê¹Œì§€ ì…ë‹ˆë‹¤.";
-		cout << "\n\tê²€ìƒ‰í•˜ê³  ì‹¶ì€ ë†€ì´ê¸°êµ¬ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”(input -7 to exit)-->";
+		cout << "\n\tÇöÀç ³îÀÌ±â±¸´Â 0~" << num-1 << "±îÁö ÀÔ´Ï´Ù.";
+		cout << "\n\t°Ë»öÇÏ°í ½ÍÀº ³îÀÌ±â±¸ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä(input -7 to exit)-->";
 		cin >> id;
 		if ((id >= 0 && id < num) || id == -7) { break; }
-		cout << "\n\tì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤.";
+		cout << "\n\tÀß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.";
 	}
 	if ((id >= 0 && id < num))
 	{
 		Ride searchedRide = admin.searchRide(id);
 		searchedRide.printInfo();
-		cout << "\n\të‚˜ê°€ì‹œë ¤ë©´ pë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”";
+		cout << "\n\t³ª°¡½Ã·Á¸é p¸¦ ´­·¯ÁÖ¼¼¿ä";
 		while (true)
 		{
 			if (getKey() == -1) break;
@@ -303,26 +303,26 @@ bool Application::deleteRide()
 	int num = admin.getRideLength();
 	if (num == 0)
 	{
-		cout << "\n\të†€ì´ê¸°êµ¬ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ìë™ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤.";
+		cout << "\n\t³îÀÌ±â±¸°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù. ÀÚµ¿À¸·Î µ¹¾Æ°©´Ï´Ù.";
 		Sleep(500);
 		return false;
 	}
 
 	while (true) {
-		cout << "\n\tí˜„ì¬ ë†€ì´ê¸°êµ¬ëŠ” 0~" << num -1<< "ê¹Œì§€ ì…ë‹ˆë‹¤.";
-		cout << "\n\tì‚­ì œí•˜ê³  ì‹¶ì€ ë†€ì´ê¸°êµ¬ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”-->";
+		cout << "\n\tÇöÀç ³îÀÌ±â±¸´Â 0~" << num -1<< "±îÁö ÀÔ´Ï´Ù.";
+		cout << "\n\t»èÁ¦ÇÏ°í ½ÍÀº ³îÀÌ±â±¸ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä-->";
 		cin >> id;
 		if (id >= 0 && id < num) { break; }
-		cout << "\n\tì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤.";
+		cout << "\n\tÀß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.";
 	}
 	if (id >= 0 && id < num)
 	{
 		if (admin.removeRide(id))
 		{
-			cout << "\n\tì‚­ì œì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.";
+			cout << "\n\t»èÁ¦¿¡ ¼º°øÇß½À´Ï´Ù.";
 			return true;
 		}
-		cout << "\n\tì‚­ì œì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.";
+		cout << "\n\t»èÁ¦¿¡ ½ÇÆĞÇß½À´Ï´Ù.";
 	}
 	
 	return false;
@@ -334,17 +334,17 @@ bool Application::updateRide()
 	int num = admin.getRideLength();
 	if (num == 0)
 	{
-		cout << "\n\të†€ì´ê¸°êµ¬ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ìë™ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤.";
+		cout << "\n\t³îÀÌ±â±¸°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù. ÀÚµ¿À¸·Î µ¹¾Æ°©´Ï´Ù.";
 		Sleep(500);
 		return false;
 	}
 
 	while (true) {
-		cout << "\n\tí˜„ì¬ ë†€ì´ê¸°êµ¬ëŠ” 0~" << num - 1 << "ê¹Œì§€ ì…ë‹ˆë‹¤.";
-		cout << "\n\tìˆ˜ì •í•˜ê³  ì‹¶ì€ ë†€ì´ê¸°êµ¬ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”-->";
+		cout << "\n\tÇöÀç ³îÀÌ±â±¸´Â 0~" << num - 1 << "±îÁö ÀÔ´Ï´Ù.";
+		cout << "\n\t¼öÁ¤ÇÏ°í ½ÍÀº ³îÀÌ±â±¸ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä-->";
 		cin >> id;
 		if (id >= 0 && id < num) { break; }
-		cout << "\n\tì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤.";
+		cout << "\n\tÀß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.";
 	}
 	if (id >= 0 && id < num)
 	{
@@ -353,9 +353,9 @@ bool Application::updateRide()
 		addingRide->setId(id);
 		addingRide->setRideListPointer(admin.rideListPointer());
 		admin.rideListPointer()->Replace(*addingRide);
-		cout << "\n\tìˆ˜ì •ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.";
+		cout << "\n\t¼öÁ¤¿¡ ¼º°øÇß½À´Ï´Ù.";
 		return true;
-		cout << "\n\tìˆ˜ì •ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.";
+		cout << "\n\t¼öÁ¤¿¡ ½ÇÆĞÇß½À´Ï´Ù.";
 	}
 
 	return false;
@@ -384,7 +384,7 @@ void Application::printTodayInfo() {
 
 		//plus
 		if (Day >= 1) {
-			int score1 = print.numWatingUser + print.totalUser*2;
+			int score1 = print.numWatingUser*2 * print.totalUser;
 			mostRide = (score1 > mostScore ? cur.getId() : mostRide);
 			mostScore = (score1 > mostScore ? score1 : mostScore);
 

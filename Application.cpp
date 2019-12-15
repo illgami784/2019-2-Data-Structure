@@ -379,17 +379,17 @@ void Application::printTodayInfo() {
 		print = cur.printStat();
 		cout << "\n\tid : " << print.info;
 		cout << "\n\ttotal User : " << print.totalUser;
-		cout << "\n\tMax waitingtime : " << print.watingtime;
-		cout << "\n\tMax waitingUser number : " << print.numWatingUser << '\n';
+		cout << "\n\tMax waitingtime : " << print.maxWatingtime;
+		cout << "\n\tMax waitingUser number : " << print.maxNumWatingUser << '\n';
 
 		//plus
 		if (Day >= 1) {
-			int score1 = print.numWatingUser + print.totalUser*2;
+			int score1 = print.maxNumWatingUser + print.totalUser*2;
 			mostRide = (score1 > mostScore ? cur.getId() : mostRide);
 			mostScore = (score1 > mostScore ? score1 : mostScore);
 
 			if (print.totalUser != 0) {
-				double score2 = (double)print.watingtime / (double)print.totalUser;
+				double score2 = (double)print.maxWatingtime / (double)print.totalUser;
 				worstRide = (score2 > worstScore ? cur.getId() : worstRide);
 				worstScore = (score2 > worstScore ? score2 : worstScore);
 			}

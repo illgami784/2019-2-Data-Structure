@@ -119,6 +119,7 @@ private:
 	int m_Command; //명령어 입력에 사용
 	int OpenTime; //개장한 시간 통계에 사용?
 	int CloseTime; //폐장한 시간 통계에 사용?
+	int Day; //opening day
 	bool isOpen; //개장 여부
 	Admin admin; //놀이동산 Admin
 	Intro intro;

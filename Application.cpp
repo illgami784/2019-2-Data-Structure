@@ -5,6 +5,7 @@ Application::Application()
 	m_Command = 0;
 	OpenTime = 0;
 	CloseTime = 0;
+	Day = 0;
 	isOpen = false;
 }
 
@@ -21,6 +22,7 @@ void Application::run()
 	while (true) {
 		if (isOpen)
 		{
+			Day++;
 			open();
 		}
 		else
@@ -363,13 +365,38 @@ void Application::printTodayInfo() {
 	DoublySortedLinkedList<Ride>* rideList = admin.rideListPointer();
 	Ride cur;
 	liveInfo print;
+
+	int mostRide = 0;
+	int worstRide = 0;
+
+	int mostScore = 0;
+	double worstScore = 0;
+
+	cout << "\n\t --------" << Day << "th Day Summary --------";
 	for (int i = 0; i < rideList->GetLength(); i++) {
 		cur.setId(i);
 		rideList->Get(cur);
 		print = cur.printStat();
 		cout << "\n\tid : " << print.info;
-		cout << "\n\ttotlaUser : " << print.totalUser;
+		cout << "\n\ttotal User : " << print.totalUser;
 		cout << "\n\tMax waitingtime : " << print.watingtime;
 		cout << "\n\tMax waitingUser number : " << print.numWatingUser << '\n';
+
+		//plus
+		if (Day >= 1) {
+			int score1 = print.numWatingUser*2 * print.totalUser;
+			mostRide = (score1 > mostScore ? cur.getId() : mostRide);
+			mostScore = (score1 > mostScore ? score1 : mostScore);
+
+			if (print.totalUser != 0) {
+				double score2 = (double)print.watingtime / (double)print.totalUser;
+				worstRide = (score2 > worstScore ? cur.getId() : worstRide);
+				worstScore = (score2 > worstScore ? score2 : worstScore);
+			}
+		}
+	}
+	if (Day >= 1) {
+		cout << "\n\t- most Popular Ride( totalUser*2 + watingUser ) is " << mostRide;
+		cout << "\n\t- worst Ride( waitingtime / totalUser ) is " << worstRide << endl;
 	}
 }

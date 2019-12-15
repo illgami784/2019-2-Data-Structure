@@ -328,8 +328,35 @@ bool Application::deleteRide()
 
 bool Application::updateRide()
 {
+	int id;
+	int num = admin.getRideLength();
+	if (num == 0)
+	{
+		cout << "\n\t놀이기구가 존재하지 않습니다. 자동으로 돌아갑니다.";
+		Sleep(500);
+		return false;
+	}
 
-	return true;
+	while (true) {
+		cout << "\n\t현재 놀이기구는 0~" << num - 1 << "까지 입니다.";
+		cout << "\n\t수정하고 싶은 놀이기구 번호를 입력하세요-->";
+		cin >> id;
+		if (id >= 0 && id < num) { break; }
+		cout << "\n\t잘못된 입력입니다.";
+	}
+	if (id >= 0 && id < num)
+	{
+		Ride* addingRide = new Ride;
+		addingRide->setAllFromKB();
+		addingRide->setId(id);
+		addingRide->setRideListPointer(admin.rideListPointer());
+		admin.rideListPointer()->Replace(*addingRide);
+		cout << "\n\t수정에 성공했습니다.";
+		return true;
+		cout << "\n\t수정에 실패했습니다.";
+	}
+
+	return false;
 }
 
 void Application::printTodayInfo() {

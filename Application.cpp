@@ -41,6 +41,11 @@ void Application::open()
 	while (true)
 	{
 		cin >> num;
+		if (num <= 0)
+		{
+			cout << "\n\t한 번에 추가할 유저 수를 입력해주세요 : ";
+			continue;
+		}
 		if (num >= 1) break;
 	}
 	admin.setMaxUser(num * 100);

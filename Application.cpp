@@ -109,6 +109,8 @@ void Application::printLive(int tick)
 	// ID, 대기인원, 대기시간? 이거만 있음될듯
 	// 이 함수랑
 	system("CLS");
+	cout << "\n\t --------" << Day << "th Day Opened--------"<<endl;
+
 	DoublyIterator<Ride> itor( *(admin.rideListPointer()) );
 	cout << "\t현재 시간 - " << clock(tick) << "\n\t놀이기구 갯수 - " << admin.getRideLength()
 		<<"\n\t입장인원 수 - " << admin.getNumOfEnterUser();
@@ -176,6 +178,12 @@ void Application::close()
 			deleteRide();
 			break;
 		case 7:
+			writeRideListToFile();
+			break;
+		case 8:
+			ReadRideListFromFile();
+			break;
+		case 9:
 			isOpen = true;
 			return;
 		case 0:
@@ -189,6 +197,7 @@ void Application::close()
 
 bool Application::getCloseCommand()
 {
+	cout << "\n\t --------" << Day << "th Day Closed --------";
 	cout << "\n\t폐장 상태";
 	cout << "\n\t1. 놀이공원 통계 보기";
 	cout << "\n\t2. 전체 놀이기구 정보 보기";
@@ -196,7 +205,9 @@ bool Application::getCloseCommand()
 	cout << "\n\t4. 놀이기구 추가 하기";
 	cout << "\n\t5. 놀이기구 수정 하기";
 	cout << "\n\t6. 놀이기구 삭제 하기";
-	cout << "\n\t7. 개장하기";
+	cout << "\n\t7. 놀이기구 파일 쓰기";
+	cout << "\n\t8. 놀이기구 파일 읽기";
+	cout << "\n\t9. 개장하기";
 	cout << "\n\t0. 프로그램 종료";
 	cout << "\n\t->";
 	cin.clear();
@@ -401,7 +412,7 @@ void Application::printTodayInfo() {
 		}
 	}
 	if (Day >= 1) {
-		cout << "\n\t- most Popular Ride( totalUser*2 + watingUser ) is " << mostRide;
-		cout << "\n\t- worst Ride( waitingtime / totalUser ) is " << worstRide << endl;
+		cout << "\n\t- most Popular Ride( totalUser*2 + watingUser ) is Id " << mostRide;
+		cout << "\n\t- worst Ride( waitingtime / totalUser ) is Id " << worstRide << endl;
 	}
 }

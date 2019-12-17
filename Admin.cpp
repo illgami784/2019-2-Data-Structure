@@ -20,6 +20,15 @@ bool Admin::insertRide(Ride& ride)
 	return 0;
 }
 
+bool Admin::insertRideFromFile(Ride& ride)
+{
+	lenRideList++;
+	ride.setRideListPointer(&rideList);
+	if (rideList.Add(ride))
+		return 1;
+	return 0;
+}
+
 bool Admin::removeRide(int _id)
 {
 	Ride temp;

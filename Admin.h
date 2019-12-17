@@ -104,6 +104,7 @@ public:
 
 	int getNumOfEnterUser();
 
+	bool insertRideFromFile(Ride& ride);
 private:
 	DoublySortedLinkedList<Ride> rideList;
 	int numOfEnterUser; //개장 후 입장한 User의 수

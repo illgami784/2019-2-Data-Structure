@@ -256,3 +256,38 @@ void Ride::increwatinguser()
 {
 	numWaitingUser++;
 }
+
+
+int Ride::getNumPerRide()
+{
+	return numPerRide;
+}
+
+
+
+int Ride::getTotalUser()
+{
+	return totalUser;
+}
+
+void  Ride::setRequiredTime(int _requiredTime)
+{
+	requireTime = _requiredTime;
+}
+
+void  Ride::setNumPerRide(int _numPerRide)
+{
+	numPerRide = _numPerRide;
+}
+
+
+void  Ride::setridingUsersetMax(int _numPerRide)
+{
+	ridingUser.setMax(numPerRide);
+}
+
+void Ride::setTotalUser(int _totaluser)
+{
+	this->totalUser = _totaluser;
+}
+

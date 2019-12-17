@@ -100,14 +100,7 @@ public:
 	*/
 	bool rideUser();
 
-	/**
-	*	@brief	Ride를 탑승 완료한 User을 다른 곳으로 보내는 함수.
-	*	@pre	ridingUser에 User가 존재해야함
-	*	@post	ridingUser의 User를 비우며 rideListPointer를
-	이용해 위치 이동시켜준다.
-	*	@return 잘 작동시 true 아니면 false
-	*/
-	bool outUser();
+
 
 	int getMinAge() const;
 
@@ -116,12 +109,18 @@ public:
 	void setMinAge(int minAge);
 
 	void setRideListPointer(DoublySortedLinkedList<Ride>* _rideListPointer);
+	
+	int getId();
 
 	int getWaitingTime();
 
-	int getId();
-
 	int getRequireTime();
+
+	int getNumPerRide();
+
+
+
+	int getTotalUser();
 
 	liveInfo getLiveInfo();
 
@@ -145,6 +144,13 @@ public:
 
 	friend class User;
 
+	void setRequiredTime(int _requiredTime);
+
+	void setNumPerRide(int _numPerRide);
+
+	void setridingUsersetMax(int _numPerRide);
+
+	void setTotalUser(int _totaluser);
 
 private:
 	int id; //고유 번호 RideList의 길이에 따라 정해짐
@@ -157,7 +163,6 @@ private:
 	bool isOpen; //개장 여부를 나타냄, rideUser 무한 루프를 깨기 위해 사용
 	int maxWatingTime;//하루 최대 watingTime
 	int maxNumWaitingUser;//하루 최대 기다린사람
-
 
 	DoublySortedLinkedList<Ride>* rideListPointer; //자신이 담긴 rideList의 시작 주소를 가진다.
 	Stack<User*> ridingUser; //현재 탑승 중인 User을 담는 Stack

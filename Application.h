@@ -9,6 +9,7 @@
 #include <string>
 #include <conio.h>
 #include "DoublyIterator.h"
+#include <fstream>
 using namespace std;
 
 
@@ -113,7 +114,68 @@ public:
 
 	string clock(int tick);
 
+	void writeRideListToFile()
+	{
+		if ((admin.rideListPointer()->GetLength()==0))
+		{
+			cout << "\t쓸 데이터가 존재하지 않습니다. " << endl;
+			return;
+		}
+		
+		ofstream fin;
+		fin.open("ride.txt");
+		DoublyIterator<Ride> itor(*admin.rideListPointer());
+		Ride temp;
+		temp=itor.Next();
+		while (itor.NextNotNull())
+		{
+			
+			fin << itor.GetCurrentNodePointer()->data.getId() << " " << itor.GetCurrentNodePointer()->data.getRequireTime() << " " << itor.GetCurrentNodePointer()->data.getMinAge() << " " << itor.GetCurrentNodePointer()->data.getNumPerRide();
+			temp=itor.Next();
+			if (itor.NextNotNull())
+			{
+				fin << endl;
+			}
+		}
+		fin.close();
+		cout << "\tWrite Complete" << endl;
 
+	}
+	void ReadRideListFromFile()
+	{
+		if (admin.rideListPointer()->GetLength()!=0)
+		{
+				admin.rideListPointer()->MakeEmpty();
+		}
+			ifstream fout;
+			fout.open("ride.txt");
+
+			if (fout.is_open())
+			{
+				int temp;
+				while (1)
+				{
+					
+					Ride* ridetemp = new Ride;
+					fout >> temp;
+					if (!fout) break;
+					ridetemp->setId(temp);
+					fout >> temp;
+					ridetemp->setRequiredTime(temp);
+					fout >> temp;
+					ridetemp->setMinAge(temp);
+					fout >> temp;
+					ridetemp->setNumPerRide(temp);
+					ridetemp->setridingUsersetMax(temp);
+					admin.insertRideFromFile(*ridetemp);
+					if (!fout) break;
+				}
+				cout << "\tRead Complete" << endl;
+				fout.close();
+			}
+			else
+				cout << "\t 읽어올 데이터가 존재하지 않습니다. " << endl;
+	}
 
 private:
 	int m_Command; //명령어 입력에 사용
